@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PC_Map_ViewController" customModule="MNDD" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="ysb-le-BiT" id="aWA-FN-pgH"/>
+                <outlet property="headerImg" destination="FrX-4V-cXD" id="Pk1-Zi-xjE"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_login" translatesAutoresizingMaskIntoConstraints="NO" id="oVO-W0-lHX">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Mz-Xc-I1R">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="sa2-gz-wVt">
+                            <rect key="frame" x="8" y="11" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="EzW-pg-Pwo"/>
+                                <constraint firstAttribute="width" constant="44" id="Tom-fr-1JJ"/>
+                            </constraints>
+                        </imageView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_text_header" translatesAutoresizingMaskIntoConstraints="NO" id="FrX-4V-cXD">
+                            <rect key="frame" x="60" y="11" width="300" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="tnH-C2-WAj"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.3921568627" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="sa2-gz-wVt" firstAttribute="leading" secondItem="aRE-dT-FeD" secondAttribute="leading" constant="8" id="FQ0-mi-xLB"/>
+                        <constraint firstItem="aRE-dT-FeD" firstAttribute="trailing" secondItem="FrX-4V-cXD" secondAttribute="trailing" constant="15" id="L7h-u7-4co"/>
+                        <constraint firstItem="FrX-4V-cXD" firstAttribute="top" secondItem="aRE-dT-FeD" secondAttribute="top" constant="11" id="WWS-rd-9Ic"/>
+                        <constraint firstItem="sa2-gz-wVt" firstAttribute="top" secondItem="aRE-dT-FeD" secondAttribute="top" constant="11" id="f6Z-Kq-mxN"/>
+                        <constraint firstItem="FrX-4V-cXD" firstAttribute="leading" secondItem="sa2-gz-wVt" secondAttribute="trailing" constant="8" id="nJM-Ob-fMn"/>
+                        <constraint firstAttribute="height" constant="67" id="qk3-Kx-hYm"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="aRE-dT-FeD"/>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ysb-le-BiT">
+                    <rect key="frame" x="10" y="75" width="355" height="582"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GGg-Vo-GQx">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="qiO-A9-qO2"/>
+                        <outlet property="delegate" destination="-1" id="hZx-qy-ZWG"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="oVO-W0-lHX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3Gi-qa-K6S"/>
+                <constraint firstItem="ysb-le-BiT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="GAG-9h-zAP"/>
+                <constraint firstItem="oVO-W0-lHX" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="X7y-o4-AvV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oVO-W0-lHX" secondAttribute="trailing" id="Xw3-9n-1SS"/>
+                <constraint firstItem="5Mz-Xc-I1R" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Ypa-Hk-Os4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ysb-le-BiT" secondAttribute="bottom" constant="10" id="cMU-Io-wyb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ysb-le-BiT" secondAttribute="trailing" constant="10" id="kHI-7d-EL1"/>
+                <constraint firstItem="ysb-le-BiT" firstAttribute="top" secondItem="5Mz-Xc-I1R" secondAttribute="bottom" constant="8" id="nmy-U9-pqi"/>
+                <constraint firstItem="5Mz-Xc-I1R" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="sH1-d4-s5Q"/>
+                <constraint firstItem="5Mz-Xc-I1R" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uL4-S6-6yx"/>
+                <constraint firstItem="oVO-W0-lHX" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="uie-6C-Mmh"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="140" y="145.27736131934034"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bg_login" width="239.5" height="426.5"/>
+        <image name="bg_text_header" width="201" height="16.5"/>
+        <image name="logo" width="47.5" height="47.5"/>
+    </resources>
+</document>

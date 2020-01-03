@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PC_Event_Info_Cell" rowHeight="227" id="iIn-Tt-aYq">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="227"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iIn-Tt-aYq" id="7zb-Bz-dVP">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="227"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sCC-tM-dzY">
+                        <rect key="frame" x="15" y="5" width="384" height="217"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="sCC-tM-dzY" firstAttribute="leading" secondItem="7zb-Bz-dVP" secondAttribute="leading" constant="15" id="FNN-MM-RtY"/>
+                    <constraint firstItem="sCC-tM-dzY" firstAttribute="top" secondItem="7zb-Bz-dVP" secondAttribute="top" constant="5" id="P5Z-cl-bxk"/>
+                    <constraint firstAttribute="bottom" secondItem="sCC-tM-dzY" secondAttribute="bottom" constant="5" id="aZf-MY-afG"/>
+                    <constraint firstAttribute="trailing" secondItem="sCC-tM-dzY" secondAttribute="trailing" constant="15" id="dln-gc-V2k"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-385.50724637681162" y="49.888392857142854"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PC_File_Cell" id="f7a-et-7aM">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="f7a-et-7aM" id="nMb-5b-bxC">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="---" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sxt-MZ-mXv">
+                        <rect key="frame" x="20" y="12" width="324" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdQ-aR-zw5">
+                        <rect key="frame" x="359" y="1" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="c1E-4a-C9O"/>
+                            <constraint firstAttribute="height" constant="40" id="pzw-1n-6tr"/>
+                        </constraints>
+                        <state key="normal" image="xxx"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Sxt-MZ-mXv" firstAttribute="top" secondItem="nMb-5b-bxC" secondAttribute="top" constant="12" id="SRE-CL-gpc"/>
+                    <constraint firstItem="gdQ-aR-zw5" firstAttribute="leading" secondItem="Sxt-MZ-mXv" secondAttribute="trailing" constant="15" id="ZJ6-pG-gSF"/>
+                    <constraint firstAttribute="bottom" secondItem="Sxt-MZ-mXv" secondAttribute="bottom" constant="11" id="aUj-4L-V3B"/>
+                    <constraint firstItem="Sxt-MZ-mXv" firstAttribute="leading" secondItem="nMb-5b-bxC" secondAttribute="leading" constant="20" id="muz-6f-P0T"/>
+                    <constraint firstItem="gdQ-aR-zw5" firstAttribute="top" secondItem="nMb-5b-bxC" secondAttribute="top" constant="1" id="ncG-f9-V6L"/>
+                    <constraint firstAttribute="trailing" secondItem="gdQ-aR-zw5" secondAttribute="trailing" constant="15" id="yA4-qg-ye4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="66.666666666666671" y="-38.169642857142854"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="xxx" width="33" height="33"/>
+    </resources>
+</document>
