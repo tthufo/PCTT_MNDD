@@ -47,6 +47,10 @@
 		FC1DD77F23787A0200C457C9 /* PC_Inner_Map_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC1DD77D23787A0200C457C9 /* PC_Inner_Map_ViewController.xib */; };
 		FC1FEA772394F2D700E65443 /* style_json.json in Resources */ = {isa = PBXBuildFile; fileRef = FC1FEA762394F2D700E65443 /* style_json.json */; };
 		FC207BDF22F5D1330084DC88 /* Marcro.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC207BDE22F5D1330084DC88 /* Marcro.swift */; };
+		FC213AAF23C2394C002D8B85 /* CoverB.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC213AAE23C2394C002D8B85 /* CoverB.xib */; };
+		FC213AB123C23D73002D8B85 /* InfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC213AB023C23D73002D8B85 /* InfoCell.xib */; };
+		FC213AB423C2447B002D8B85 /* PlayerCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC213AB223C2447B002D8B85 /* PlayerCell1.swift */; };
+		FC213AB523C2447B002D8B85 /* PlayerCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC213AB323C2447B002D8B85 /* PlayerCell1.xib */; };
 		FC230EE722FD1A410082B989 /* custom_info_bubble.9.png in Resources */ = {isa = PBXBuildFile; fileRef = FC230EE622FD1A410082B989 /* custom_info_bubble.9.png */; };
 		FC235AD62382CABD0093A108 /* PC_List_Event_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC235AD42382CABD0093A108 /* PC_List_Event_ViewController.swift */; };
 		FC235AD72382CABD0093A108 /* PC_List_Event_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC235AD52382CABD0093A108 /* PC_List_Event_ViewController.xib */; };
@@ -173,6 +177,10 @@
 		FC1FEA762394F2D700E65443 /* style_json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = style_json.json; sourceTree = "<group>"; };
 		FC207BDE22F5D1330084DC88 /* Marcro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marcro.swift; sourceTree = "<group>"; };
 		FC207BE022F5D1450084DC88 /* PCTT-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PCTT-Bridging-Header.h"; sourceTree = "<group>"; };
+		FC213AAE23C2394C002D8B85 /* CoverB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoverB.xib; sourceTree = "<group>"; };
+		FC213AB023C23D73002D8B85 /* InfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoCell.xib; sourceTree = "<group>"; };
+		FC213AB223C2447B002D8B85 /* PlayerCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell1.swift; sourceTree = "<group>"; };
+		FC213AB323C2447B002D8B85 /* PlayerCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerCell1.xib; sourceTree = "<group>"; };
 		FC230EE622FD1A410082B989 /* custom_info_bubble.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom_info_bubble.9.png; sourceTree = "<group>"; };
 		FC235AD42382CABD0093A108 /* PC_List_Event_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_List_Event_ViewController.swift; sourceTree = "<group>"; };
 		FC235AD52382CABD0093A108 /* PC_List_Event_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_List_Event_ViewController.xib; sourceTree = "<group>"; };
@@ -452,6 +460,10 @@
 				FC31018C23195B7F009DBF95 /* EM_MenuView.h */,
 				FC31018B23195B7F009DBF95 /* EM_MenuView.m */,
 				FCB4BBF923B68AC400F603F8 /* notification_test_data.json */,
+				FC213AAE23C2394C002D8B85 /* CoverB.xib */,
+				FC213AB023C23D73002D8B85 /* InfoCell.xib */,
+				FC213AB223C2447B002D8B85 /* PlayerCell1.swift */,
+				FC213AB323C2447B002D8B85 /* PlayerCell1.xib */,
 			);
 			path = FEEDBACK;
 			sourceTree = "<group>";
@@ -543,6 +555,7 @@
 				FC235ADB2382CE7F0093A108 /* PC_Upload_ViewController.xib in Resources */,
 				FC235AD72382CABD0093A108 /* PC_List_Event_ViewController.xib in Resources */,
 				FCFF18D02328ACF1001DF8A2 /* TG_Empty_Cell.xib in Resources */,
+				FC213AB123C23D73002D8B85 /* InfoCell.xib in Resources */,
 				FC1B307122F6EEF6002E873F /* PC_Main_ViewController.xib in Resources */,
 				FC1B9B3922FBCBBC00E65F58 /* GoogleService-Info.plist in Resources */,
 				FC250D05230103F4008AB980 /* PC_Global_ViewController.xib in Resources */,
@@ -566,6 +579,7 @@
 				FCB4BBFA23B68AC500F603F8 /* notification_test_data.json in Resources */,
 				FC69937822FB503F00C62D42 /* PC_Station_Cell0.xib in Resources */,
 				FC1AC73E23708CA900B11288 /* PC_Map_ViewController.xib in Resources */,
+				FC213AB523C2447B002D8B85 /* PlayerCell1.xib in Resources */,
 				FC1AC74923709C9C00B11288 /* PC_Info_ViewController.xib in Resources */,
 				2DB6B1AC2330B4FB0036A26A /* PC_Station_Cell4.xib in Resources */,
 				FCB19456231598DA007120AF /* ChatAccessory.xib in Resources */,
@@ -574,6 +588,7 @@
 				FC1FEA772394F2D700E65443 /* style_json.json in Resources */,
 				FC1B307722F724C0002E873F /* PC_Setting_Cell.xib in Resources */,
 				FC3EB5F923B7CBE900E0147F /* Province_Cell.xib in Resources */,
+				FC213AAF23C2394C002D8B85 /* CoverB.xib in Resources */,
 				FC5D983922F55513006FA3F1 /* PC_Login_ViewController.xib in Resources */,
 				FC1DD77F23787A0200C457C9 /* PC_Inner_Map_ViewController.xib in Resources */,
 				FC1AA23B22F879E300C09E02 /* PC_Main_Cell.xib in Resources */,
@@ -671,6 +686,7 @@
 				FCFCD732233AD94200804047 /* XMLReader.m in Sources */,
 				FC18571E22FFED6000DB818C /* PC_ForeCast_7_Cell.swift in Sources */,
 				FC269A1C2378600400EEA392 /* NavViewController.swift in Sources */,
+				FC213AB423C2447B002D8B85 /* PlayerCell1.swift in Sources */,
 				FCE792922375D4880034684F /* TG_Intro_Question_ViewController.swift in Sources */,
 				FCB19457231598DA007120AF /* ChatTable.swift in Sources */,
 				FC1AC73D23708CA900B11288 /* PC_Map_ViewController.swift in Sources */,

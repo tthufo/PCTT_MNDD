@@ -11,12 +11,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PC_Event_Info_ViewController" customModule="MNDD" customModuleProvider="target">
             <connections>
                 <outlet property="cell" destination="Pkq-8c-b4e" id="deZ-w5-fXn"/>
-                <outlet property="descText" destination="Ipg-ag-tDY" id="BWs-Dg-WgI"/>
-                <outlet property="latField" destination="885-LS-nOi" id="91j-Mz-hHV"/>
-                <outlet property="lngField" destination="1ao-bL-AQk" id="nIx-Zm-d4a"/>
+                <outlet property="descText" destination="Ipg-ag-tDY" id="tIe-Q5-nan"/>
+                <outlet property="latField" destination="885-LS-nOi" id="rwE-m6-GwY"/>
+                <outlet property="lngField" destination="1ao-bL-AQk" id="1jd-Bg-Hpy"/>
                 <outlet property="playerCollect" destination="cbU-g5-wOL" id="4E1-AS-V7h"/>
                 <outlet property="tableView" destination="faC-JE-ogG" id="aUM-Pp-qO1"/>
-                <outlet property="titleText" destination="vwg-Is-MSU" id="5Ja-tM-MeY"/>
+                <outlet property="titleText" destination="vwg-Is-MSU" id="v18-dD-VEm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -108,7 +108,7 @@
                 </tableView>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6u-wI-BVU">
                     <rect key="frame" x="125" y="522" width="70" height="35"/>
-                    <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="S5F-iI-mIF"/>
                         <constraint firstAttribute="width" constant="70" id="aQS-uM-TcY"/>
@@ -126,7 +126,7 @@
                         <action selector="didPressDetete" destination="-1" eventType="touchUpInside" id="XPP-ld-ytt"/>
                     </connections>
                 </button>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="cbU-g5-wOL">
+                <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="cbU-g5-wOL">
                     <rect key="frame" x="0.0" y="108" width="320" height="400"/>
                     <color key="backgroundColor" red="0.98823529409999999" green="0.72156862749999995" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r4b-kp-Xe8">
@@ -135,10 +135,6 @@
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="LKN-4v-UBu"/>
-                        <outlet property="delegate" destination="-1" id="YRL-Yo-SAN"/>
-                    </connections>
                 </collectionView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -161,7 +157,7 @@
                 <constraint firstItem="V6u-wI-BVU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="usb-KY-Xac"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="138.75" y="90.845070422535215"/>
+            <point key="canvasLocation" x="484" y="96"/>
         </view>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="282" id="Pkq-8c-b4e">
             <rect key="frame" x="0.0" y="0.0" width="320" height="282"/>

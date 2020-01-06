@@ -17,7 +17,7 @@ class PC_Event_Info_ViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
 
     @IBOutlet var cell: UITableViewCell!
-
+    
     @IBOutlet var titleText: InsetLabel!
 
     @IBOutlet var descText: InsetLabel!
@@ -50,9 +50,18 @@ class PC_Event_Info_ViewController: UIViewController {
         
         playerCollect.withCell("PlayerCell")
         
+        playerCollect.withCell("CoverB")
+        
+        playerCollect.withCell("InfoCell")
+
         tableView.withCell("PC_Event_Info_Cell")
             
+        tableView.withCell("PlayerCell1")
+        
         tableView.withCell("VideoTableViewCell");
+        
+//        (playerCollect.collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+//        (playerCollect.collectionViewLayout as! UICollectionViewFlowLayout).sectionInsetReference = .fromLayoutMargins
         
         MMPlayerDownloader.cleanTmpFile()
         self.navigationController?.mmPlayerTransition.push.pass(setting: { (_) in
@@ -64,10 +73,10 @@ class PC_Event_Info_ViewController: UIViewController {
             self.perform(#selector(self.startLoading), with: nil, afterDelay: 0.2)
         }
         playerCollect.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right:0)
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-//            self?.updateByContentOffset()
-//            self?.startLoading()
-//        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            self?.updateByContentOffset()
+            self?.startLoading()
+        }
         
         mmPlayerLayer.getStatusBlock { [weak self] (status) in
             switch status {
@@ -175,6 +184,91 @@ extension PC_Event_Info_ViewController: UITableViewDataSource, UITableViewDelega
         return (eventInfo["EventSharingAttachments"] as! NSArray).count + 1
     }
 
+    
+        fileprivate func updateByContentOffset() {
+    //        if mmPlayerLayer.isShrink {
+    //            return
+    //        }
+            
+            if let path = findCurrentPath(),
+                self.presentedViewController == nil {
+                self.updateCell(at: path)
+                //Demo SubTitle
+    //            if path.row == 0, self.mmPlayerLayer.subtitleSetting.subtitleType == nil {
+    //                let subtitleStr = Bundle.main.path(forResource: "srtDemo", ofType: "srt")!
+    //                if let str = try? String.init(contentsOfFile: subtitleStr) {
+    //                    self.mmPlayerLayer.subtitleSetting.subtitleType = .srt(info: str)
+    //                    self.mmPlayerLayer.subtitleSetting.defaultTextColor = .red
+    //                    self.mmPlayerLayer.subtitleSetting.defaultFont = UIFont.boldSystemFont(ofSize: 20)
+    //                }
+    //            }
+            }
+        }
+
+        fileprivate func updateDetail(at indexPath: IndexPath) {
+    //        let value = DemoSource.shared.demoData[indexPath.row]
+    //        if let detail = self.presentedViewController as? DetailViewController {
+    //            detail.data = value
+    //        }
+    //
+    //        self.mmPlayerLayer.thumbImageView.image = value.image
+    //        self.mmPlayerLayer.set(url: DemoSource.shared.demoData[indexPath.row].play_Url)
+    //        self.mmPlayerLayer.resume()
+            
+        }
+        
+        fileprivate func presentDetail(at indexPath: IndexPath) {
+            self.updateCell(at: indexPath)
+            mmPlayerLayer.resume()
+
+    //        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+    //            vc.data = DemoSource.shared.demoData[indexPath.row]
+    //            self.present(vc, animated: true, completion: nil)
+    ////            self.navigationController?.pushViewController(vc, animated: true)
+    //        }
+        }
+        
+        fileprivate func updateCell(at indexPath: IndexPath) {
+    //        if let cell = playerCollect.cellForItem(at: indexPath) as? PlayerCell, let playURL = cell.data?.play_Url {
+    //            // this thumb use when transition start and your video dosent start
+    ////            mmPlayerLayer.thumbImageView.image = cell.imgView.image
+    //            // set video where to play
+    //            mmPlayerLayer.playView = cell.imgView
+    //            mmPlayerLayer.set(url: playURL)
+    //        }
+            
+            let indexing = IndexPath(row: indexPath.row + 1, section: 0)
+            
+//            print(indexPath.row)
+            
+            if let cell = tableView.cellForRow(at: indexing) as? PlayerCell1, let playURL = cell.data?.play_Url {
+                        // this thumb use when transition start and your video dosent start
+            //            mmPlayerLayer.thumbImageView.image = cell.imgView.image
+                        // set video where to play
+                print(cell.data?.play_Url)
+                        mmPlayerLayer.playView = cell.imgView
+                        mmPlayerLayer.set(url: playURL)
+                    }
+        }
+        
+        @objc fileprivate func startLoading() {
+            self.updateByContentOffset()
+            if self.presentedViewController != nil {
+                return
+            }
+            // start loading video
+            mmPlayerLayer.resume()
+        }
+        
+        private func findCurrentPath() -> IndexPath? {
+            let p = CGPoint(x: tableView.frame.width/2, y: tableView.contentOffset.y + tableView.frame.width/2)
+            return tableView.indexPathForRow(at: p)
+        }
+        
+        private func findCurrentCell(path: IndexPath) -> UITableViewCell {
+            return tableView.cellForRow(at: path)!
+        }
+    
        
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
            guard let videoCell = cell as? VideoTableViewCell else { return };
@@ -185,7 +279,21 @@ extension PC_Event_Info_ViewController: UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cellCell = indexPath.row == 0 ? cell! : tableView.dequeueReusableCell(withIdentifier: ((eventInfo["EventSharingAttachments"] as! NSArray)[indexPath.row - 1] as! NSDictionary).getValueFromKey("file_type") == "Image" ? "PC_Event_Info_Cell" : "VideoTableViewCell", for: indexPath)
+        if indexPath.row != 0 {
+        let obj = ((eventInfo["EventSharingAttachments"] as! NSArray)[indexPath.row - 1] as! NSDictionary)
+        
+            print(obj)
+            
+        if obj.getValueFromKey("file_type") == "Video" {
+             let videoCell = tableView.dequeueReusableCell(withIdentifier:  "PlayerCell1", for: indexPath) as! PlayerCell1
+            
+            videoCell.data = DemoSource.shared.demoData[0]
+
+            return videoCell
+        }
+    }
+        
+        let cellCell = indexPath.row == 0 ? cell! : tableView.dequeueReusableCell(withIdentifier: ((eventInfo["EventSharingAttachments"] as! NSArray)[indexPath.row - 1] as! NSDictionary).getValueFromKey("file_type") == "Image" ? "PC_Event_Info_Cell" : "PlayerCell1", for: indexPath)
         
 
         if indexPath.row == 0 {
@@ -200,6 +308,8 @@ extension PC_Event_Info_ViewController: UITableViewDataSource, UITableViewDelega
 //                let url = NSURL(string: (eventInfo["fileAttachmentPath"] as! NSArray)[indexPath.row - 1] as! String);
 //                let avPlayer = AVPlayer(url: url! as URL);
 //                (cellCell as! VideoTableViewCell).playerView?.playerLayer.player = avPlayer;
+                
+//                (cellCell as! PlayerCell1).data = DemoSource.shared.demoData[0]
             }
         }
 
@@ -228,7 +338,7 @@ extension PC_Event_Info_ViewController: MMPlayerFromProtocol {
             return original
         }
         
-        let cell = self.findCurrentCell(path: path) as! PlayerCell
+        let cell = self.findCurrentCell(path: path) as! PlayerCell1
         return cell.imgView
     }
 
@@ -249,7 +359,8 @@ extension PC_Event_Info_ViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let m = min(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
-        return CGSize(width: m, height: m*0.75)
+
+        return indexPath.item == 0 ? CGSize(width: m, height: m*0.75) : CGSize(width: m, height: m*0.75)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -263,86 +374,97 @@ extension PC_Event_Info_ViewController: UICollectionViewDelegateFlowLayout {
         }
     }
     
-    fileprivate func updateByContentOffset() {
-//        if mmPlayerLayer.isShrink {
+//    fileprivate func updateByContentOffset() {
+////        if mmPlayerLayer.isShrink {
+////            return
+////        }
+//
+//        if let path = findCurrentPath(),
+//            self.presentedViewController == nil {
+//            self.updateCell(at: path)
+//            //Demo SubTitle
+////            if path.row == 0, self.mmPlayerLayer.subtitleSetting.subtitleType == nil {
+////                let subtitleStr = Bundle.main.path(forResource: "srtDemo", ofType: "srt")!
+////                if let str = try? String.init(contentsOfFile: subtitleStr) {
+////                    self.mmPlayerLayer.subtitleSetting.subtitleType = .srt(info: str)
+////                    self.mmPlayerLayer.subtitleSetting.defaultTextColor = .red
+////                    self.mmPlayerLayer.subtitleSetting.defaultFont = UIFont.boldSystemFont(ofSize: 20)
+////                }
+////            }
+//        }
+//    }
+//
+//    fileprivate func updateDetail(at indexPath: IndexPath) {
+////        let value = DemoSource.shared.demoData[indexPath.row]
+////        if let detail = self.presentedViewController as? DetailViewController {
+////            detail.data = value
+////        }
+////
+////        self.mmPlayerLayer.thumbImageView.image = value.image
+////        self.mmPlayerLayer.set(url: DemoSource.shared.demoData[indexPath.row].play_Url)
+////        self.mmPlayerLayer.resume()
+//
+//    }
+//
+//    fileprivate func presentDetail(at indexPath: IndexPath) {
+//        self.updateCell(at: indexPath)
+//        mmPlayerLayer.resume()
+//
+////        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+////            vc.data = DemoSource.shared.demoData[indexPath.row]
+////            self.present(vc, animated: true, completion: nil)
+//////            self.navigationController?.pushViewController(vc, animated: true)
+////        }
+//    }
+//
+//    fileprivate func updateCell(at indexPath: IndexPath) {
+////        if let cell = playerCollect.cellForItem(at: indexPath) as? PlayerCell, let playURL = cell.data?.play_Url {
+////            // this thumb use when transition start and your video dosent start
+//////            mmPlayerLayer.thumbImageView.image = cell.imgView.image
+////            // set video where to play
+////            mmPlayerLayer.playView = cell.imgView
+////            mmPlayerLayer.set(url: playURL)
+////        }
+//
+//        if let cell = tableView.cellForRow(at: indexPath) as? PlayerCell1, let playURL = cell.data?.play_Url {
+//                    // this thumb use when transition start and your video dosent start
+//        //            mmPlayerLayer.thumbImageView.image = cell.imgView.image
+//                    // set video where to play
+//            print(cell.data?.play_Url)
+//                    mmPlayerLayer.playView = cell.imgView
+//                    mmPlayerLayer.set(url: playURL)
+//                }
+//    }
+//
+//    @objc fileprivate func startLoading() {
+//        self.updateByContentOffset()
+//        if self.presentedViewController != nil {
 //            return
 //        }
-        
-        if let path = findCurrentPath(),
-            self.presentedViewController == nil {
-            self.updateCell(at: path)
-            //Demo SubTitle
-//            if path.row == 0, self.mmPlayerLayer.subtitleSetting.subtitleType == nil {
-//                let subtitleStr = Bundle.main.path(forResource: "srtDemo", ofType: "srt")!
-//                if let str = try? String.init(contentsOfFile: subtitleStr) {
-//                    self.mmPlayerLayer.subtitleSetting.subtitleType = .srt(info: str)
-//                    self.mmPlayerLayer.subtitleSetting.defaultTextColor = .red
-//                    self.mmPlayerLayer.subtitleSetting.defaultFont = UIFont.boldSystemFont(ofSize: 20)
-//                }
-//            }
-        }
-    }
-
-    fileprivate func updateDetail(at indexPath: IndexPath) {
-//        let value = DemoSource.shared.demoData[indexPath.row]
-//        if let detail = self.presentedViewController as? DetailViewController {
-//            detail.data = value
-//        }
+//        // start loading video
+//        mmPlayerLayer.resume()
+//    }
 //
-//        self.mmPlayerLayer.thumbImageView.image = value.image
-//        self.mmPlayerLayer.set(url: DemoSource.shared.demoData[indexPath.row].play_Url)
-//        self.mmPlayerLayer.resume()
-        
-    }
-    
-    fileprivate func presentDetail(at indexPath: IndexPath) {
-        self.updateCell(at: indexPath)
-        mmPlayerLayer.resume()
-
-//        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-//            vc.data = DemoSource.shared.demoData[indexPath.row]
-//            self.present(vc, animated: true, completion: nil)
-////            self.navigationController?.pushViewController(vc, animated: true)
-//        }
-    }
-    
-    fileprivate func updateCell(at indexPath: IndexPath) {
-        if let cell = playerCollect.cellForItem(at: indexPath) as? PlayerCell, let playURL = cell.data?.play_Url {
-            // this thumb use when transition start and your video dosent start
-//            mmPlayerLayer.thumbImageView.image = cell.imgView.image
-            // set video where to play
-            mmPlayerLayer.playView = cell.imgView
-            mmPlayerLayer.set(url: playURL)
-        }
-    }
-    
-    @objc fileprivate func startLoading() {
-        self.updateByContentOffset()
-        if self.presentedViewController != nil {
-            return
-        }
-        // start loading video
-        mmPlayerLayer.resume()
-    }
-    
-    private func findCurrentPath() -> IndexPath? {
-        let p = CGPoint(x: playerCollect.frame.width/2, y: playerCollect.contentOffset.y + playerCollect.frame.width/2)
-        return playerCollect.indexPathForItem(at: p)
-    }
-    
-    private func findCurrentCell(path: IndexPath) -> UICollectionViewCell {
-        return playerCollect.cellForItem(at: path)!
-    }
+//    private func findCurrentPath() -> IndexPath? {
+//        let p = CGPoint(x: playerCollect.frame.width/2, y: playerCollect.contentOffset.y + playerCollect.frame.width/2)
+//        return playerCollect.indexPathForItem(at: p)
+//    }
+//
+//    private func findCurrentCell(path: IndexPath) -> UICollectionViewCell {
+//        return playerCollect.cellForItem(at: path)!
+//    }
 }
 
 extension PC_Event_Info_ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return DemoSource.shared.demoData.count
+        return DemoSource.shared.demoData.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayerCell", for: indexPath) as? PlayerCell {
-            cell.data = DemoSource.shared.demoData[indexPath.row]
+        if let cell = indexPath.item == 0 ? collectionView.dequeueReusableCell(withReuseIdentifier: "InfoCell", for: indexPath) : collectionView.dequeueReusableCell(withReuseIdentifier: "PlayerCell", for: indexPath) as? PlayerCell {
+            if indexPath.item != 0 {
+                (cell as! PlayerCell).data = DemoSource.shared.demoData[indexPath.row - 1]
+            }
             return cell
         }
         return UICollectionViewCell()
