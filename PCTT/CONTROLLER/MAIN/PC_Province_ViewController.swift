@@ -31,6 +31,10 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
         
     @IBOutlet var notification: UIButton!
     
+    @IBOutlet var menu: DropButton!
+
+    @IBOutlet var arrow: UIImageView!
+    
     @IBOutlet var search: UITextField!
 
     var dataList: NSMutableArray!
@@ -113,6 +117,10 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
             
         })
         
+        arrow.action(forTouch: [:]) { (objc) in
+            self.didPressFilter()
+        }
+        
         didRequestStation()
     }
     
@@ -169,20 +177,19 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
           }
     }
     
-    @IBAction func didPressFilter(sender: DropButton) {
-        sender.didDropDown(withData: (filterList as! [Any])) { (objc) in
+    @IBAction func didPressFilter() {
+        menu.didDropDown(withData: (filterList as! [Any])) { (objc) in
             if objc != nil {
                 let result = ((objc as! NSDictionary)["data"] as! NSDictionary)["description"]
                 
                 let filter = ((objc as! NSDictionary)["data"] as! NSDictionary)["value"]
                                                
-                sender.setTitle(result as? String, for: .normal)
+                self.menu.setTitle(result as? String, for: .normal)
                 
                 self.filterValue = filter as! String
                 self.sortWidth.constant = self.filterValue == "3" || self.filterValue == "4" ? 0 : 44
                 self.sortValue = "1"
                 for dict in self.sortList {
-
                     (dict as! NSMutableDictionary)["subscribed"] = self.sortList.index(of: dict) == 0 ? 1 : 0
                 }
                 for dict in self.sortList1 {
@@ -224,22 +231,32 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
             lng = location.getValueFromKey("lng")
         }
         
-        var postFix = "station/waterlevel?category=%@".format(parameters: self.filterValue)
+//        waterlevel?keyword=&lon=&lat=&basinCode=&riverCode=0&provinceCode=&orderBy=1
+        
+//        v2/station/waterlevel?keyword=&lon=105.832818&lat=21.007733&basinCode=&riverCode=0&provinceCode=&orderBy=
+        
+        var postFix = "v2/station/waterlevel?keyword=&lon=&lat=&basinCode=&riverCode=0&provinceCode="
 
+        let postFix1 = "province"
+        
+        let postFix2 = "basin"
+        
+        let postFix3 = "v2/station/waterlevel?keyword=&lon=%@&lat=%@&basinCode=&riverCode=0&provinceCode=&orderBy=".format(parameters: lng, lat)
+        
         if filterValue == "1" {
             postFix = postFix + "&orderby=%@".format(parameters: self.sortValue)
         }
         
         if filterValue == "2" {
-            postFix = postFix + "&provincecode=%@&orderby=%@".format(parameters: "0", self.sortValue)
+            postFix = postFix1 + "?orderby=%@".format(parameters: self.sortValue)
         }
         
         if filterValue == "3" {
-            postFix = postFix + "&basincode=%@".format(parameters: "0")
+            postFix = postFix2
         }
         
         if filterValue == "4" {
-            postFix = postFix + "&lat=%@&lon=%@".format(parameters: lat, lng )
+            postFix = postFix3
         }
         
         LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink": "".urlGet(postFix: postFix),
@@ -309,7 +326,7 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
         let filtered = NSMutableArray.init()
         
         for dict in tempList {
-            if (strip((dict as! NSDictionary).getValueFromKey("StationName") as! String).replacingOccurrences(of: "Đ", with: "D").replacingOccurrences(of: "đ", with: "d")).containsIgnoringCase(find: strip(textField.text!)) {
+            if (strip((dict as! NSDictionary).getValueFromKey("vi_tri") as! String).replacingOccurrences(of: "Đ", with: "D").replacingOccurrences(of: "đ", with: "d")).containsIgnoringCase(find: strip(textField.text!)) {
                 filtered.add(dict)
             }
         }
@@ -346,38 +363,38 @@ extension PC_Province_ViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = dataList[indexPath.row] as! NSDictionary
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: data.getValueFromKey("xuthemucnuoc") == "0" ? "Province_Cell" : "Province1", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: data.getValueFromKey("xuthe") == "0" ? "Province_Cell" : "Province1", for: indexPath)
         
         let name = self.withView(cell, tag: 11) as! UILabel
                        
-        name.text = data.getValueFromKey("StationName")
+        name.text = data.getValueFromKey("vi_tri")
         
         
         let desc = self.withView(cell, tag: 12) as! UILabel
                        
-        desc.text = data.getValueFromKey("lytrinhde") + " " + data.getValueFromKey("ten_tuyen_de_tw")
+        desc.text = data.getValueFromKey("vitri_de") + " " + data.getValueFromKey("ten_tuyen_de_tw")
         
         
         let value = self.withView(cell, tag: 14) as! UILabel
                               
-       value.text = data.getValueFromKey("GiaTri") + "m"
+       value.text = data.getValueFromKey("mucnuoc_hientai") + "m"
        
        
        let time = self.withView(cell, tag: 15) as! UILabel
                       
-       time.text = data.getValueFromKey("ThoiGian")
+       time.text = data.getValueFromKey("thoigian_capnhat")
         
         
         let icon = self.withView(cell, tag: 16) as! UIImageView
         
-        icon.isHidden = data.getValueFromKey("xuthemucnuoc") == "0"
+        icon.isHidden = data.getValueFromKey("xuthe") == "0"
         
-        icon.heightConstaint!.constant = data.getValueFromKey("xuthemucnuoc") == "0" ? 0 : 27
+        icon.heightConstaint!.constant = data.getValueFromKey("xuthe") == "0" ? 0 : 27
                              
         
         let red = self.withView(cell, tag: 1000) as! UIView
 
-        red.alpha = data.getValueFromKey("cap_baodong") != "0" ? 1 : 0
+        red.alpha = data.getValueFromKey("cap_baodong") != "0" ? 0.7 : 0
         
         
         if data.getValueFromKey("SoSanhBaoDong") != "" {

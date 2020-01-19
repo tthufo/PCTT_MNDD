@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PC_Province_ViewController" customModule="MNDD" customModuleProvider="target">
             <connections>
+                <outlet property="arrow" destination="wIu-lP-Wsg" id="TVv-NM-S51"/>
+                <outlet property="menu" destination="Q12-Gw-qqZ" id="6Gd-Ul-N23"/>
                 <outlet property="search" destination="e59-gS-cLW" id="WYQ-dw-ckb"/>
                 <outlet property="sortWidth" destination="cPQ-Dk-ZbP" id="vFw-eq-cKH"/>
                 <outlet property="tableView" destination="3yr-rG-dCh" id="yWi-fo-WQQ"/>
@@ -85,14 +87,14 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="pListName" value="format"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="didPressFilterWithSender:" destination="-1" eventType="touchUpInside" id="RNf-ff-KGj"/>
+                                <action selector="didPressFilter" destination="-1" eventType="touchUpInside" id="2ul-M7-sug"/>
                             </connections>
                         </button>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wIu-lP-Wsg">
-                            <rect key="frame" x="290" y="7" width="30" height="30"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop" translatesAutoresizingMaskIntoConstraints="NO" id="wIu-lP-Wsg">
+                            <rect key="frame" x="279.5" y="11" width="24" height="24"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="dwV-l3-Uub"/>
-                                <constraint firstAttribute="height" constant="30" id="hpY-dB-WEB"/>
+                                <constraint firstAttribute="width" constant="24" id="dwV-l3-Uub"/>
+                                <constraint firstAttribute="height" constant="24" id="hpY-dB-WEB"/>
                             </constraints>
                         </imageView>
                     </subviews>
@@ -101,13 +103,13 @@
                         <constraint firstItem="FrZ-By-7AU" firstAttribute="leading" secondItem="4cu-8i-W2W" secondAttribute="leading" constant="8" id="2jQ-cW-kYa"/>
                         <constraint firstItem="Q12-Gw-qqZ" firstAttribute="centerX" secondItem="SVq-zm-QzU" secondAttribute="centerX" id="4hx-EA-waI"/>
                         <constraint firstItem="Q12-Gw-qqZ" firstAttribute="centerX" secondItem="zBi-9I-w5N" secondAttribute="centerX" id="GtW-7W-LWM"/>
-                        <constraint firstItem="wIu-lP-Wsg" firstAttribute="leading" secondItem="Q12-Gw-qqZ" secondAttribute="trailing" constant="2.5" id="RQG-MC-6FE"/>
+                        <constraint firstItem="wIu-lP-Wsg" firstAttribute="leading" secondItem="Q12-Gw-qqZ" secondAttribute="trailing" constant="-8" id="RQG-MC-6FE"/>
                         <constraint firstAttribute="height" constant="44" id="TeF-9P-En4"/>
                         <constraint firstItem="Q12-Gw-qqZ" firstAttribute="top" secondItem="SVq-zm-QzU" secondAttribute="bottom" constant="5" id="VBN-FQ-h2p"/>
                         <constraint firstItem="FrZ-By-7AU" firstAttribute="top" secondItem="4cu-8i-W2W" secondAttribute="top" constant="4" id="YCS-vN-PQ8"/>
                         <constraint firstItem="SVq-zm-QzU" firstAttribute="centerX" secondItem="zBi-9I-w5N" secondAttribute="centerX" id="i3X-l0-kyV"/>
                         <constraint firstItem="SVq-zm-QzU" firstAttribute="top" secondItem="4cu-8i-W2W" secondAttribute="top" id="ju3-Ct-HbC"/>
-                        <constraint firstItem="wIu-lP-Wsg" firstAttribute="top" secondItem="SVq-zm-QzU" secondAttribute="bottom" constant="6" id="pEJ-mR-D5V"/>
+                        <constraint firstItem="wIu-lP-Wsg" firstAttribute="top" secondItem="SVq-zm-QzU" secondAttribute="bottom" constant="10" id="pEJ-mR-D5V"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="4cu-8i-W2W"/>
                 </view>
@@ -217,6 +219,7 @@
     </objects>
     <resources>
         <image name="bg_text_header" width="201" height="16.5"/>
+        <image name="drop" width="83" height="83"/>
         <image name="ic_filter" width="42.5" height="42.5"/>
         <image name="ic_sort" width="42.5" height="42.5"/>
         <image name="icon_back" width="33" height="33"/>

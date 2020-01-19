@@ -46,7 +46,6 @@ class PC_Event_Info_ViewController: UIViewController {
     @IBOutlet weak var playerCollect: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // remove previous download fails file
         
         playerCollect.withCell("PlayerCell")
         
@@ -114,14 +113,7 @@ class PC_Event_Info_ViewController: UIViewController {
     }
     
     @IBAction func shrinkAction() {
-        // Return a view which you want back
-//        self.mmPlayerLayer.shrinkView(onVC: self, isHiddenVC: false) { [weak self] () -> UIView? in
-//            guard let self = self, let path = self.findCurrentPath() else {return nil}
-//            let cell = self.findCurrentCell(path: path) as! PlayerCell
-//            self.mmPlayerLayer.set(url: cell.data!.play_Url)
-//            self.mmPlayerLayer.resume()
-//            return cell.imgView
-//        }
+
     }
     
     deinit {
@@ -130,15 +122,8 @@ class PC_Event_Info_ViewController: UIViewController {
         print("ViewController deinit")
     }
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        tableView.withCell("PC_Event_Info_Cell")
-//
-//        tableView.withCell("VideoTableViewCell");
-//    }
-    
     @IBAction func didPressBack() {
+        mmPlayerLayer.invalidate()
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -166,9 +151,9 @@ class PC_Event_Info_ViewController: UIViewController {
                  return
              }
             
-            self.showToast("Xoá thành  ", andPos: 0)
+            self.showToast("Xoá thành công", andPos: 0)
             
-            self.navigationController?.popViewController(animated: true)
+            self.didPressBack()
          })
       }
     
@@ -287,7 +272,12 @@ extension PC_Event_Info_ViewController: UITableViewDataSource, UITableViewDelega
         if obj.getValueFromKey("file_type") == "Video" {
              let videoCell = tableView.dequeueReusableCell(withIdentifier:  "PlayerCell1", for: indexPath) as! PlayerCell1
             
-            videoCell.data = DemoSource.shared.demoData[0]
+            let url = NSURL(string: (eventInfo["fileAttachmentPath"] as! NSArray)[indexPath.row - 1] as! String);
+            
+            videoCell.data = DataObj(image: #imageLiteral(resourceName: "seven"),
+                                     play_Url: url as URL?,
+            title: "",
+            content: "")
 
             return videoCell
         }
@@ -308,7 +298,7 @@ extension PC_Event_Info_ViewController: UITableViewDataSource, UITableViewDelega
 //                let url = NSURL(string: (eventInfo["fileAttachmentPath"] as! NSArray)[indexPath.row - 1] as! String);
 //                let avPlayer = AVPlayer(url: url! as URL);
 //                (cellCell as! VideoTableViewCell).playerView?.playerLayer.player = avPlayer;
-                
+//
 //                (cellCell as! PlayerCell1).data = DemoSource.shared.demoData[0]
             }
         }

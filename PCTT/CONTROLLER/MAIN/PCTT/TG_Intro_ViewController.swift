@@ -245,7 +245,7 @@ extension TG_Intro_ViewController: UITableViewDataSource, UITableViewDelegate {
          
          let red = self.withView(cell, tag: 1000) as! UIView
 
-         red.alpha = data.getValueFromKey("cap_baodong") != "0" ? 1 : 0
+        red.alpha = data.getValueFromKey("cap_baodong") != "0" ? 0.7 : 0
          
         
          if data.getValueFromKey("cap_baodong") != "0" {

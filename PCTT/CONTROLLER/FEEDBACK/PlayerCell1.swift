@@ -15,7 +15,7 @@ class PlayerCell1: UITableViewCell {
         // Initialization code
     }
     
-     var data:DataObj? {
+     var data: DataObj? {
             didSet {
     //            self.imgView.image = data?.image
     //            self.labTitle.text = data?.title
