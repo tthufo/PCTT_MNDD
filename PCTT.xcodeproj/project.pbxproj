@@ -110,6 +110,8 @@
 		FCEDD7E022F9E19500DC4613 /* PC_Notification_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEDD7DE22F9E19500DC4613 /* PC_Notification_ViewController.swift */; };
 		FCEDD7E122F9E19500DC4613 /* PC_Notification_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCEDD7DF22F9E19500DC4613 /* PC_Notification_ViewController.xib */; };
 		FCEDD7E322F9F00400DC4613 /* PC_Notification_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCEDD7E222F9F00400DC4613 /* PC_Notification_Cell.xib */; };
+		FCF5F57E23D4CC4200864090 /* format.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCF5F57D23D4CC4100864090 /* format.plist */; };
+		FCF5F58023D4CD9E00864090 /* TG_Drop_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF5F57F23D4CD9E00864090 /* TG_Drop_Cell.xib */; };
 		FCFCD732233AD94200804047 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFCD730233AD94200804047 /* XMLReader.m */; };
 		FCFEE7AD23A34794002617E9 /* PC_Event_Video_CellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFEE7AB23A34794002617E9 /* PC_Event_Video_CellTableViewCell.swift */; };
 		FCFEE7AE23A34794002617E9 /* PC_Event_Video_CellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCFEE7AC23A34794002617E9 /* PC_Event_Video_CellTableViewCell.xib */; };
@@ -248,6 +250,8 @@
 		FCEDD7DE22F9E19500DC4613 /* PC_Notification_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Notification_ViewController.swift; sourceTree = "<group>"; };
 		FCEDD7DF22F9E19500DC4613 /* PC_Notification_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Notification_ViewController.xib; sourceTree = "<group>"; };
 		FCEDD7E222F9F00400DC4613 /* PC_Notification_Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Notification_Cell.xib; sourceTree = "<group>"; };
+		FCF5F57D23D4CC4100864090 /* format.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = format.plist; sourceTree = "<group>"; };
+		FCF5F57F23D4CD9E00864090 /* TG_Drop_Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TG_Drop_Cell.xib; sourceTree = "<group>"; };
 		FCFCD730233AD94200804047 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		FCFCD731233AD94200804047 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		FCFEE7AB23A34794002617E9 /* PC_Event_Video_CellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Event_Video_CellTableViewCell.swift; sourceTree = "<group>"; };
@@ -410,6 +414,8 @@
 				FC1B9B3722FBCA3100E65F58 /* PCTT.entitlements */,
 				FC1FEA762394F2D700E65443 /* style_json.json */,
 				FC1B9B3822FBCBBC00E65F58 /* GoogleService-Info.plist */,
+				FCF5F57F23D4CD9E00864090 /* TG_Drop_Cell.xib */,
+				FCF5F57D23D4CC4100864090 /* format.plist */,
 				FC5D983522F554EB006FA3F1 /* CONTROLLER */,
 				FC5D982322F54134006FA3F1 /* AppDelegate.swift */,
 				FC269A1B2378600400EEA392 /* NavViewController.swift */,
@@ -582,6 +588,7 @@
 				FC213AB523C2447B002D8B85 /* PlayerCell1.xib in Resources */,
 				FC1AC74923709C9C00B11288 /* PC_Info_ViewController.xib in Resources */,
 				2DB6B1AC2330B4FB0036A26A /* PC_Station_Cell4.xib in Resources */,
+				FCF5F58023D4CD9E00864090 /* TG_Drop_Cell.xib in Resources */,
 				FCB19456231598DA007120AF /* ChatAccessory.xib in Resources */,
 				FCB4C1AD23B3CB5000FEB0DD /* PC_Header_Tab.xib in Resources */,
 				FCE792932375D4880034684F /* TG_Intro_Question_ViewController.xib in Resources */,
@@ -611,6 +618,7 @@
 				FC230EE722FD1A410082B989 /* custom_info_bubble.9.png in Resources */,
 				FC31018F23195B7F009DBF95 /* EM_Menu.xib in Resources */,
 				FC18572122FFEF1700DB818C /* PC_Weather_Cell.xib in Resources */,
+				FCF5F57E23D4CC4200864090 /* format.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -169,24 +169,45 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
           }
     }
     
-    @IBAction func didPressFilter() {
-        EM_MenuView.init(filter: ["data": filterList as Any]).show { (indexing, obj, menu) in
-            let ids = (obj as! NSDictionary)["data"] as! NSDictionary
-                 if indexing == 100 {
-                    self.filterValue = ids.getValueFromKey("value")
-                    self.sortWidth.constant = self.filterValue == "3" || self.filterValue == "4" ? 0 : 44
-                    self.sortValue = "1"
-                    for var dict in self.sortList {
-                        
-                        (dict as! NSMutableDictionary)["subscribed"] = self.sortList.index(of: dict) == 0 ? 1 : 0
-                    }
-                    for var dict in self.sortList1 {
-                        (dict as! NSMutableDictionary)["subscribed"] = self.sortList1.index(of: dict) == 0 ? 1 : 0
-                    }
-                    self.didRequestStation()
-                    menu?.close()
-             }
-         }
+    @IBAction func didPressFilter(sender: DropButton) {
+        sender.didDropDown(withData: (filterList as! [Any])) { (objc) in
+            if objc != nil {
+                let result = ((objc as! NSDictionary)["data"] as! NSDictionary)["description"]
+                
+                let filter = ((objc as! NSDictionary)["data"] as! NSDictionary)["value"]
+                                               
+                sender.setTitle(result as? String, for: .normal)
+                
+                self.filterValue = filter as! String
+                self.sortWidth.constant = self.filterValue == "3" || self.filterValue == "4" ? 0 : 44
+                self.sortValue = "1"
+                for dict in self.sortList {
+
+                    (dict as! NSMutableDictionary)["subscribed"] = self.sortList.index(of: dict) == 0 ? 1 : 0
+                }
+                for dict in self.sortList1 {
+                    (dict as! NSMutableDictionary)["subscribed"] = self.sortList1.index(of: dict) == 0 ? 1 : 0
+                }
+                self.didRequestStation()
+            }
+        }
+//        EM_MenuView.init(filter: ["data": filterList as Any]).show { (indexing, obj, menu) in
+//            let ids = (obj as! NSDictionary)["data"] as! NSDictionary
+//                 if indexing == 100 {
+//                    self.filterValue = ids.getValueFromKey("value")
+//                    self.sortWidth.constant = self.filterValue == "3" || self.filterValue == "4" ? 0 : 44
+//                    self.sortValue = "1"
+//                    for var dict in self.sortList {
+//
+//                        (dict as! NSMutableDictionary)["subscribed"] = self.sortList.index(of: dict) == 0 ? 1 : 0
+//                    }
+//                    for var dict in self.sortList1 {
+//                        (dict as! NSMutableDictionary)["subscribed"] = self.sortList1.index(of: dict) == 0 ? 1 : 0
+//                    }
+//                    self.didRequestStation()
+//                    menu?.close()
+//             }
+//         }
     }
 
     func didRequestStation() {
@@ -251,76 +272,6 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
            self.tableView.reloadData()
         })
     }
-    
-//    func didRequestMaxDate() {
-//        LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"getMaxCurrentDate",
-//                                                "company_id":Information.userInfo?.getValueFromKey("company_id") ?? "",              "province_code":"",
-//                                                    "overrideAlert":"1",
-//                                                    ], withCache: { (cacheString) in
-//        }, andCompletion: { (response, errorCode, error, isValid, object) in
-//            let result = response?.dictionize() ?? [:]
-//            if result.getValueFromKey("ERR_CODE") != "0" {
-//                self.showToast(response?.dictionize().getValueFromKey("ERR_MSG"), andPos: 0)
-//                return
-//            }
-//
-//            let timer = (response?.dictionize()["RESULT"] as! NSDictionary).getValueFromKey("current_date")
-//
-//            var dateTime = ""
-//
-//            let date = (timer?.components(separatedBy: " ").last)?.components(separatedBy: "-")
-//
-//            dateTime.append(date![0])
-//
-//            dateTime.append("/")
-//
-//            dateTime.append(date![1])
-//
-//
-//            var timeTime = ""
-//
-//            let dateDate = (timer?.components(separatedBy: " ").first)?.components(separatedBy: ":")
-//
-//            timeTime.append(dateDate![0])
-//
-//            timeTime.append(":")
-//
-//            timeTime.append(dateDate![1])
-//
-//
-//            self.time.text = "Lượng mưa cập nhật từ 00:00 %@ đến %@ %@".format(parameters: dateTime, timeTime, dateTime)
-//
-//        })
-//    }
-//
-//    func didRequestProvince() {
-//        LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"getProvinceByAccount",
-//                                                    "company_id":Information.userInfo?.getValueFromKey("company_id") ?? "",
-//                                                    "overrideAlert":"1",
-//                                                    ], withCache: { (cacheString) in
-//        }, andCompletion: { (response, errorCode, error, isValid, object) in
-//            self.refreshControl.endRefreshing()
-//            if error != nil {
-//                self.view.hideSkeleton()
-//                self.tableView.reloadData()
-//            }
-//            let result = response?.dictionize() ?? [:]
-//            if result.getValueFromKey("ERR_CODE") != "0" {
-//                self.showToast(response?.dictionize().getValueFromKey("ERR_MSG"), andPos: 0)
-//                return
-//            }
-//
-//            let data = (response?.dictionize()["RESULT"] as! NSArray)
-//            self.dataList.removeAllObjects()
-//            self.dataList.addObjects(from: data as! [Any])
-//            self.tempList.removeAllObjects()
-//            self.tempList.addObjects(from: data as! [Any])
-//            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-//                self.view.hideSkeleton()
-//                self.tableView.reloadData()
-//            })
-//        })
-//    }
     
     @IBAction func didPressSetting() {
         self.view.endEditing(true)
@@ -424,6 +375,10 @@ extension PC_Province_ViewController: UITableViewDataSource, UITableViewDelegate
         icon.heightConstaint!.constant = data.getValueFromKey("xuthemucnuoc") == "0" ? 0 : 27
                              
         
+        let red = self.withView(cell, tag: 1000) as! UIView
+
+        red.alpha = data.getValueFromKey("cap_baodong") != "0" ? 1 : 0
+        
         
         if data.getValueFromKey("SoSanhBaoDong") != "" {
             
@@ -432,6 +387,8 @@ extension PC_Province_ViewController: UITableViewDataSource, UITableViewDelegate
             let bd = self.withView(cell, tag: 17) as! UILabel
                                          
             bd.text = arr![0]
+            
+            print(arr)
               
               
             let mm = self.withView(cell, tag: 18) as! UILabel

@@ -78,7 +78,7 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: Int((self.screenWidth() / 3) - 15), height: Int((self.screenWidth() / 3) + 60))
+        return CGSize(width: Int((self.screenWidth() / 2) - 15), height: Int((self.screenHeight() / 3) - 40))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

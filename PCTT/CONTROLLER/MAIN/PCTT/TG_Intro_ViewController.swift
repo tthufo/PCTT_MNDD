@@ -28,6 +28,8 @@ class TG_Intro_ViewController: UIViewController {
 
     var dataList: NSMutableArray!
     
+    let refreshControl = UIRefreshControl()
+    
     @IBOutlet var webView: WKWebView!
 
     var isIntro: Bool = true
@@ -41,33 +43,44 @@ class TG_Intro_ViewController: UIViewController {
             headerImg.image = UIImage(named: "bg_text_dms")
         }
         
+         if #available(iOS 10.0, *) {
+           tableView.refreshControl = refreshControl
+        } else {
+           tableView.addSubview(refreshControl)
+        }
+           
+        refreshControl.tintColor = UIColor.black
+        
+        refreshControl.addTarget(self, action: #selector(didRequestNotification), for: .valueChanged)
+           
         gap.constant = isIntro ? 0 : 44
         
         dataList = NSMutableArray.init()
         
-        if let path : String = Bundle.main.path(forResource: "notification_test_data", ofType: "json") {
-            if let data = NSData(contentsOfFile: path) {
-
-                let json = data.objectFromJSONData() as! NSDictionary
-
-//                print(json);
-                
-                let noti = (json["data"] as! NSArray).withMutable()
-                
-                for var not in noti! {
-//                    for var station in (not as! NSMutableDictionary)["list_station"] as! NSArray {
-                        (not as! NSMutableDictionary)["open"] = "0"
-//                    }
-                }
-                
-                dataList.addObjects(from: noti!)
-            }
-        }
+//        if let path : String = Bundle.main.path(forResource: "notification_test_data", ofType: "json") {
+//            if let data = NSData(contentsOfFile: path) {
+//
+//                let json = data.objectFromJSONData() as! NSDictionary
+//
+//
+//                let noti = (json["data"] as! NSArray).withMutable()
+//
+//                for var not in noti! {
+////                    for var station in (not as! NSMutableDictionary)["list_station"] as! NSArray {
+//                        (not as! NSMutableDictionary)["open"] = "0"
+////                    }
+//                }
+//
+//                dataList.addObjects(from: noti!)
+//            }
+//        }
         
         bg.image = UIImage(named: "intro_bg")
         
-        tableView.withCell("PC_Info_Cell")
+        tableView.withCell("Province_Cell")
         
+        tableView.withCell("Province1")
+
         tableView.withHeaderOrFooter("PC_Header_Tab")
         
         if isIntro {
@@ -82,7 +95,38 @@ class TG_Intro_ViewController: UIViewController {
         
         titleLabel.isHidden = isIntro
         
-//        didRequestFAQ()
+        didRequestNotification()
+    }
+    
+    @objc func didRequestNotification() {
+        LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink":"".urlGet(postFix: "notification"),
+                                                    "header":["Authorization":Information.token == nil ? "" : Information.token!],
+                                                    "method":"GET",
+                                                    "overrideAlert":"1",
+                                                    "overrideLoading":"1",
+                                                    "host":self], withCache: { (cacheString) in
+        }, andCompletion: { (response, errorCode, error, isValid, object) in
+            let result = response?.dictionize() ?? [:]
+                                                         
+            self.refreshControl.endRefreshing()
+            
+            if (error != nil) || result.getValueFromKey("status") != "OK" {
+                self.showToast(response?.dictionize().getValueFromKey("data") == "" ? "Lỗi xảy ra, mời bạn thử lại" : response?.dictionize().getValueFromKey("data"), andPos: 0)
+                return
+            }
+                    
+            self.dataList.removeAllObjects()
+            
+            let noti = (result["data"] as! NSArray).withMutable()
+            
+            for not in noti! {
+                (not as! NSMutableDictionary)["open"] = "0"
+            }
+            
+            self.dataList.addObjects(from: noti!)
+
+            self.tableView.reloadData()
+        })
     }
     
     func didRequestFAQ() {
@@ -132,7 +176,7 @@ extension TG_Intro_ViewController: UITableViewDataSource, UITableViewDelegate {
                 
         let sec = (dataList[section] as! NSMutableDictionary);
         
-        (self.withView(head, tag: 11) as! UILabel).text = sec.getValueFromKey("notification")
+        (self.withView(head, tag: 11) as! UILabel).text = sec.getValueFromKey("title")
         
         (self.withView(head, tag: 12) as! UIButton).action(forTouch: [:]) { (obj) in
             sec["open"] = sec.getValueFromKey("open") == "0" ? "1" : "0"
@@ -163,37 +207,64 @@ extension TG_Intro_ViewController: UITableViewDataSource, UITableViewDelegate {
         
         let section = (dataList[section] as! NSDictionary);
         
-        return section.getValueFromKey("open") == "0" ? 0 : (section["list_station"] as! NSArray).count
+        return section.getValueFromKey("open") == "0" ? 0 : (section["data"] as! NSArray).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                
+        let data = ((dataList![indexPath.section] as! NSDictionary)["data"] as! NSArray)[indexPath.row] as! NSDictionary
         
-        let cell = tableView.dequeueReusableCell(withIdentifier:"PC_Info_Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: data.getValueFromKey("xuthe") == "0" ? "Province_Cell" : "Province1", for: indexPath)
+         
+         let name = self.withView(cell, tag: 11) as! UILabel
+                        
+         name.text = data.getValueFromKey("vi_tri")
+         
+         
+         let desc = self.withView(cell, tag: 12) as! UILabel
+                        
+         desc.text = data.getValueFromKey("vitri_de") + " " + data.getValueFromKey("ten_tuyen_de_tw")
+         
+         
+         let value = self.withView(cell, tag: 14) as! UILabel
+                               
+        value.text = data.getValueFromKey("mucnuoc_hientai") + "m"
         
-        let data = ((dataList![indexPath.section] as! NSDictionary)["list_station"] as! NSArray)[indexPath.row] as! NSDictionary
         
-        
-        let image = self.withView(cell, tag: 11) as! UIImageView
-        
-//        image.imageUrl(url: data.getValueFromKey("image"))
-        
-        image.image = UIImage(named: "question")
-        
-        let title = self.withView(cell, tag: 1) as! UILabel
-        
-        title.text = "Trạm %@".format(parameters: (data["StationName"] as? String)!)
-        
-        let imageArrow = self.withView(cell, tag: 15) as! UIImageView
-        
-        imageArrow.isHidden = true
+        let time = self.withView(cell, tag: 15) as! UILabel
+                       
+        time.text = data.getValueFromKey("thoigian_capnhat")
+         
+         
+         let icon = self.withView(cell, tag: 16) as! UIImageView
+         
+         icon.isHidden = data.getValueFromKey("xuthe") == "0"
+         
+         icon.heightConstaint!.constant = data.getValueFromKey("xuthe") == "0" ? 0 : 27
+                              
+         
+         let red = self.withView(cell, tag: 1000) as! UIView
 
+         red.alpha = data.getValueFromKey("cap_baodong") != "0" ? 1 : 0
+         
+        
+         if data.getValueFromKey("cap_baodong") != "0" {
+             
+             let bd = self.withView(cell, tag: 17) as! UILabel
+
+             bd.text = "Trên BD" + data.getValueFromKey("cap_baodong")
+
+               
+//             let mm = self.withView(cell, tag: 18) as! UILabel
+         }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
        
-        let data = ((dataList![indexPath.section] as! NSDictionary)["list_station"] as! NSArray)[indexPath.row] as! NSDictionary
+        let data = ((dataList![indexPath.section] as! NSDictionary)["data"] as! NSArray)[indexPath.row] as! NSDictionary
 
         var lat = "21.0077147"
                

@@ -315,6 +315,7 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didPressRegister() {
+        self.view.endEditing(true)
 //        self.navigationController?.pushViewController(AP_Map_ViewController.init(), animated: true)
         self.navigationController?.pushViewController(PC_Register_ViewController.init(), animated: true)
     }

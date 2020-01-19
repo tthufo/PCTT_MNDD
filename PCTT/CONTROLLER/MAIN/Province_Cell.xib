@@ -19,17 +19,21 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nLh-EL-SwO">
                         <rect key="frame" x="10" y="10" width="394" height="106"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="17" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wv-sR-5Mw">
+                            <view alpha="0.0" tag="1000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0rY-iZ-4bw">
+                                <rect key="frame" x="215" y="0.0" width="89" height="106"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="17" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wv-sR-5Mw">
                                 <rect key="frame" x="312" y="12" width="74" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="74" id="4yE-Yz-p6r"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="e4d-bf-k1z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <color key="textColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="18" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oU7-02-VBr">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="18" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oU7-02-VBr">
                                 <rect key="frame" x="312" y="41" width="74" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="BeD-eE-EC2"/>
@@ -103,12 +107,16 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="oU7-02-VBr" secondAttribute="trailing" constant="8" id="02C-eA-pHF"/>
                             <constraint firstItem="aSX-ee-Dfi" firstAttribute="leading" secondItem="eO0-Kp-zWK" secondAttribute="trailing" constant="7" id="03h-Id-EO6"/>
+                            <constraint firstAttribute="bottom" secondItem="0rY-iZ-4bw" secondAttribute="bottom" id="3Mv-wd-1tI"/>
                             <constraint firstItem="kWH-5O-7tv" firstAttribute="leading" secondItem="sJ3-25-0Wa" secondAttribute="trailing" constant="8" id="6Ex-cA-IJJ"/>
                             <constraint firstItem="eO0-Kp-zWK" firstAttribute="leading" secondItem="WtC-7M-K5Q" secondAttribute="trailing" constant="8" id="7dg-sB-pnF"/>
                             <constraint firstItem="kWH-5O-7tv" firstAttribute="leading" secondItem="C1Z-HD-Gc2" secondAttribute="trailing" constant="31" id="7fd-a9-yat"/>
                             <constraint firstItem="eO0-Kp-zWK" firstAttribute="top" secondItem="nLh-EL-SwO" secondAttribute="top" id="9kp-xt-edG"/>
+                            <constraint firstItem="0rY-iZ-4bw" firstAttribute="leading" secondItem="eO0-Kp-zWK" secondAttribute="trailing" id="FQH-n5-MJg"/>
                             <constraint firstItem="3wv-sR-5Mw" firstAttribute="top" secondItem="nLh-EL-SwO" secondAttribute="top" constant="12" id="Jt8-vI-yRC"/>
                             <constraint firstItem="C1Z-HD-Gc2" firstAttribute="top" secondItem="sJ3-25-0Wa" secondAttribute="bottom" constant="8" id="KoQ-xB-fPA"/>
+                            <constraint firstItem="kWH-5O-7tv" firstAttribute="leading" secondItem="0rY-iZ-4bw" secondAttribute="trailing" id="LmA-sE-5Xf"/>
+                            <constraint firstItem="0rY-iZ-4bw" firstAttribute="top" secondItem="nLh-EL-SwO" secondAttribute="top" id="P8e-vq-NvK"/>
                             <constraint firstItem="WtC-7M-K5Q" firstAttribute="leading" secondItem="nLh-EL-SwO" secondAttribute="leading" constant="8" id="Qmg-PU-S9E"/>
                             <constraint firstItem="wlm-pJ-2Mz" firstAttribute="leading" secondItem="nLh-EL-SwO" secondAttribute="leading" constant="8" id="RSQ-Jj-qx6"/>
                             <constraint firstItem="aSX-ee-Dfi" firstAttribute="top" secondItem="nLh-EL-SwO" secondAttribute="top" constant="13" id="RWg-wy-8aY"/>
@@ -149,6 +157,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="arrow_up" width="83" height="84"/>
+        <image name="arrow_up" width="83.5" height="84.5"/>
     </resources>
 </document>

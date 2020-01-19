@@ -71,31 +71,48 @@
                                 <constraint firstAttribute="height" constant="1" id="pIW-Bb-o1K"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danh sách tỉnh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63H-Io-wmY">
-                            <rect key="frame" x="121" y="11" width="133.5" height="21"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q12-Gw-qqZ" customClass="DropButton">
+                            <rect key="frame" x="87.5" y="6" width="200" height="36"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="21" id="Kqt-sH-c5H"/>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="87.5" id="lyQ-R3-Sbs"/>
+                                <constraint firstAttribute="width" constant="200" id="njb-L4-094"/>
+                                <constraint firstAttribute="height" constant="36" id="pSp-8z-Usv"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                            <state key="normal" title="Theo trạm">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="pListName" value="format"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="didPressFilterWithSender:" destination="-1" eventType="touchUpInside" id="RNf-ff-KGj"/>
+                            </connections>
+                        </button>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wIu-lP-Wsg">
+                            <rect key="frame" x="290" y="7" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="dwV-l3-Uub"/>
+                                <constraint firstAttribute="height" constant="30" id="hpY-dB-WEB"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.3921568627" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="63H-Io-wmY" firstAttribute="centerX" secondItem="zBi-9I-w5N" secondAttribute="centerX" id="0gc-un-MwE"/>
                         <constraint firstItem="FrZ-By-7AU" firstAttribute="leading" secondItem="4cu-8i-W2W" secondAttribute="leading" constant="8" id="2jQ-cW-kYa"/>
+                        <constraint firstItem="Q12-Gw-qqZ" firstAttribute="centerX" secondItem="SVq-zm-QzU" secondAttribute="centerX" id="4hx-EA-waI"/>
+                        <constraint firstItem="Q12-Gw-qqZ" firstAttribute="centerX" secondItem="zBi-9I-w5N" secondAttribute="centerX" id="GtW-7W-LWM"/>
+                        <constraint firstItem="wIu-lP-Wsg" firstAttribute="leading" secondItem="Q12-Gw-qqZ" secondAttribute="trailing" constant="2.5" id="RQG-MC-6FE"/>
                         <constraint firstAttribute="height" constant="44" id="TeF-9P-En4"/>
+                        <constraint firstItem="Q12-Gw-qqZ" firstAttribute="top" secondItem="SVq-zm-QzU" secondAttribute="bottom" constant="5" id="VBN-FQ-h2p"/>
                         <constraint firstItem="FrZ-By-7AU" firstAttribute="top" secondItem="4cu-8i-W2W" secondAttribute="top" constant="4" id="YCS-vN-PQ8"/>
                         <constraint firstItem="SVq-zm-QzU" firstAttribute="centerX" secondItem="zBi-9I-w5N" secondAttribute="centerX" id="i3X-l0-kyV"/>
-                        <constraint firstItem="63H-Io-wmY" firstAttribute="top" secondItem="4cu-8i-W2W" secondAttribute="top" constant="11" id="jsh-JC-nRX"/>
                         <constraint firstItem="SVq-zm-QzU" firstAttribute="top" secondItem="4cu-8i-W2W" secondAttribute="top" id="ju3-Ct-HbC"/>
+                        <constraint firstItem="wIu-lP-Wsg" firstAttribute="top" secondItem="SVq-zm-QzU" secondAttribute="bottom" constant="6" id="pEJ-mR-D5V"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="4cu-8i-W2W"/>
                 </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fu8-sl-ZpC">
-                    <rect key="frame" x="16" y="123" width="239" height="50"/>
+                    <rect key="frame" x="16" y="123" width="283" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="SHx-pL-OEN"/>
@@ -122,7 +139,7 @@
                     </connections>
                 </tableView>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập tên tỉnh cần tìm ..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="e59-gS-cLW">
-                    <rect key="frame" x="68" y="133" width="167" height="30"/>
+                    <rect key="frame" x="68" y="133" width="211" height="30"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Spa-sX-Ub5"/>
@@ -147,7 +164,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYq-5L-YNH">
-                    <rect key="frame" x="263" y="126" width="44" height="44"/>
+                    <rect key="frame" x="307" y="126" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="Nxz-ei-9hN"/>
                         <constraint firstAttribute="width" constant="44" id="cPQ-Dk-ZbP"/>
@@ -158,9 +175,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nx9-06-T9n">
-                    <rect key="frame" x="322" y="126" width="44" height="44"/>
+                    <rect key="frame" x="366" y="126" width="0.0" height="44"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="44" id="YX0-V8-Wkt"/>
+                        <constraint firstAttribute="width" id="YX0-V8-Wkt"/>
                         <constraint firstAttribute="height" constant="44" id="ltb-9r-Z8k"/>
                     </constraints>
                     <state key="normal" image="ic_filter"/>
