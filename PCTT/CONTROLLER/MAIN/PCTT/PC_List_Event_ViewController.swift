@@ -24,11 +24,16 @@ class PC_List_Event_ViewController: UIViewController {
     
     @IBOutlet var menu3: UIButton!
     
+    @IBOutlet var menu4: UIButton!
+    
     @IBOutlet var alert1: UILabel!
     
     @IBOutlet var alert2: UILabel!
     
     @IBOutlet var alert3: UILabel!
+    
+    @IBOutlet var alert4: UILabel!
+
     
     var isShow: Bool = false
     
@@ -66,6 +71,9 @@ class PC_List_Event_ViewController: UIViewController {
         alert3.action(forTouch: [:]) { (obj) in
          self.didPressOption(self.alert3!)
         }
+        alert4.action(forTouch: [:]) { (obj) in
+         self.didPressOption(self.alert4!)
+        }
     }
     
     func requestDeleteEvent(id: String) {
@@ -92,10 +100,13 @@ class PC_List_Event_ViewController: UIViewController {
                self.menu1.alpha = !self.isShow ? 1 : 0
                self.menu2.alpha = !self.isShow ? 1 : 0
                self.menu3.alpha = !self.isShow ? 1 : 0
-               
+               self.menu4.alpha = !self.isShow ? 1 : 0
+
                self.alert1.alpha = !self.isShow ? 1 : 0
                self.alert2.alpha = !self.isShow ? 1 : 0
                self.alert3.alpha = !self.isShow ? 1 : 0
+               self.alert4.alpha = !self.isShow ? 1 : 0
+
                self.cover.alpha = !self.isShow ? 0.1 : 0
                (sender as! UIButton).setImage(UIImage(named: !self.isShow ? "xxxx" : "menu"), for: .normal)
            }

@@ -136,17 +136,11 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        notification.badgeValue = Information.userInfo?.getValueFromKey("count_notification")
-//        notification.badgeOriginX = 20
-//        notification.badgeOriginY = 5
        
         if Reachability.isConnectedToNetwork(){
-//            self.didRequestProvince()
-//            self.didRequestMaxDate()
-//            self.didRequestBG()
+
         }else{
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-//                self.view.hideSkeleton()
                 self.tableView.reloadData()
             })
             self.showToast("Mạng không khả dụng, mời bạn thử lại", andPos: 0)
@@ -281,6 +275,8 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             
+            print(result)
+            
             self.dataList.removeAllObjects()
             self.dataList.addObjects(from: response?.dictionize()["data"] as! [Any])
                        
@@ -326,7 +322,8 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
         let filtered = NSMutableArray.init()
         
         for dict in tempList {
-            if (strip((dict as! NSDictionary).getValueFromKey("vi_tri") as! String).replacingOccurrences(of: "Đ", with: "D").replacingOccurrences(of: "đ", with: "d")).containsIgnoringCase(find: strip(textField.text!)) {
+            let search = (dict as! NSDictionary).response(forKey: "station_info") ? ((dict as! NSDictionary)["station_info"] as! NSDictionary).getValueFromKey("vi_tri") : strip((dict as! NSDictionary).getValueFromKey("vi_tri")!)
+            if (search!.replacingOccurrences(of: "Đ", with: "D").replacingOccurrences(of: "đ", with: "d")).containsIgnoringCase(find: strip(textField.text!)) {
                 filtered.add(dict)
             }
         }
@@ -338,8 +335,6 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func refreshWeatherData(_ sender: Any) {
         search.text = ""
-//        self.didRequestProvince()
-//        self.didRequestMaxDate()
         self.didRequestStation()
     }
     
@@ -361,8 +356,9 @@ extension PC_Province_ViewController: UITableViewDataSource, UITableViewDelegate
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let data = dataList[indexPath.row] as! NSDictionary
-        
+                
+        let data = (dataList[indexPath.row] as! NSDictionary).response(forKey: "station_info") ? (dataList[indexPath.row] as! NSDictionary)["station_info"] as! NSDictionary : dataList[indexPath.row] as! NSDictionary
+                
         let cell = tableView.dequeueReusableCell(withIdentifier: data.getValueFromKey("xuthe") == "0" ? "Province_Cell" : "Province1", for: indexPath)
         
         let name = self.withView(cell, tag: 11) as! UILabel
@@ -372,7 +368,7 @@ extension PC_Province_ViewController: UITableViewDataSource, UITableViewDelegate
         
         let desc = self.withView(cell, tag: 12) as! UILabel
                        
-        desc.text = data.getValueFromKey("vitri_de") + " " + data.getValueFromKey("ten_tuyen_de_tw")
+        desc.text = data.getValueFromKey("vitri_de")
         
         
         let value = self.withView(cell, tag: 14) as! UILabel
@@ -397,21 +393,21 @@ extension PC_Province_ViewController: UITableViewDataSource, UITableViewDelegate
         red.alpha = data.getValueFromKey("cap_baodong") != "0" ? 0.7 : 0
         
         
-        if data.getValueFromKey("SoSanhBaoDong") != "" {
-            
-            let arr = data.getValueFromKey("SoSanhBaoDong")?.components(separatedBy: ":")
-            
-            let bd = self.withView(cell, tag: 17) as! UILabel
-                                         
-            bd.text = arr![0]
-            
-            print(arr)
-              
-              
-            let mm = self.withView(cell, tag: 18) as! UILabel
-                             
-            mm.text = arr![1]
-        }
+//        if data.getValueFromKey("SoSanhBaoDong") != "" {
+//
+//            let arr = data.getValueFromKey("SoSanhBaoDong")?.components(separatedBy: ":")
+//
+//            let bd = self.withView(cell, tag: 17) as! UILabel
+//
+//            bd.text = arr![0]
+//
+//            print(arr)
+//
+//
+//            let mm = self.withView(cell, tag: 18) as! UILabel
+//
+//            mm.text = arr![1]
+//        }
         
         return cell
     }
