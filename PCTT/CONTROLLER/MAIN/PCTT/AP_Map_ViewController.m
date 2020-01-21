@@ -28,6 +28,8 @@
     
     IBOutlet UIImageView * headerImg;
     
+    IBOutlet UIImageView * logoLeft;
+    
     IBOutlet UIView * top, * bar;
     
     IBOutlet UITextField * search;
@@ -74,6 +76,10 @@
 
     if ([Information.check isEqualToString:@"0"]) {
         headerImg.image = [UIImage imageNamed:@"bg_text_dms"];
+    }
+    
+    if ([Information.check isEqualToString:@"1"]) {
+        logoLeft.image = [UIImage imageNamed:@"logo_tc"];
     }
     
     isStreet = YES;

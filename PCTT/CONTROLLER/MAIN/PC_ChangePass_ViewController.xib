@@ -16,6 +16,7 @@
                 <outlet property="cell3" destination="EZg-eY-sOX" id="DGa-vV-VD6"/>
                 <outlet property="cover" destination="nZp-0e-eZQ" id="QDP-W6-iua"/>
                 <outlet property="headerImg" destination="qrR-mV-aBp" id="b1J-cs-9ha"/>
+                <outlet property="logoLeft" destination="Lqg-PD-RUK" id="jQY-eX-DPK"/>
                 <outlet property="newPass" destination="q0a-5x-zEk" id="JMu-3W-mQU"/>
                 <outlet property="newPassErr" destination="hDV-Pc-iIO" id="M4q-9L-NwR"/>
                 <outlet property="oldPass" destination="oeM-XT-BsP" id="nbz-Io-oh8"/>

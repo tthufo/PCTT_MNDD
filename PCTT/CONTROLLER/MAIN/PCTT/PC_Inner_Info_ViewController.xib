@@ -16,6 +16,7 @@
                 <outlet property="emailBG" destination="rS3-U7-S5i" id="Z1p-JI-vEF"/>
                 <outlet property="emailError" destination="KOL-GT-sok" id="j4Z-g5-He2"/>
                 <outlet property="headerImg" destination="56J-Uc-Cyk" id="ctj-Li-Z1g"/>
+                <outlet property="logoLeft" destination="5Vu-M8-vWR" id="XF6-s9-7Bd"/>
                 <outlet property="name" destination="SAp-lN-ePr" id="U4a-wS-nsa"/>
                 <outlet property="phone" destination="hR7-Lh-mpF" id="N4Y-9S-h4T"/>
                 <outlet property="rePassBG" destination="WYz-fk-pBs" id="U3G-no-Y9z"/>

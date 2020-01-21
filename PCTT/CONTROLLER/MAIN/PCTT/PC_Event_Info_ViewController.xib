@@ -12,8 +12,10 @@
             <connections>
                 <outlet property="cell" destination="Pkq-8c-b4e" id="deZ-w5-fXn"/>
                 <outlet property="descText" destination="Ipg-ag-tDY" id="tIe-Q5-nan"/>
+                <outlet property="headerImg" destination="0DU-QJ-i1P" id="4Pu-ao-Bfc"/>
                 <outlet property="latField" destination="885-LS-nOi" id="rwE-m6-GwY"/>
                 <outlet property="lngField" destination="1ao-bL-AQk" id="1jd-Bg-Hpy"/>
+                <outlet property="logoLeft" destination="8VM-mA-RPc" id="muE-eJ-FS4"/>
                 <outlet property="playerCollect" destination="cbU-g5-wOL" id="4E1-AS-V7h"/>
                 <outlet property="tableView" destination="faC-JE-ogG" id="aUM-Pp-qO1"/>
                 <outlet property="titleText" destination="vwg-Is-MSU" id="v18-dD-VEm"/>

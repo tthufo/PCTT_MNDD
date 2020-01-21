@@ -117,7 +117,7 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
         
         logo.frame = frame
         
-        logo.alpha = 1
+        logo.alpha = 0
                 
         UIView.animate(withDuration: 1, animations: {
             self.cover.alpha = bbgg ? 0.3 : 0
@@ -153,6 +153,10 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
                         
                         if error != nil {
                             Information.check = "1"
+                            
+                            self.logo.image = UIImage(named: "logo_tc")
+                            
+                            self.logo.alpha = 1
                             
                             UIView.animate(withDuration: 0.5, animations: {
                                 var frame = self.logo.frame
@@ -198,6 +202,12 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
                             
                             Information.check = (dict! as NSDictionary).getValueFromKey("show") == "0" ? "0" : "1"
 
+                            if Information.check == "1" {
+                                self.logo.image = UIImage(named: "logo_tc")
+                            }
+                        
+                            self.logo.alpha = 1
+                            
                             print(Information.check)
                         
 //                            if Information.userInfo?.getValueFromKey("count_province") == "1" {

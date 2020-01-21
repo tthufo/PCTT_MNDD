@@ -11,7 +11,7 @@ target 'PCTT' do
 
 #  pod 'Fabric', '~> 1.10'
 
-#  pod 'FireBasePod'
+  pod 'FireBasePod'
 
   pod 'MarqueeLabel/Swift'
   

@@ -15,6 +15,7 @@
                 <outlet property="headerImg" destination="f8q-Yz-WJL" id="WsG-mz-WbX"/>
                 <outlet property="latField" destination="QyM-d0-7Cl" id="R25-UK-5LK"/>
                 <outlet property="lngField" destination="jEe-oF-XND" id="3CU-lp-hJ1"/>
+                <outlet property="logoLeft" destination="vZB-hl-l93" id="vCa-1m-8rv"/>
                 <outlet property="save" destination="2ig-6w-9lF" id="R5F-tq-P7o"/>
                 <outlet property="submit" destination="SOE-iF-CCf" id="RIb-gq-ubQ"/>
                 <outlet property="tableView" destination="Sn7-HR-gHo" id="pfZ-Bz-rzN"/>

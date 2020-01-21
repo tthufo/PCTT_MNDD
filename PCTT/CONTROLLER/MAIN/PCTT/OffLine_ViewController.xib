@@ -10,7 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OffLine_ViewController" customModule="MNDD" customModuleProvider="target">
             <connections>
-                <outlet property="headerImg" destination="ow4-KC-4Xd" id="yJa-wk-xqi"/>
+                <outlet property="headerImg" destination="Iyo-d6-HIC" id="fns-5a-MoF"/>
+                <outlet property="logoLeft" destination="ow4-KC-4Xd" id="kKl-mD-ksI"/>
                 <outlet property="tableView" destination="UT2-sW-c8V" id="Jh4-S4-Udh"/>
                 <outlet property="view" destination="jH0-qX-zX6" id="TZj-jq-Lst"/>
             </connections>

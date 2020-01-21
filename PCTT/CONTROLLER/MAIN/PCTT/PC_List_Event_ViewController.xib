@@ -16,6 +16,7 @@
                 <outlet property="alert4" destination="8Ig-Rr-f7j" id="Tjt-Sf-0Ss"/>
                 <outlet property="cover" destination="D7g-Xn-TNc" id="0fF-GB-xcu"/>
                 <outlet property="headerImg" destination="Sjf-72-uOY" id="TCV-Zd-N1d"/>
+                <outlet property="logoLeft" destination="uCN-ab-pw7" id="yg1-Z0-OhC"/>
                 <outlet property="menu1" destination="1iW-DD-Fh6" id="Amn-7m-VwX"/>
                 <outlet property="menu2" destination="oo4-5h-GDS" id="Rzk-qw-yP6"/>
                 <outlet property="menu3" destination="4Xd-kT-vy5" id="bYr-Bh-0Nk"/>

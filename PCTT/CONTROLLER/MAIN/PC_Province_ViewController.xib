@@ -11,6 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PC_Province_ViewController" customModule="Mực_Nước_Đê_Điều" customModuleProvider="target">
             <connections>
                 <outlet property="arrow" destination="wIu-lP-Wsg" id="TVv-NM-S51"/>
+                <outlet property="headerImg" destination="xu6-08-T1Y" id="YG7-rf-nfx"/>
+                <outlet property="logoLeft" destination="VSW-XU-7Um" id="eGp-cx-nGg"/>
                 <outlet property="menu" destination="Q12-Gw-qqZ" id="6Gd-Ul-N23"/>
                 <outlet property="search" destination="e59-gS-cLW" id="WYQ-dw-ckb"/>
                 <outlet property="sortWidth" destination="cPQ-Dk-ZbP" id="vFw-eq-cKH"/>

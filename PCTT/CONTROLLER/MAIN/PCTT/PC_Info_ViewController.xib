@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="bottom" destination="cnc-Ii-0iu" id="XIy-HP-TT8"/>
                 <outlet property="headerImg" destination="5pU-KW-5ro" id="tgN-OA-fGY"/>
+                <outlet property="logoLeft" destination="skl-IY-poc" id="q3E-Or-DpA"/>
                 <outlet property="tableView" destination="NBy-aq-cqm" id="QM9-Ky-Haq"/>
                 <outlet property="view" destination="wvr-aG-TEd" id="Mp9-Q2-Oe5"/>
             </connections>

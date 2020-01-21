@@ -22,8 +22,14 @@ class TG_Intro_Question_ViewController: UIViewController {
     
       @IBOutlet var headerImg: UIImageView!
 
-      override func viewDidLoad() {
-          super.viewDidLoad()
+        @IBOutlet var logoLeft: UIImageView!
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            if Information.check != "0" {
+                logoLeft.image = UIImage(named: "logo_tc")
+            }
           
           if Information.check == "0" {
               headerImg.image = UIImage(named: "bg_text_dms")

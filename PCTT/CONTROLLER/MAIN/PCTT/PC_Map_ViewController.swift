@@ -14,18 +14,6 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
     
     @IBOutlet var headerImg: UIImageView!
     
-//    var dataList: NSMutableArray = [["title": "Quan trắc", "img": "ic_quantrac", "category": "1"],
-//                                    ["title": "Cảnh báo", "img": "ic_canhbao", "category": "2"],
-//                                    ["title": "GS Hồ chứa", "img": "ic_hochua", "category": "4"],
-//                                    ["title": "GS Đê điều", "img": "ic_dedieu", "category": "5"],
-//                                    ["title": "GS tầu thuyền", "img": "ic_tauthuyen", "category": "6"],
-//                                    ["title": "Đường đi bão", "img": "ic_duongdibao", "category": "3"],
-//                                    ["title": "Hình ảnh T.Tai", "img": "ic_hathientai"],
-//                                    ["title": "Bản đồ nền", "img": "ic_bandonen", "category": "vnmap"],
-//                                    ["title": "Hỏi & đáp", "img": "ic_hoidap"],
-//                                    ["title": "Đ.điểm Y.thích", "img": "yeu_thich"]
-//    ]
-    
     var dataList: NSMutableArray = [["title": "D.sách trạm", "img": "ic_list_station", "category": "1"],
                                     ["title": "Bản đồ", "img": "ic_bandonen-1", "category": "2"],
                                     ["title": "Phản hồi", "img": "ic_feedback_home", "category": "3"],
@@ -34,8 +22,15 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
                                     ["title": "Thiết lập", "img": "ic_setting_home", "category": "6"],
     ]
     
+    @IBOutlet var logoLeft: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if Information.check != "0" {
+            logoLeft.image = UIImage(named: "logo_tc")
+        }
+        
         collectionView.withCell("TG_Map_Cell")
         
         Permission.shareInstance()?.initLocation(false, andCompletion: { (permissionType) in
@@ -44,6 +39,8 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
         if Information.check == "0" {
             headerImg.image = UIImage(named: "bg_text_dms")
         }
+        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

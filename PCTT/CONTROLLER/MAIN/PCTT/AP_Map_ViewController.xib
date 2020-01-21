@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="bar" destination="Lv0-xQ-xjp" id="NmI-48-DLE"/>
                 <outlet property="headerImg" destination="LdQ-6g-Rkg" id="ibq-fg-fMi"/>
+                <outlet property="logoLeft" destination="O2c-3t-sQQ" id="W9e-UQ-yYl"/>
                 <outlet property="mapView" destination="tSa-wM-tew" id="WKa-ph-axW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

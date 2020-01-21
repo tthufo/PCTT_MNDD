@@ -8,12 +8,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TG_Intro_ViewController" customModule="MNDD" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TG_Intro_ViewController" customModule="Mực_Nước_Đê_Điều" customModuleProvider="target">
             <connections>
                 <outlet property="back" destination="RfI-ai-ueA" id="unv-ub-5Ze"/>
                 <outlet property="bg" destination="LZq-E8-sb6" id="Y1W-Ty-mRv"/>
                 <outlet property="gap" destination="9kP-fM-wEp" id="bjz-67-QJC"/>
                 <outlet property="headerImg" destination="Lf4-g5-KpW" id="o0S-zj-3pt"/>
+                <outlet property="logoLeft" destination="WgD-Dk-KEk" id="uZq-ny-ec2"/>
                 <outlet property="tableView" destination="yZA-8m-N1U" id="lzq-RB-A9v"/>
                 <outlet property="titleLabel" destination="WOJ-HG-8bP" id="rFd-oP-12N"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

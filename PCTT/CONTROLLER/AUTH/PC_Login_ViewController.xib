@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PC_Login_ViewController" customModule="MNDD" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PC_Login_ViewController" customModule="Mực_Nước_Đê_Điều" customModuleProvider="target">
             <connections>
                 <outlet property="bg" destination="FbU-8U-w7A" id="UWU-W5-00c"/>
                 <outlet property="bottom" destination="1nj-Ed-LW2" id="jTc-Te-oz0"/>
@@ -155,7 +155,7 @@
                         <constraint firstAttribute="height" constant="52" id="QPm-M2-jaY"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                    <state key="normal" title="Đăng nhập">
+                    <state key="normal" title="ĐĂNG NHẬP">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -232,7 +232,7 @@
                     <color key="textColor" red="0.89411764709999997" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Đăng Nhập" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOA-RQ-QDa">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ĐĂNG NHẬP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOA-RQ-QDa">
                     <rect key="frame" x="20" y="18" width="361" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="32"/>
@@ -254,7 +254,7 @@
                         <constraint firstAttribute="height" constant="52" id="1bv-1Z-3ag"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                    <state key="normal" title="Đăng kí">
+                    <state key="normal" title="ĐĂNG KÍ">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -310,10 +310,10 @@
         </view>
     </objects>
     <resources>
-        <image name="bg_login" width="240" height="427"/>
+        <image name="bg_login" width="240" height="426.66665649414062"/>
         <image name="design_ic_visibility_off" width="29.333333969116211" height="29.333333969116211"/>
         <image name="ic_user" width="50.666667938232422" height="50.666667938232422"/>
         <image name="icon_pass" width="50.666667938232422" height="50.666667938232422"/>
-        <image name="logo" width="185" height="182.66667175292969"/>
+        <image name="logo" width="48" height="48"/>
     </resources>
 </document>

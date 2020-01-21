@@ -22,8 +22,14 @@ class PC_Info_ViewController: UIViewController {
 
   @IBOutlet var headerImg: UIImageView!
 
-  override func viewDidLoad() {
-      super.viewDidLoad()
+    @IBOutlet var logoLeft: UIImageView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if Information.check != "0" {
+            logoLeft.image = UIImage(named: "logo_tc")
+        }
       
       if Information.check == "0" {
           headerImg.image = UIImage(named: "bg_text_dms")
@@ -47,7 +53,7 @@ class PC_Info_ViewController: UIViewController {
         
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         
-        bottom.text = "Gisco Ver %@".format(parameters: appVersion!)
+//        bottom.text = "Gisco Ver %@".format(parameters: appVersion!)
     }
     
     @IBAction func didPressBack() {

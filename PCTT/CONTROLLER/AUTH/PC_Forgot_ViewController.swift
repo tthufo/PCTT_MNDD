@@ -58,6 +58,10 @@ class PC_Forgot_ViewController: UIViewController , UITextFieldDelegate {
         bottom.action(forTouch: [:]) { (obj) in
 //            self.callNumber(phoneNumber: Information.phone)
         }
+        
+        if Information.check == "1" {
+            self.logo.image = UIImage(named: "logo_tc")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

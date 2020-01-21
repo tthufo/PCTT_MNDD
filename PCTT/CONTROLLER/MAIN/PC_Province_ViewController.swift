@@ -58,9 +58,21 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
     var filterValue: String = "1"
     
     @IBOutlet var sortWidth: NSLayoutConstraint!
+    
+    @IBOutlet var headerImg: UIImageView!
 
+    @IBOutlet var logoLeft: UIImageView!
+   
     override func viewDidLoad() {
-        super.viewDidLoad()
+       super.viewDidLoad()
+       
+       if Information.check != "0" {
+           logoLeft.image = UIImage(named: "logo_tc")
+       }
+       
+       if Information.check == "0" {
+           headerImg.image = UIImage(named: "bg_text_dms")
+       }
         
         dataList = NSMutableArray.init()
         tempList = NSMutableArray.init()
