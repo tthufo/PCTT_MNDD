@@ -210,7 +210,7 @@
 		FC3EB5FA23B7DA6000E0147F /* Province1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Province1.xib; sourceTree = "<group>"; };
 		FC59DA47237004FA00F8FA35 /* PC_Register_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Register_ViewController.swift; sourceTree = "<group>"; };
 		FC59DA48237004FA00F8FA35 /* PC_Register_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Register_ViewController.xib; sourceTree = "<group>"; };
-		FC5D982022F54134006FA3F1 /* MNDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNDD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC5D982022F54134006FA3F1 /* Mực Nước Đê Điều.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mực Nước Đê Điều.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5D982322F54134006FA3F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC5D982522F54134006FA3F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FC5D982822F54134006FA3F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -409,7 +409,7 @@
 		FC5D982122F54134006FA3F1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FC5D982022F54134006FA3F1 /* MNDD.app */,
+				FC5D982022F54134006FA3F1 /* Mực Nước Đê Điều.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -511,7 +511,7 @@
 			);
 			name = PCTT;
 			productName = PCTT;
-			productReference = FC5D982022F54134006FA3F1 /* MNDD.app */;
+			productReference = FC5D982022F54134006FA3F1 /* Mực Nước Đê Điều.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -903,7 +903,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = .com;
-				PRODUCT_NAME = MNDD;
+				PRODUCT_NAME = "Mực Nước Đê Điều";
 				PROVISIONING_PROFILE_SPECIFIER = wilding;
 				SWIFT_OBJC_BRIDGING_HEADER = "PCTT/PCTT-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -935,7 +935,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = .com;
-				PRODUCT_NAME = MNDD;
+				PRODUCT_NAME = "Mực Nước Đê Điều";
 				PROVISIONING_PROFILE_SPECIFIER = VNDMS;
 				SWIFT_OBJC_BRIDGING_HEADER = "PCTT/PCTT-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

@@ -18,7 +18,7 @@
 
 #import <AllPod/Permission.h>
 
-#import "MNDD-Swift.h"
+#import "Mực_Nước_Đê_Điều-Swift.h"
 
 #import "WMSTileLayer.h"
 

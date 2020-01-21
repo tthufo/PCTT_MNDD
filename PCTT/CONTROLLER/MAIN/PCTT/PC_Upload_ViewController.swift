@@ -103,6 +103,11 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
     @IBAction func didPressSave() {
        self.view.endEditing(true)
                
+        if dataList.count == 0 {
+            self.showToast("Hãy chọn tệp đính kèm", andPos: 0)
+            
+            return
+        }
        let array = NSMutableArray.init()
        
        for dict in dataList {
@@ -140,6 +145,12 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     @IBAction func didPressSubmit() {
         self.view.endEditing(true)
+    
+        if dataList.count == 0 {
+            self.showToast("Hãy chọn tệp đính kèm", andPos: 0)
+            
+            return
+        }
         
         let array = NSMutableArray.init()
         

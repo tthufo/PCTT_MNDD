@@ -26,49 +26,24 @@ class OffLine_ViewController: UIViewController {
         dataList = NSMutableArray.init()
         
         dataList.addObjects(from: Information.offLine as! [Any])
-        
-        print(dataList)
-        
+                
         tableView.withCell("PC_Event_Cell")
+        
+        if dataList.count == 0 {
+            self.showToast("Chưa có dữ liệu", andPos: 0)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
-    func didPressSubmit(object: NSDictionary) {
-        
-        print(object)
-//           let array = NSMutableArray.init()
-//
-//           for dict in dataList {
-//               let d = dict as! NSDictionary
-//               array.add(["file": d["file"] , "fileName": d["fileName"], "key":"ds"])
-//           }
-//
-//           var lat = "0"
-//
-//           var lng = "0"
-//
-//           if (Permission.shareInstance()?.isLocationEnable())! {
-//               let location = Permission.shareInstance()?.currentLocation()! as! NSDictionary
-//
-//               lat = location.getValueFromKey("lat")
-//
-//               lng = location.getValueFromKey("lng")
-//           }
-              
-//        let id = object.getValueFromKey("id")
-//        print(id)
-//           Information.removeOffline(order: id as! String)
-//           self.dataList.removeAllObjects()
-//           self.dataList.addObjects(from: Information.offLine as! [Any])
-//           self.tableView.reloadData()
+    func didPressSubmit(data: NSDictionary) {
                 
         LTRequest.sharedInstance()?.didRequestMultiPart(["CMD_CODE":"event/",
                                                        "header":["Authorization":Information.token == nil ? "" : Information.token!],
-                                                       "data": object["data"],
-                                                       "field": object["field"],
+                                                       "data": data["data"],
+                                                       "field": data["field"],
                                                        "overrideAlert":"1",
                                                        "overrideLoading":"1",
                                                        "postFix":"event/",
@@ -83,11 +58,11 @@ class OffLine_ViewController: UIViewController {
 
                self.showToast("Cập nhật thông tin thành công", andPos: 0)
 
-//                let id = object!["id"]
-//                Information.removeOffline(order: id as! String)
-//                self.dataList.removeAllObjects()
-//                self.dataList.addObjects(from: Information.offLine as! [Any])
-//                self.tableView.reloadData()
+               let id = data.getValueFromKey("id")
+               self.dataList.removeAllObjects()
+               Information.removeOffline(order: id!)
+               self.dataList.addObjects(from: Information.offLine as! [Any])
+               self.tableView.reloadData()
            })
        }
     
@@ -152,6 +127,6 @@ extension OffLine_ViewController: UITableViewDataSource, UITableViewDelegate {
 
         let data = (dataList![indexPath.row] as! NSDictionary)
 
-        self.didPressSubmit(object: data)
+        self.didPressSubmit(data: data)
     }
 }

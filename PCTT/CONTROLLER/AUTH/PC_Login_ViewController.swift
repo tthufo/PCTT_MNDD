@@ -64,7 +64,7 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
         
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         
-        bottom.text = "Gisco Ver %@".format(parameters: appVersion!)
+        bottom.text = "2020 - Phiên bản %@".format(parameters: appVersion!)
         
         bottom.action(forTouch: [:]) { (obj) in
 //            self.callNumber(phoneNumber: Information.phone)

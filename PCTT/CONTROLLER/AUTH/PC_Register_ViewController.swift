@@ -53,7 +53,6 @@ class PC_Register_ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var rePassError: UILabel!
 
-    
     var dataList: NSMutableArray!
     
     @IBOutlet var bottom: MarqueeLabel!
@@ -71,7 +70,7 @@ class PC_Register_ViewController: UIViewController, UITextFieldDelegate {
         
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         
-        bottom.text = "Gisco Ver %@".format(parameters: appVersion!)
+        bottom.text = "2020 - Phiên bản %@".format(parameters: appVersion!)
         
         self.view.action(forTouch: [:]) { (objc) in
             self.view.endEditing(true)

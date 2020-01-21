@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PC_Forgot_ViewController" customModule="MNDD" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PC_Forgot_ViewController" customModule="Mực_Nước_Đê_Điều" customModuleProvider="target">
             <connections>
                 <outlet property="bg" destination="rNh-x1-sW9" id="Dfc-bt-2d0"/>
                 <outlet property="bottom" destination="0V9-x0-1ig" id="403-Mo-d6U"/>
@@ -130,7 +130,7 @@
                         <constraint firstAttribute="height" constant="52" id="dZJ-kE-mA3"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                    <state key="normal" title="Lấy lại mật khẩu">
+                    <state key="normal" title="LẤY LẠI MẬT KHẨU">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -217,9 +217,9 @@
         </view>
     </objects>
     <resources>
-        <image name="bg_login" width="240" height="427"/>
+        <image name="bg_login" width="240" height="426.66665649414062"/>
         <image name="icon_back" width="33.333332061767578" height="33.333332061767578"/>
-        <image name="logo" width="185" height="182.66667175292969"/>
+        <image name="logo" width="48" height="48"/>
         <image name="phone" width="26.666666030883789" height="26.666666030883789"/>
     </resources>
 </document>
