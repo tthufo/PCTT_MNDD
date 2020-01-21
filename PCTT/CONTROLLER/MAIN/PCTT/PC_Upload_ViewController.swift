@@ -130,10 +130,10 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
         let autoId = self.getValue("autoId")
                 
         Information.addOffline(request: ["id": autoId, "field": array, "data":[
-        "event_name": textField.text as Any,
-        "event_description": textView.text as Any,
-        "lat": lat,
-        "lon": lng]])
+            "event_name": textField.text as Any,
+            "event_description": textView.text as Any,
+            "lat": lat,
+            "lon": lng]])
         
         let auto:Int? = Int(autoId ?? "0")
 

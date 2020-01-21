@@ -107,12 +107,26 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let data = dataList[indexPath.item] as! NSDictionary
+                
+        var lat = "21.0077147"
+                      
+       var lng = "105.832827"
+
+       if (Permission.shareInstance()?.isLocationEnable())! {
+           let location = Permission.shareInstance()?.currentLocation()! as! NSDictionary
+          
+           lat = location.getValueFromKey("lat")
+          
+           lng = location.getValueFromKey("lng")
+       }
         
         if indexPath.item == 0 {
             let question = PC_Province_ViewController.init()
             self.navigationController?.pushViewController(question, animated: true)
+        } else if indexPath.item == 1 {
+            let web = PC_Inner_Map_ViewController.init()
+            web.directUrl = "http://eladmin.gisgo.vn/?cmd=map&lat=%@&lng=%@".format(parameters: lat, lng ) as NSString
+            self.navigationController?.pushViewController(web, animated: true)
         } else if indexPath.item == 2 {
             let event = PC_List_Event_ViewController.init()
             self.navigationController?.pushViewController(event, animated: true)

@@ -248,15 +248,41 @@ extension TG_Intro_ViewController: UITableViewDataSource, UITableViewDelegate {
         red.alpha = data.getValueFromKey("cap_baodong") != "0" ? 0.7 : 0
          
         
-         if data.getValueFromKey("cap_baodong") != "0" {
-             
-             let bd = self.withView(cell, tag: 17) as! UILabel
+//         if data.getValueFromKey("cap_baodong") != "0" {
+//
+//             let bd = self.withView(cell, tag: 17) as! UILabel
+//
+//             bd.text = "Trên BD" + data.getValueFromKey("cap_baodong")
+//
+//
+////             let mm = self.withView(cell, tag: 18) as! UILabel
+//         }
+        
+        if data.getValueFromKey("cap_baodong") != "" {
+            if data.getValueFromKey("cap_baodong") != "0" {
+                let bd = self.withView(cell, tag: 17) as! UILabel
 
-             bd.text = "Trên BD" + data.getValueFromKey("cap_baodong")
+                bd.text = "Trên BĐ" + data.getValueFromKey("cap_baodong")
+                
+                let mm = self.withView(cell, tag: 18) as! UILabel
+                
+                mm.text = data.getValueFromKey("vuotmuc_baodong") + "m"
+            } else {
+                if data.getValueFromKey("mucbaodong") != "" && data.getValueFromKey("mucnuoc_hientai") != "" {
+                    let bd = self.withView(cell, tag: 17) as! UILabel
 
-               
-//             let mm = self.withView(cell, tag: 18) as! UILabel
-         }
+                    bd.text = "Dưới BĐ" + "1"
+                    
+                    let mm = self.withView(cell, tag: 18) as! UILabel
+                    
+                    let alert:Double? = Double(data.getValueFromKey("mucbaodong") ?? "0")
+
+                    let present:Double? = Double(data.getValueFromKey("mucnuoc_hientai") ?? "0")
+
+                    mm.text = String(format: "%.2f", alert! - present!)  + "m"
+                }
+            }
+        }
         
         return cell
     }
@@ -278,14 +304,13 @@ extension TG_Intro_ViewController: UITableViewDataSource, UITableViewDelegate {
             lng = location.getValueFromKey("lng")
         }
         
-//        let data = dataList![indexPath.row] as! NSDictionary
-//
         let web = PC_Inner_Map_ViewController.init()
 
-        web.directUrl = "http://eladmin.gisgo.vn/?cmd=station&id_kttv=%@&id_vitrimucnuoc=%@&x=@&y=%@&lat=%@&lng=%@".format(parameters: data.getValueFromKey("idtram"), data.getValueFromKey("id_vitrimucnuoc"), data.getValueFromKey("kinhdo"), data.getValueFromKey("vido"), lat, lng ) as NSString
+        web.directUrl = "http://eladmin.gisgo.vn/?cmd=station&id_kttv=%@&id_vitrimucnuoc=%@&x=@&y=%@&lat=%@&lng=%@".format(parameters: data.getValueFromKey("tram_kttv_id"), data.getValueFromKey("id"), data.getValueFromKey("kinh_do"), data.getValueFromKey("vi_do"), lat, lng ) as NSString
         
         self.navigationController?.pushViewController(web, animated: true)
     }
 }
+
 
 //http://eladmin.gisgo.vn/?cmd=station&id_kttv=246&id_vitrimucnuoc=0&x=105.42376053813&y=21.28904891265&lat=21.0077147&lng=105.832827

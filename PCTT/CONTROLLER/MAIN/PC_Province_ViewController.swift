@@ -10,6 +10,8 @@ import UIKit
 
 import MarqueeLabel
 
+import Foundation
+
 class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var tableView: UITableView! {
@@ -225,10 +227,6 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
             lng = location.getValueFromKey("lng")
         }
         
-//        waterlevel?keyword=&lon=&lat=&basinCode=&riverCode=0&provinceCode=&orderBy=1
-        
-//        v2/station/waterlevel?keyword=&lon=105.832818&lat=21.007733&basinCode=&riverCode=0&provinceCode=&orderBy=
-        
         var postFix = "v2/station/waterlevel?keyword=&lon=&lat=&basinCode=&riverCode=0&provinceCode="
 
         let postFix1 = "province"
@@ -238,11 +236,11 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
         let postFix3 = "v2/station/waterlevel?keyword=&lon=%@&lat=%@&basinCode=&riverCode=0&provinceCode=&orderBy=".format(parameters: lng, lat)
         
         if filterValue == "1" {
-            postFix = postFix + "&orderby=%@".format(parameters: self.sortValue)
+            postFix = postFix + "&orderBy=%@".format(parameters: self.sortValue)
         }
         
         if filterValue == "2" {
-            postFix = postFix1 + "?orderby=%@".format(parameters: self.sortValue)
+            postFix = postFix1 + "?orderBy=%@".format(parameters: self.sortValue)
         }
         
         if filterValue == "3" {
@@ -255,6 +253,7 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
         
         LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink": "".urlGet(postFix: postFix),
                                                     "header":["Authorization":Information.token == nil ? "" : Information.token!],
+                                                    "method":"GET",
                                                     "overrideAlert":"1",
                                                     "overrideLoading":"1",
                                                     ], withCache: { (cacheString) in
@@ -274,15 +273,15 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
                 self.tableView.reloadData()
                 return
             }
-            
-            print(result)
-            
+                        
             self.dataList.removeAllObjects()
             self.dataList.addObjects(from: response?.dictionize()["data"] as! [Any])
                        
             self.tempList.removeAllObjects()
             self.tempList.addObjects(from: response?.dictionize()["data"] as! [Any])
-           self.tableView.reloadData()
+            self.tableView.reloadData()
+            
+            self.tableView.didScrolltoTop(true)
         })
     }
     
@@ -322,7 +321,7 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
         let filtered = NSMutableArray.init()
         
         for dict in tempList {
-            let search = (dict as! NSDictionary).response(forKey: "station_info") ? ((dict as! NSDictionary)["station_info"] as! NSDictionary).getValueFromKey("vi_tri") : strip((dict as! NSDictionary).getValueFromKey("vi_tri")!)
+            let search = (dict as! NSDictionary).response(forKey: "station_info") ? ((dict as! NSDictionary)["station_info"] as! NSDictionary).getValueFromKey(filterValue == "2" ? "province_name" : filterValue == "3" ? "basin_name" : "vi_tri") : strip((dict as! NSDictionary).getValueFromKey("vi_tri")!)
             if (search!.replacingOccurrences(of: "Đ", with: "D").replacingOccurrences(of: "đ", with: "d")).containsIgnoringCase(find: strip(textField.text!)) {
                 filtered.add(dict)
             }
@@ -363,12 +362,12 @@ extension PC_Province_ViewController: UITableViewDataSource, UITableViewDelegate
         
         let name = self.withView(cell, tag: 11) as! UILabel
                        
-        name.text = data.getValueFromKey("vi_tri")
+        name.text = data.getValueFromKey(filterValue == "2" ? "province_name" : filterValue == "3" ? "basin_name" : "vi_tri")
         
         
         let desc = self.withView(cell, tag: 12) as! UILabel
                        
-        desc.text = data.getValueFromKey("vitri_de")
+        desc.text = data.getValueFromKey(filterValue == "2" || filterValue == "3" ? "vi_tri" : "vitri_de")
         
         
         let value = self.withView(cell, tag: 14) as! UILabel
@@ -393,22 +392,31 @@ extension PC_Province_ViewController: UITableViewDataSource, UITableViewDelegate
         red.alpha = data.getValueFromKey("cap_baodong") != "0" ? 0.7 : 0
         
         
-//        if data.getValueFromKey("SoSanhBaoDong") != "" {
-//
-//            let arr = data.getValueFromKey("SoSanhBaoDong")?.components(separatedBy: ":")
-//
-//            let bd = self.withView(cell, tag: 17) as! UILabel
-//
-//            bd.text = arr![0]
-//
-//            print(arr)
-//
-//
-//            let mm = self.withView(cell, tag: 18) as! UILabel
-//
-//            mm.text = arr![1]
-//        }
-        
+        if data.getValueFromKey("cap_baodong") != "" {
+            if data.getValueFromKey("cap_baodong") != "0" {
+                let bd = self.withView(cell, tag: 17) as! UILabel
+
+                bd.text = "Trên BĐ" + data.getValueFromKey("cap_baodong")
+                
+                let mm = self.withView(cell, tag: 18) as! UILabel
+                
+                mm.text = data.getValueFromKey("vuotmuc_baodong") + "m"
+            } else {
+                if data.getValueFromKey("mucbaodong") != "" && data.getValueFromKey("mucnuoc_hientai") != "" {
+                    let bd = self.withView(cell, tag: 17) as! UILabel
+
+                    bd.text = "Dưới BĐ" + "1"
+                    
+                    let mm = self.withView(cell, tag: 18) as! UILabel
+                    
+                    let alert:Double? = Double(data.getValueFromKey("mucbaodong") ?? "0")
+
+                    let present:Double? = Double(data.getValueFromKey("mucnuoc_hientai") ?? "0")
+
+                    mm.text = String(format: "%.2f", alert! - present!)  + "m"
+                }
+            }
+        }
         return cell
     }
     
@@ -419,8 +427,9 @@ extension PC_Province_ViewController: UITableViewDataSource, UITableViewDelegate
             return
         }
         
-        
-          let data = (dataList![indexPath.row] as! NSDictionary)
+        let data = (dataList[indexPath.row] as! NSDictionary).response(forKey: "station_info") ? (dataList[indexPath.row] as! NSDictionary)["station_info"] as! NSDictionary : dataList[indexPath.row] as! NSDictionary
+
+//          let data = (dataList![indexPath.row] as! NSDictionary)
 
             var lat = "21.0077147"
 
@@ -436,8 +445,8 @@ extension PC_Province_ViewController: UITableViewDataSource, UITableViewDelegate
 
             let web = PC_Inner_Map_ViewController.init()
 
-            web.directUrl = "http://eladmin.gisgo.vn/?cmd=station&id_kttv=%@&id_vitrimucnuoc=%@&x=@&y=%@&lat=%@&lng=%@".format(parameters: data.getValueFromKey("idtram"), data.getValueFromKey("id_vitrimucnuoc"), data.getValueFromKey("kinhdo"), data.getValueFromKey("vido"), lat, lng ) as NSString
-
+            web.directUrl = "http://eladmin.gisgo.vn/?cmd=station&id_kttv=%@&id_vitrimucnuoc=%@&x=@&y=%@&lat=%@&lng=%@".format(parameters: data.getValueFromKey("tram_kttv_id"), data.getValueFromKey("id"), data.getValueFromKey("kinh_do"), data.getValueFromKey("vi_do"), lat, lng ) as NSString
+                   
             self.navigationController?.pushViewController(web, animated: true)
         
     }

@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PC_Province_ViewController" customModule="MNDD" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PC_Province_ViewController" customModule="Mực_Nước_Đê_Điều" customModuleProvider="target">
             <connections>
                 <outlet property="arrow" destination="wIu-lP-Wsg" id="TVv-NM-S51"/>
                 <outlet property="menu" destination="Q12-Gw-qqZ" id="6Gd-Ul-N23"/>
@@ -140,7 +140,7 @@
                         <outlet property="delegate" destination="-1" id="GtX-2X-5yj"/>
                     </connections>
                 </tableView>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập tên tỉnh cần tìm ..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="e59-gS-cLW">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TÌm kiếm theo tên trạm, tên lưu vực ..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="e59-gS-cLW">
                     <rect key="frame" x="68" y="133" width="211" height="30"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>

@@ -19,7 +19,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_login" translatesAutoresizingMaskIntoConstraints="NO" id="Wo7-gi-oaF">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="h0g-49-881">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="h0g-49-881">
                                 <rect key="frame" x="82" y="249.66666666666663" width="250" height="237"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="237" id="AVC-oB-qxt"/>
@@ -45,7 +45,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg_login" width="240" height="427"/>
-        <image name="logo" width="185" height="182.66667175292969"/>
+        <image name="bg_login" width="240" height="426.66665649414062"/>
+        <image name="logo" width="48" height="48"/>
     </resources>
 </document>

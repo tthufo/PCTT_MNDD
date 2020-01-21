@@ -69,53 +69,6 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
         bottom.action(forTouch: [:]) { (obj) in
 //            self.callNumber(phoneNumber: Information.phone)
         }
-                
-//        self.didRequestCheck()
-    }
-    
-    func didRequestCheck() {
-        LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink":"https://dl.dropboxusercontent.com/s/1xik6cb70vld98l/PCTT_WebView.plist", "overrideAlert":"1"], withCache: { (cache) in
-            
-        }, andCompletion: { (response, errorCode, error, isValid, object) in
-            
-            if error != nil {
-                self.setUp()
-                return
-            }
-            
-            let data = response?.data(using: .utf8)
-            let dict = XMLReader.return(XMLReader.dictionary(forXMLData: data, options: 0))
-            
-//            self.loginCover.alpha = (dict! as NSDictionary).getValueFromKey("show") == "1" ? 1 : 0
-           
-//            let information = ["company_id": 1, "company_name": "Agrimedia", "count_notification": 0,
-//                               "count_province": 35, "created_at": "2018-10-17T18:34:12.000000Z", "email":"", "name":"AGRIMEDIA", "phone":"0395269036", "token":"7/UUvi8B1wggRDU4NzVGMkNCNjQ1N0MxRjUxOEM3ODAzRURFMDZFNjdz5m2+gorK/ZnphNBl49bUfp9ml9KojHRJPHf4/qN7eWinBqw+J2ktZae5JIhFaa8BMHnsDwPRRmNEy5KeJ+6FU9d24nve+6z8SCNGP733PRiBuJs/NJC++xKP132v9C/dRF4MIHg+17O3qzpmsKLSyjZ+xWwKWAv/6JS2adwSVg==", "user_id":"28"] as [String : Any]
-            
-//            if (dict! as NSDictionary).getValueFromKey("show") == "0" {
-                
-//                self.add(["name":"chungdt" as Any, "pass":"123456aA" as Any], andKey: "log")
-//
-//                self.add((information as! NSDictionary).reFormat() as? [AnyHashable : Any], andKey: "info")
-//
-//                Information.saveInfo()
-//
-//                self.addValue((information as! NSDictionary).getValueFromKey("token"), andKey: "token")
-//
-//                Information.saveToken()
-//
-            Information.check = (dict! as NSDictionary).getValueFromKey("show") == "0" ? "0" : "1"
-
-            print(Information.check)
-            
-//                if Information.userInfo?.getValueFromKey("count_province") == "1" {
-//                    self.navigationController?.pushViewController(PC_Station_ViewController.init(), animated: false)
-//                } else {
-//                    self.navigationController?.pushViewController(PC_Main_ViewController.init(), animated: false)
-//                }
-//            } else {
-                self.setUp()
-//            }
-        })
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -194,7 +147,7 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
 //                        }
 //                        self.setUpLogin()
 //                    }
-                LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink":"https://dl.dropboxusercontent.com/s/1xik6cb70vld98l/PCTT_WebView.plist", "overrideAlert":"1"], withCache: { (cache) in
+                    LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink":"https://dl.dropboxusercontent.com/s/8o3v919g4sfgwo7/PCTT_WebView_MNDD.plist", "overrideAlert":"1"], withCache: { (cache) in
                         
                     }, andCompletion: { (response, errorCode, error, isValid, object) in
                         
