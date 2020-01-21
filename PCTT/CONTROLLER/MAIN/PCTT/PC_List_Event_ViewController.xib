@@ -286,7 +286,7 @@
                         <constraint firstAttribute="height" constant="44" id="I6F-N8-1ZI"/>
                         <constraint firstAttribute="width" constant="44" id="P6n-cW-sqO"/>
                     </constraints>
-                    <state key="normal" image="ic_map_point"/>
+                    <state key="normal" image="saving"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <integer key="value" value="22"/>
@@ -379,5 +379,6 @@
         <image name="icon_back" width="33" height="33"/>
         <image name="logo" width="47.5" height="47.5"/>
         <image name="menu" width="170.5" height="170.5"/>
+        <image name="saving" width="28.5" height="28.5"/>
     </resources>
 </document>
