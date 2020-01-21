@@ -13,9 +13,9 @@
                 <outlet property="cell" destination="WA2-pe-B1f" id="Oio-AM-jEa"/>
                 <outlet property="header" destination="Mlw-k4-IbK" id="Ydk-1V-ebH"/>
                 <outlet property="headerImg" destination="f8q-Yz-WJL" id="WsG-mz-WbX"/>
-                <outlet property="imaging" destination="jMT-GV-SFT" id="MWI-XO-eZW"/>
                 <outlet property="latField" destination="QyM-d0-7Cl" id="R25-UK-5LK"/>
                 <outlet property="lngField" destination="jEe-oF-XND" id="3CU-lp-hJ1"/>
+                <outlet property="save" destination="2ig-6w-9lF" id="R5F-tq-P7o"/>
                 <outlet property="submit" destination="SOE-iF-CCf" id="RIb-gq-ubQ"/>
                 <outlet property="tableView" destination="Sn7-HR-gHo" id="pfZ-Bz-rzN"/>
                 <outlet property="tableViewFiles" destination="2Dn-qU-mD9" id="SFN-gb-mH8"/>
@@ -188,10 +188,6 @@
                         <action selector="didPressAttach" destination="-1" eventType="touchUpInside" id="hDH-XV-GSO"/>
                     </connections>
                 </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jMT-GV-SFT">
-                    <rect key="frame" x="58" y="251" width="240" height="174"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>

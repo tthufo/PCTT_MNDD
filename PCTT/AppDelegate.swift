@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        FirePush.shareInstance().didRegister()
 
 //        if self.getValue("push") == "0" {
-////            FirePush.shareInstance()?.didUnregisterNotification()
+    ////            FirePush.shareInstance()?.didUnregisterNotification()
 //        }
         
         if self.getValue("push") == nil {
@@ -32,11 +32,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //            FirePush.shareInstance()?.didUnregisterNotification()
         }
         
+//        self.remove("offline")
+        
+        if self.getObject("offline") == nil {
+            self.add(["data": NSMutableArray()], andKey: "offline")
+        }
+        
+        print(self.getObject("offline"))
+        
+        if self.getValue("autoId") == nil {
+            self.addValue("1", andKey: "autoId")
+        }
+        
         Information.saveToken()
         
         Information.saveInfo()
         
         Information.saveBG()
+        
+        Information.saveOffline()
+
         
         LTRequest.sharedInstance().initRequest()
 

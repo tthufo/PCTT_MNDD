@@ -87,6 +87,8 @@
 		FC69937522FB4A8200C62D42 /* PC_Station_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC69937322FB4A8200C62D42 /* PC_Station_ViewController.swift */; };
 		FC69937622FB4A8200C62D42 /* PC_Station_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC69937422FB4A8200C62D42 /* PC_Station_ViewController.xib */; };
 		FC69937822FB503F00C62D42 /* PC_Station_Cell0.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC69937722FB503F00C62D42 /* PC_Station_Cell0.xib */; };
+		FC7FAC1023D6FFF300077B6D /* OffLine_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7FAC0E23D6FFF300077B6D /* OffLine_ViewController.swift */; };
+		FC7FAC1123D6FFF300077B6D /* OffLine_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC7FAC0F23D6FFF300077B6D /* OffLine_ViewController.xib */; };
 		FC8F4AEF230FE9420082F3B2 /* PC_FeedBack_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8F4AED230FE9420082F3B2 /* PC_FeedBack_ViewController.swift */; };
 		FC8F4AF0230FE9420082F3B2 /* PC_FeedBack_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8F4AEE230FE9420082F3B2 /* PC_FeedBack_ViewController.xib */; };
 		FC8F4AF2230FEE9F0082F3B2 /* PC_FeedBack_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8F4AF1230FEE9F0082F3B2 /* PC_FeedBack_Cell.xib */; };
@@ -224,6 +226,8 @@
 		FC69937322FB4A8200C62D42 /* PC_Station_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Station_ViewController.swift; sourceTree = "<group>"; };
 		FC69937422FB4A8200C62D42 /* PC_Station_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Station_ViewController.xib; sourceTree = "<group>"; };
 		FC69937722FB503F00C62D42 /* PC_Station_Cell0.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Station_Cell0.xib; sourceTree = "<group>"; };
+		FC7FAC0E23D6FFF300077B6D /* OffLine_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffLine_ViewController.swift; sourceTree = "<group>"; };
+		FC7FAC0F23D6FFF300077B6D /* OffLine_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OffLine_ViewController.xib; sourceTree = "<group>"; };
 		FC8F4AED230FE9420082F3B2 /* PC_FeedBack_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_FeedBack_ViewController.swift; sourceTree = "<group>"; };
 		FC8F4AEE230FE9420082F3B2 /* PC_FeedBack_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_FeedBack_ViewController.xib; sourceTree = "<group>"; };
 		FC8F4AF1230FEE9F0082F3B2 /* PC_FeedBack_Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_FeedBack_Cell.xib; sourceTree = "<group>"; };
@@ -329,6 +333,8 @@
 				FC8F57F523B725030059254E /* PlayerView.swift */,
 				FC8F57F723B7255E0059254E /* VideoTableViewCell.swift */,
 				FC8F57F823B7255E0059254E /* VideoTableViewCell.xib */,
+				FC7FAC0E23D6FFF300077B6D /* OffLine_ViewController.swift */,
+				FC7FAC0F23D6FFF300077B6D /* OffLine_ViewController.xib */,
 			);
 			path = PCTT;
 			sourceTree = "<group>";
@@ -576,6 +582,7 @@
 				FC1AC74223708CC100B11288 /* TG_Intro_ViewController.xib in Resources */,
 				FC3EB5FB23B7DA6000E0147F /* Province1.xib in Resources */,
 				FC8F4AF2230FEE9F0082F3B2 /* PC_FeedBack_Cell.xib in Resources */,
+				FC7FAC1123D6FFF300077B6D /* OffLine_ViewController.xib in Resources */,
 				FCFEE7B223A38DFD002617E9 /* PC_Province_ViewController.xib in Resources */,
 				FCA5F32B2371DAB700274600 /* PC_Info_Cell.xib in Resources */,
 				FC269A1E23786EEC00EEA392 /* TG_Map_Cell.xib in Resources */,
@@ -724,6 +731,7 @@
 				FC250D04230103F4008AB980 /* PC_Global_ViewController.swift in Sources */,
 				FC1B306922F6AF13002E873F /* PC_Forgot_ViewController.swift in Sources */,
 				FC8F4AEF230FE9420082F3B2 /* PC_FeedBack_ViewController.swift in Sources */,
+				FC7FAC1023D6FFF300077B6D /* OffLine_ViewController.swift in Sources */,
 				FCB26C9923BD0491005E2972 /* DemoSource.swift in Sources */,
 				FC1B307022F6EEF6002E873F /* PC_Main_ViewController.swift in Sources */,
 				FC1B307A22F73F3D002E873F /* PC_ChangePass_ViewController.swift in Sources */,

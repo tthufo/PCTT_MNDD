@@ -34,9 +34,9 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
 
     @IBOutlet var textView: UITextView!
 
-    @IBOutlet var imaging: UIImageView!
-
     @IBOutlet var submit: UIButton!
+    
+    @IBOutlet var save: UIButton!
 
     @IBOutlet var back: UIButton!
     
@@ -69,7 +69,7 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         var lat = "0"
                
-       var lng = "0"
+        var lng = "0"
 
        if (Permission.shareInstance()?.isLocationEnable())! {
            let location = Permission.shareInstance()?.currentLocation()! as! NSDictionary
@@ -99,6 +99,44 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
        @objc func disMiss() {
            self.view.endEditing(true)
        }
+    
+    @IBAction func didPressSave() {
+       self.view.endEditing(true)
+               
+       let array = NSMutableArray.init()
+       
+       for dict in dataList {
+           let d = dict as! NSDictionary
+           array.add(["file": d["file"] , "fileName": d["fileName"], "key":"ds"])
+       }
+       
+        var lat = "0"
+        
+        var lng = "0"
+
+        if (Permission.shareInstance()?.isLocationEnable())! {
+            let location = Permission.shareInstance()?.currentLocation()! as! NSDictionary
+            
+            lat = location.getValueFromKey("lat")
+            
+            lng = location.getValueFromKey("lng")
+        }
+        
+        let autoId = self.getValue("autoId")
+                
+        Information.addOffline(request: ["id": autoId, "field": array, "data":[
+        "event_name": textField.text as Any,
+        "event_description": textView.text as Any,
+        "lat": lat,
+        "lon": lng]])
+        
+        let auto:Int? = Int(autoId ?? "0")
+
+        self.addValue(String(auto! + 1), andKey: "autoId")
+        
+        print(Information.getOffline())
+    }
+
     
     @IBAction func didPressSubmit() {
         self.view.endEditing(true)
@@ -193,18 +231,21 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
                     if Float(sizeOnDisk!) / (1024 * 1024) <= 30 {
                         PHImageManager.default().requestAVAsset(forVideo: asset.originalAsset!, options: nil, resultHandler: { (ass, mix, nil) in
                             let myAsset = ass as? AVURLAsset
-                            do {
-                                asset.originalAsset?.getURL(completionHandler: { (url) in
-                                    self.dataList.add(["fileName": name!, "file": url!.absoluteString  ])
-                                })
-//                                let videoData = try Data(contentsOf: (myAsset?.url)!)
-//                                self.dataList.add(["fileName": ur, "file": String(decoding: videoData, as: UTF8.self)])
-                            } catch  {
-                                print("exception catch at block - while uploading video")
-                            }
-                            DispatchQueue.main.async {
-                                self.tableViewFiles.reloadData()
-                            }
+//                            do {
+////                                asset.originalAsset?.getURL(completionHandler: { (url) in
+////                                    self.dataList.add(["fileName": name!, "file": url!.absoluteString  ])
+////                                })
+////                                let videoData = try Data(contentsOf: (myAsset?.url)!)
+////                                self.dataList.add(["fileName": ur, "file": String(decoding: videoData, as: UTF8.self)])
+//                            } catch  {
+//                                print("exception catch at block - while uploading video")
+//                            }
+                            asset.originalAsset?.getURL(completionHandler: { (url) in
+                               self.dataList.add(["fileName": name!, "file": url!.absoluteString  ])
+                                 DispatchQueue.main.async {
+                                    self.tableViewFiles.reloadData()
+                                }
+                           })
                         })
                     } else {
                         self.showToast(name! + " dung lượng lớn hơn 30MB", andPos: 0)
@@ -235,11 +276,15 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
     @objc func textIsChanging(_ textField:UITextField) {
         submit.isEnabled = textField.text?.count != 0 && textView.text?.count != 0
         submit.alpha = textField.text?.count != 0 && textView.text?.count != 0 ? 1 : 0.5
+        save.isEnabled = textField.text?.count != 0 && textView.text?.count != 0
+        save.alpha = textField.text?.count != 0 && textView.text?.count != 0 ? 1 : 0.5
     }
     
     func textViewDidChange(_ textView: UITextView) {
-         submit.isEnabled = textField.text?.count != 0 && textView.text?.count != 0
-         submit.alpha = textField.text?.count != 0 && textView.text?.count != 0 ? 1 : 0.5
+        submit.isEnabled = textField.text?.count != 0 && textView.text?.count != 0
+        submit.alpha = textField.text?.count != 0 && textView.text?.count != 0 ? 1 : 0.5
+        save.isEnabled = textField.text?.count != 0 && textView.text?.count != 0
+        save.alpha = textField.text?.count != 0 && textView.text?.count != 0 ? 1 : 0.5
     }
 }
 

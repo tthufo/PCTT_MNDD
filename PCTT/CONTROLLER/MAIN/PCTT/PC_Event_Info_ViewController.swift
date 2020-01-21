@@ -156,7 +156,6 @@ class PC_Event_Info_ViewController: UIViewController {
             self.didPressBack()
          })
       }
-    
 }
 
 extension PC_Event_Info_ViewController: UITableViewDataSource, UITableViewDelegate {

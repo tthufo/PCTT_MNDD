@@ -23,6 +23,8 @@ class Information: NSObject {
     
     static var userInfo: NSDictionary?
     
+    static var offLine: NSArray?
+    
     static var log: NSDictionary?
     
     static func saveToken() {
@@ -68,6 +70,46 @@ class Information: NSObject {
         } else {
             log = nil
         }
+    }
+    
+    static func saveOffline() {
+        if self.getObject("offline") != nil {
+            offLine = (self.getObject("offline")! as NSDictionary)["data"] as! NSArray
+        } else {
+            offLine = []
+        }
+    }
+    
+    static func addOffline(request: NSDictionary) {
+        
+        offLine = (self.getObject("offline")! as NSDictionary)["data"] as! NSArray
+
+        let mutableOffline = NSMutableArray.init(object: request)
+                
+        self.add(["data": mutableOffline as Any], andKey: "offline")
+        
+        self.saveOffline()
+    }
+    
+    static func removeOffline(order: String) {
+        
+        offLine = (self.getObject("offline")! as NSDictionary)["data"] as! NSArray
+
+        let mutableOffline = NSMutableArray.init(object: offLine)
+
+        for dict in mutableOffline {
+            if order == (dict as! NSDictionary).getValueFromKey("id") {
+                mutableOffline.remove(dict)
+            }
+        }
+        
+        self.add(["data": mutableOffline as Any], andKey: "offline")
+        
+        self.saveOffline()
+    }
+    
+    static func getOffline() -> NSArray {
+        return offLine!
     }
     
     static func removeInfo() {

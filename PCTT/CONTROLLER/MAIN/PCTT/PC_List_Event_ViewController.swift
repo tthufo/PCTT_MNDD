@@ -76,24 +76,24 @@ class PC_List_Event_ViewController: UIViewController {
         }
     }
     
-    func requestDeleteEvent(id: String) {
-      LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink":"".urlGet(postFix: "event/delete/" + id),
-                                                  "header":["Authorization":Information.token == nil ? "" : Information.token!],
-                                                  "method":"GET",
-                                                  "overrideAlert":"1",
-                                                  "overrideLoading":"1",
-                                                  "host":self], withCache: { (cacheString) in
-      }, andCompletion: { (response, errorCode, error, isValid, object) in
-          let result = response?.dictionize() ?? [:]
-                                         
-          if result.getValueFromKey("status") != "OK" {
-              self.showToast(response?.dictionize().getValueFromKey("data") == "" ? "Lỗi xảy ra, mời bạn thử lại" : response?.dictionize().getValueFromKey("data"), andPos: 0)
-              return
-          }
-          
-          self.requestEvent()
-      })
-   }
+//    func requestDeleteEvent(id: String) {
+//      LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink":"".urlGet(postFix: "event/delete/" + id),
+//                                                  "header":["Authorization":Information.token == nil ? "" : Information.token!],
+//                                                  "method":"GET",
+//                                                  "overrideAlert":"1",
+//                                                  "overrideLoading":"1",
+//                                                  "host":self], withCache: { (cacheString) in
+//      }, andCompletion: { (response, errorCode, error, isValid, object) in
+//          let result = response?.dictionize() ?? [:]
+//
+//          if result.getValueFromKey("status") != "OK" {
+//              self.showToast(response?.dictionize().getValueFromKey("data") == "" ? "Lỗi xảy ra, mời bạn thử lại" : response?.dictionize().getValueFromKey("data"), andPos: 0)
+//              return
+//          }
+//
+//          self.requestEvent()
+//      })
+//   }
        
        @IBAction func didPressBottomMenu(_ sender: Any) {
            UIView.animate(withDuration: 0.3) {
@@ -125,6 +125,10 @@ class PC_List_Event_ViewController: UIViewController {
             let map = AP_Map_ViewController.init()
             map.dataListPoints = self.dataList
             self.navigationController?.pushViewController(map, animated: true)
+               break
+            case 4:
+            let offLine = OffLine_ViewController.init()
+            self.navigationController?.pushViewController(offLine, animated: true)
                break
            default:
                break
@@ -161,7 +165,27 @@ class PC_List_Event_ViewController: UIViewController {
     }
     
     @IBAction func didPressFAQ() {
-//        self.navigationController?.pushViewController(PC_Upload_ViewController.init(), animated: true)
+    }
+    
+    func requestDeleteEvent(id: String) {
+       LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink":"".urlGet(postFix: "event/delete/" + id),
+                                                   "header":["Authorization":Information.token == nil ? "" : Information.token!],
+                                                   "method":"GET",
+                                                   "overrideAlert":"1",
+                                                   "overrideLoading":"1",
+                                                   "host":self], withCache: { (cacheString) in
+       }, andCompletion: { (response, errorCode, error, isValid, object) in
+           let result = response?.dictionize() ?? [:]
+                                          
+           if result.getValueFromKey("status") != "OK" {
+               self.showToast(response?.dictionize().getValueFromKey("data") == "" ? "Lỗi xảy ra, mời bạn thử lại" : response?.dictionize().getValueFromKey("data"), andPos: 0)
+               return
+           }
+          
+            self.tableView.reloadData()
+
+          self.showToast("Xoá thành công", andPos: 0)
+        })
     }
     
     @IBAction func didPressBack() {
@@ -178,6 +202,23 @@ extension PC_List_Event_ViewController: UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataList.count
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Xóa"
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCell.EditingStyle.delete) {
+            let data = dataList![indexPath.row] as! NSDictionary
+            self.requestDeleteEvent(id: data.getValueFromKey("id"))
+            self.dataList.removeObject(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
