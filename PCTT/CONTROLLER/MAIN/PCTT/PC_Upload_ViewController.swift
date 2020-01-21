@@ -14,6 +14,8 @@ import PhotosUI
 
 import DKImagePickerController
 
+import AFNetworking
+
 class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet var header: UIView!
@@ -31,6 +33,8 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
     @IBOutlet var lngField: UITextField!
 
     @IBOutlet var textView: UITextView!
+
+    @IBOutlet var imaging: UIImageView!
 
     @IBOutlet var submit: UIButton!
 
@@ -103,7 +107,7 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         for dict in dataList {
             let d = dict as! NSDictionary
-            array.add(["file": d["file"], "fileName": d["fileName"], "key":"ds"])
+            array.add(["file": d["file"] , "fileName": d["fileName"], "key":"ds"])
         }
         
         var lat = "0"
@@ -118,7 +122,7 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
             lng = location.getValueFromKey("lng")
         }
         
-        LTRequest.sharedInstance()?.didRequestMultiPart(["CMD_CODE":"event",
+        LTRequest.sharedInstance()?.didRequestMultiPart(["CMD_CODE":"event/",
                                                     "header":["Authorization":Information.token == nil ? "" : Information.token!],
                                                     "data":[
                                                     "event_name": textField.text as Any,
@@ -128,7 +132,7 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
                                                     "field": dataList.count != 0 ? array : [],
                                                     "overrideAlert":"1",
                                                     "overrideLoading":"1",
-                                                    "postFix":"event",
+                                                    "postFix":"event/",
                                                     "host":self], withCache: { (cacheString) in
         }, andCompletion: { (response, errorCode, error, isValid, object) in
             let result = response?.dictionize() ?? [:]
@@ -150,7 +154,7 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
            self.navigationController?.popViewController(animated: true)
        }
     
-    func getUIImage(asset: PHAsset) -> NSString? {
+    func getUIImage(asset: PHAsset) -> UIImage? {
         var img: UIImage?
         let manager = PHImageManager.default()
         let options = PHImageRequestOptions()
@@ -161,7 +165,7 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
                 img = UIImage(data: data)
             }
         }
-        return img?.imageString() as NSString?
+        return img//?.imageString() as NSString?
     }
     
     @IBAction func didPressAttach() {
@@ -177,7 +181,7 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
                 if asset.type == .video {
                     let resourse = PHAssetResource.assetResources(for: asset.originalAsset!)
 
-                    let url = resourse.first?.originalFilename
+                    let name = resourse.first?.originalFilename
                                         
                     var sizeOnDisk: Int64? = 0
 
@@ -187,11 +191,14 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
                     }
                     
                     if Float(sizeOnDisk!) / (1024 * 1024) <= 30 {
-                        PHImageManager.default().requestAVAsset(forVideo: asset.originalAsset!, options: nil, resultHandler: { (asset, mix, nil) in
-                            let myAsset = asset as? AVURLAsset
+                        PHImageManager.default().requestAVAsset(forVideo: asset.originalAsset!, options: nil, resultHandler: { (ass, mix, nil) in
+                            let myAsset = ass as? AVURLAsset
                             do {
-                                let videoData = try Data(contentsOf: (myAsset?.url)!)
-                                self.dataList.add(["fileName": url, "file": String(decoding: videoData, as: UTF8.self)])
+                                asset.originalAsset?.getURL(completionHandler: { (url) in
+                                    self.dataList.add(["fileName": name!, "file": url!.absoluteString  ])
+                                })
+//                                let videoData = try Data(contentsOf: (myAsset?.url)!)
+//                                self.dataList.add(["fileName": ur, "file": String(decoding: videoData, as: UTF8.self)])
                             } catch  {
                                 print("exception catch at block - while uploading video")
                             }
@@ -200,14 +207,17 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
                             }
                         })
                     } else {
-                        self.showToast(url! + " dung lượng lớn hơn 30MB", andPos: 0)
+                        self.showToast(name! + " dung lượng lớn hơn 30MB", andPos: 0)
                     }
                 } else {
                     let resourse = PHAssetResource.assetResources(for: asset.originalAsset!)
 
-                    let url = resourse.first?.originalFilename
-                                                            
-                    self.dataList.add(["fileName": url, "file": self.getUIImage(asset: asset.originalAsset!)])
+                    let name = resourse.first?.originalFilename
+                                                                                
+                    asset.originalAsset?.getURL(completionHandler: { (url) in
+                        self.dataList.add(["fileName": name!, "file": url!.absoluteString  ])
+                        self.tableViewFiles.reloadData()
+                    })
               }
             }
             self.tableViewFiles.reloadData()

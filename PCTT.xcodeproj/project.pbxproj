@@ -880,10 +880,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PCTT/PCTT.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Dinh Nguyen (9NC2Q4ER8P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Huy Nguyen (S6X8K9KLV3)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GAJPP6PZBM;
+				DEVELOPMENT_TEAM = 3L2APQ2D3U;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PCTT",
@@ -894,9 +894,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = vn.vndms.app;
+				PRODUCT_BUNDLE_IDENTIFIER = .com;
 				PRODUCT_NAME = MNDD;
-				PROVISIONING_PROFILE_SPECIFIER = vndms_dev;
+				PROVISIONING_PROFILE_SPECIFIER = wilding;
 				SWIFT_OBJC_BRIDGING_HEADER = "PCTT/PCTT-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -926,7 +926,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = vn.vndms.app;
+				PRODUCT_BUNDLE_IDENTIFIER = .com;
 				PRODUCT_NAME = MNDD;
 				PROVISIONING_PROFILE_SPECIFIER = VNDMS;
 				SWIFT_OBJC_BRIDGING_HEADER = "PCTT/PCTT-Bridging-Header.h";

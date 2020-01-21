@@ -280,6 +280,7 @@
                 </button>
                 <button opaque="NO" alpha="0.0" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeU-hg-KDu">
                     <rect key="frame" x="340" y="701" width="44" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="I6F-N8-1ZI"/>
                         <constraint firstAttribute="width" constant="44" id="P6n-cW-sqO"/>
@@ -294,8 +295,9 @@
                         <action selector="didPressOption:" destination="-1" eventType="touchUpInside" id="lQf-E5-PKF"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phản hồi đã lưu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ig-Rr-f7j">
-                    <rect key="frame" x="226" y="706" width="106" height="33"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Phản hồi đã lưu " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ig-Rr-f7j">
+                    <rect key="frame" x="218" y="706" width="114" height="33"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="56" id="GLG-Rb-Ruo"/>
                         <constraint firstAttribute="height" constant="33" id="yaP-ys-2er"/>

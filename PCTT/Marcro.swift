@@ -12,6 +12,10 @@ import SDWebImage
 
 import JSONKit_NoWarning
 
+import Photos
+
+import PhotosUI
+
 let screenWidth = UIScreen.main.bounds.size.width
 
 let screenHeight = UIScreen.main.bounds.size.height
@@ -211,6 +215,13 @@ extension Date {
         let calendar = Calendar.current
         let time = calendar.dateComponents([.month, .weekday, .day], from: self)
         return "%i".format(parameters: (type == 0 ? time.day : type == 1 ? time.weekday : time.month)!)
+    }
+}
+
+extension UIImage {
+    func toBase64() -> String? {
+        guard let imageData = self.pngData() else { return nil }
+        return imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
     }
 }
 
@@ -449,3 +460,28 @@ extension UIImage {
     }
 }
 
+extension PHAsset {
+
+    func getURL(completionHandler : @escaping ((_ responseURL : URL?) -> Void)){
+        if self.mediaType == .image {
+            let options: PHContentEditingInputRequestOptions = PHContentEditingInputRequestOptions()
+            options.canHandleAdjustmentData = {(adjustmeta: PHAdjustmentData) -> Bool in
+                return true
+            }
+            self.requestContentEditingInput(with: options, completionHandler: {(contentEditingInput: PHContentEditingInput?, info: [AnyHashable : Any]) -> Void in
+                completionHandler(contentEditingInput!.fullSizeImageURL as URL?)
+            })
+        } else if self.mediaType == .video {
+            let options: PHVideoRequestOptions = PHVideoRequestOptions()
+            options.version = .original
+            PHImageManager.default().requestAVAsset(forVideo: self, options: options, resultHandler: {(asset: AVAsset?, audioMix: AVAudioMix?, info: [AnyHashable : Any]?) -> Void in
+                if let urlAsset = asset as? AVURLAsset {
+                    let localVideoUrl: URL = urlAsset.url as URL
+                    completionHandler(localVideoUrl)
+                } else {
+                    completionHandler(nil)
+                }
+            })
+        }
+    }
+}

@@ -294,6 +294,7 @@ extension PC_Event_Info_ViewController: UITableViewDataSource, UITableViewDelega
         } else {
             if ((eventInfo["EventSharingAttachments"] as! NSArray)[indexPath.row - 1] as! NSDictionary).getValueFromKey("file_type") == "Image" {
                 (self.withView(cellCell, tag: 11) as! UIImageView).imageUrl(url: (eventInfo["fileAttachmentPath"] as! NSArray)[indexPath.row - 1] as! String)
+                print("--->", (eventInfo["fileAttachmentPath"] as! NSArray)[indexPath.row - 1] as! String)
             } else {
 //                let url = NSURL(string: (eventInfo["fileAttachmentPath"] as! NSArray)[indexPath.row - 1] as! String);
 //                let avPlayer = AVPlayer(url: url! as URL);
