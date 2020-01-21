@@ -84,8 +84,10 @@ class Information: NSObject {
         
         offLine = (self.getObject("offline")! as NSDictionary)["data"] as! NSArray
 
-        let mutableOffline = NSMutableArray.init(object: request)
-                
+        let mutableOffline = NSMutableArray.init(array: offLine!)
+                        
+        mutableOffline.insert(request, at: 0)
+        
         self.add(["data": mutableOffline as Any], andKey: "offline")
         
         self.saveOffline()
@@ -95,7 +97,7 @@ class Information: NSObject {
         
         offLine = (self.getObject("offline")! as NSDictionary)["data"] as! NSArray
 
-        let mutableOffline = NSMutableArray.init(object: offLine)
+        let mutableOffline = NSMutableArray.init(array: offLine!)
 
         for dict in mutableOffline {
             if order == (dict as! NSDictionary).getValueFromKey("id") {
@@ -104,7 +106,7 @@ class Information: NSObject {
         }
         
         self.add(["data": mutableOffline as Any], andKey: "offline")
-        
+
         self.saveOffline()
     }
     

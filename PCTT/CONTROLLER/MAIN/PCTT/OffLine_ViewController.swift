@@ -27,6 +27,8 @@ class OffLine_ViewController: UIViewController {
         
         dataList.addObjects(from: Information.offLine as! [Any])
         
+        print(dataList)
+        
         tableView.withCell("PC_Event_Cell")
     }
     
@@ -34,26 +36,60 @@ class OffLine_ViewController: UIViewController {
         super.viewWillAppear(animated)
     }
     
-    func requestDeleteEvent(id: String) {
-       LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink":"".urlGet(postFix: "event/delete/" + id),
-                                                   "header":["Authorization":Information.token == nil ? "" : Information.token!],
-                                                   "method":"GET",
-                                                   "overrideAlert":"1",
-                                                   "overrideLoading":"1",
-                                                   "host":self], withCache: { (cacheString) in
-       }, andCompletion: { (response, errorCode, error, isValid, object) in
-           let result = response?.dictionize() ?? [:]
-                                          
-           if result.getValueFromKey("status") != "OK" {
-               self.showToast(response?.dictionize().getValueFromKey("data") == "" ? "Lỗi xảy ra, mời bạn thử lại" : response?.dictionize().getValueFromKey("data"), andPos: 0)
-               return
-           }
-          
-            self.tableView.reloadData()
+    func didPressSubmit(object: NSDictionary) {
+        
+        print(object)
+//           let array = NSMutableArray.init()
+//
+//           for dict in dataList {
+//               let d = dict as! NSDictionary
+//               array.add(["file": d["file"] , "fileName": d["fileName"], "key":"ds"])
+//           }
+//
+//           var lat = "0"
+//
+//           var lng = "0"
+//
+//           if (Permission.shareInstance()?.isLocationEnable())! {
+//               let location = Permission.shareInstance()?.currentLocation()! as! NSDictionary
+//
+//               lat = location.getValueFromKey("lat")
+//
+//               lng = location.getValueFromKey("lng")
+//           }
+              
+//        let id = object.getValueFromKey("id")
+//        print(id)
+//           Information.removeOffline(order: id as! String)
+//           self.dataList.removeAllObjects()
+//           self.dataList.addObjects(from: Information.offLine as! [Any])
+//           self.tableView.reloadData()
+                
+        LTRequest.sharedInstance()?.didRequestMultiPart(["CMD_CODE":"event/",
+                                                       "header":["Authorization":Information.token == nil ? "" : Information.token!],
+                                                       "data": object["data"],
+                                                       "field": object["field"],
+                                                       "overrideAlert":"1",
+                                                       "overrideLoading":"1",
+                                                       "postFix":"event/",
+                                                       "host":self], withCache: { (cacheString) in
+           }, andCompletion: { (response, errorCode, error, isValid, object) in
+               let result = response?.dictionize() ?? [:]
 
-          self.showToast("Xoá thành công", andPos: 0)
-        })
-    }
+               if result.getValueFromKey("status") != "OK" {
+                   self.showToast(response?.dictionize().getValueFromKey("data") == "" ? "Lỗi xảy ra, mời bạn thử lại" : response?.dictionize().getValueFromKey("data"), andPos: 0)
+                   return
+               }
+
+               self.showToast("Cập nhật thông tin thành công", andPos: 0)
+
+//                let id = object!["id"]
+//                Information.removeOffline(order: id as! String)
+//                self.dataList.removeAllObjects()
+//                self.dataList.addObjects(from: Information.offLine as! [Any])
+//                self.tableView.reloadData()
+           })
+       }
     
     @IBAction func didPressBack() {
         self.navigationController?.popViewController(animated: true)
@@ -81,10 +117,11 @@ extension OffLine_ViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCell.EditingStyle.delete) {
-            let data = dataList![indexPath.row] as! NSDictionary
-            self.requestDeleteEvent(id: data.getValueFromKey("id"))
+            let id = (dataList![indexPath.row] as! NSDictionary)["id"]
+            Information.removeOffline(order: id as! String)
             self.dataList.removeObject(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            self.tableView.reloadData()
         }
     }
     
@@ -92,33 +129,29 @@ extension OffLine_ViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier:"PC_Event_Cell", for: indexPath)
         
-//        let data = dataList![indexPath.row] as! NSDictionary
-//
-//        
-//        let image = self.withView(cell, tag: 11) as! UIImageView
-//
-//        image.image = UIImage(named: "event")
-//        
-//        let title = self.withView(cell, tag: 1) as! UILabel
-//        
-//        title.text = data["event_name"] as? String
-//        
-//        let des = self.withView(cell, tag: 2) as! UILabel
-//        
-//        des.text = data["event_description"] as? String
+        let data = (dataList![indexPath.row] as! NSDictionary)["data"] as! NSDictionary
+
+
+        let image = self.withView(cell, tag: 11) as! UIImageView
+
+        image.image = UIImage(named: "event")
+
+        let title = self.withView(cell, tag: 1) as! UILabel
+
+        title.text = data["event_name"] as? String
+
+        let des = self.withView(cell, tag: 2) as! UILabel
+
+        des.text = data["event_description"] as? String
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        let data = dataList![indexPath.row] as! NSDictionary
 
-        let eventInfo = PC_Event_Info_ViewController.init()
-        
-        eventInfo.eventInfo = data
-        
-        self.navigationController?.pushViewController(eventInfo, animated: true)
+        let data = (dataList![indexPath.row] as! NSDictionary)
+
+        self.didPressSubmit(object: data)
     }
 }

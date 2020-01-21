@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.add(["data": NSMutableArray()], andKey: "offline")
         }
         
-        print(self.getObject("offline"))
+//        print(self.getObject("offline"))
         
         if self.getValue("autoId") == nil {
             self.addValue("1", andKey: "autoId")

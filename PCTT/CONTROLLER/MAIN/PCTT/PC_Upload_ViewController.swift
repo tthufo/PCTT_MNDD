@@ -133,8 +133,8 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
         let auto:Int? = Int(autoId ?? "0")
 
         self.addValue(String(auto! + 1), andKey: "autoId")
-        
-        print(Information.getOffline())
+                
+        self.navigationController?.popViewController(animated: true)
     }
 
     
