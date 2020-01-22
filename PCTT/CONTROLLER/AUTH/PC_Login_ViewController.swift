@@ -58,9 +58,9 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
         uName.addTarget(self, action: #selector(textIsChanging), for: .editingChanged)
         pass.addTarget(self, action: #selector(textIsChanging), for: .editingChanged)
         
-//        FirePush.shareInstance()?.completion({ (state, info) in
-//            print(info)
-//        })
+        FirePush.shareInstance()?.completion({ (state, info) in
+            print(info)
+        })
         
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         
@@ -289,8 +289,8 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
         LTRequest.sharedInstance()?.didRequestInfo(["CMD_CODE":"auth/login",
                                                     "username":uName.text as Any,
                                                     "password":pass.text as Any,
-//                                                    "device_id":FirePush.shareInstance()?.deviceToken() ?? "",
-//                                                    "platform":"IOS",
+                                                    "device_id":FirePush.shareInstance()?.deviceToken() ?? "",
+                                                    "platform":"IOS",
                                                     "overrideAlert":"1",
                                                     "overrideLoading":"1",
                                                     "postFix":"auth/login",
