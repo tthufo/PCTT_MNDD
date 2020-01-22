@@ -46,20 +46,20 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
         
     var inner: Bool = true
 
-      @IBOutlet var headerImg: UIImageView!
+    @IBOutlet var headerImg: UIImageView!
 
-        @IBOutlet var logoLeft: UIImageView!
+    @IBOutlet var logoLeft: UIImageView!
         
-        override func viewDidLoad() {
-            super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
             
-            if Information.check != "0" {
-                logoLeft.image = UIImage(named: "logo_tc")
-            }
+        if Information.check != "0" {
+            logoLeft.image = UIImage(named: "logo_tc")
+        }
           
-          if Information.check == "0" {
-              headerImg.image = UIImage(named: "bg_text_dms")
-          }
+        if Information.check == "0" {
+            headerImg.image = UIImage(named: "bg_text_dms")
+        }
 
         textView.inputAccessoryView = self.toolBar()
 
@@ -121,25 +121,13 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
            array.add(["file": d["file"] , "fileName": d["fileName"], "key":"ds"])
        }
        
-        var lat = "0"
-        
-        var lng = "0"
-
-        if (Permission.shareInstance()?.isLocationEnable())! {
-            let location = Permission.shareInstance()?.currentLocation()! as! NSDictionary
-            
-            lat = location.getValueFromKey("lat")
-            
-            lng = location.getValueFromKey("lng")
-        }
-        
         let autoId = self.getValue("autoId")
                 
         Information.addOffline(request: ["id": autoId, "field": array, "data":[
             "event_name": textField.text as Any,
             "event_description": textView.text as Any,
-            "lat": lat,
-            "lon": lng]])
+            "lat": latField.text,
+            "lon": lngField.text]])
         
         let auto:Int? = Int(autoId ?? "0")
 
@@ -165,25 +153,13 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
             array.add(["file": d["file"] , "fileName": d["fileName"], "key":"ds"])
         }
         
-        var lat = "0"
-        
-        var lng = "0"
-
-        if (Permission.shareInstance()?.isLocationEnable())! {
-            let location = Permission.shareInstance()?.currentLocation()! as! NSDictionary
-            
-            lat = location.getValueFromKey("lat")
-            
-            lng = location.getValueFromKey("lng")
-        }
-        
         LTRequest.sharedInstance()?.didRequestMultiPart(["CMD_CODE":"event/",
                                                     "header":["Authorization":Information.token == nil ? "" : Information.token!],
                                                     "data":[
                                                     "event_name": textField.text as Any,
                                                     "event_description": textView.text as Any,
-                                                    "lat": lat,
-                                                    "lon": lng],
+                                                    "lat": latField.text,
+                                                    "lon": lngField.text],
                                                     "field": dataList.count != 0 ? array : [],
                                                     "overrideAlert":"1",
                                                     "overrideLoading":"1",

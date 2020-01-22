@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FC5D981F22F54134006FA3F1"
-               BuildableName = "Mu&#x31b;&#x323;c Nu&#x31b;o&#x31b;&#x301;c &#x110;e&#x302; &#x110;ie&#x302;&#x300;u.app"
+               BuildableName = "MNDD.app"
                BlueprintName = "PCTT"
                ReferencedContainer = "container:PCTT.xcodeproj">
             </BuildableReference>
@@ -31,7 +31,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC5D981F22F54134006FA3F1"
-            BuildableName = "Mu&#x31b;&#x323;c Nu&#x31b;o&#x31b;&#x301;c &#x110;e&#x302; &#x110;ie&#x302;&#x300;u.app"
+            BuildableName = "MNDD.app"
             BlueprintName = "PCTT"
             ReferencedContainer = "container:PCTT.xcodeproj">
          </BuildableReference>
@@ -54,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC5D981F22F54134006FA3F1"
-            BuildableName = "Mu&#x31b;&#x323;c Nu&#x31b;o&#x31b;&#x301;c &#x110;e&#x302; &#x110;ie&#x302;&#x300;u.app"
+            BuildableName = "MNDD.app"
             BlueprintName = "PCTT"
             ReferencedContainer = "container:PCTT.xcodeproj">
          </BuildableReference>
@@ -71,7 +71,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC5D981F22F54134006FA3F1"
-            BuildableName = "Mu&#x31b;&#x323;c Nu&#x31b;o&#x31b;&#x301;c &#x110;e&#x302; &#x110;ie&#x302;&#x300;u.app"
+            BuildableName = "MNDD.app"
             BlueprintName = "PCTT"
             ReferencedContainer = "container:PCTT.xcodeproj">
          </BuildableReference>
