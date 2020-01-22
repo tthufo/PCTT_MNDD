@@ -236,7 +236,7 @@ extension PC_Event_Info_ViewController: UITableViewDataSource, UITableViewDelega
             
             let indexing = IndexPath(row: indexPath.row + 1, section: 0)
             
-//            print(indexPath.row)
+            print(indexPath.row)
             
             if let cell = tableView.cellForRow(at: indexing) as? PlayerCell1, let playURL = cell.data?.play_Url {
                         // this thumb use when transition start and your video dosent start
@@ -279,11 +279,12 @@ extension PC_Event_Info_ViewController: UITableViewDataSource, UITableViewDelega
         if indexPath.row != 0 {
         let obj = ((eventInfo["EventSharingAttachments"] as! NSArray)[indexPath.row - 1] as! NSDictionary)
         
-            print(obj)
             
         if obj.getValueFromKey("file_type") == "Video" {
              let videoCell = tableView.dequeueReusableCell(withIdentifier:  "PlayerCell1", for: indexPath) as! PlayerCell1
             
+            print("--->", obj)
+
             let url = NSURL(string: (eventInfo["fileAttachmentPath"] as! NSArray)[indexPath.row - 1] as! String);
             
             videoCell.data = DataObj(image: #imageLiteral(resourceName: "seven"),

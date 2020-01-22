@@ -5,7 +5,7 @@ target 'PCTT' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'AllPod', '~> 0.1'
+  pod 'AllPod', '~> 0.1.9'
   
   pod 'GoogleMaps', '~> 3.3'
 
