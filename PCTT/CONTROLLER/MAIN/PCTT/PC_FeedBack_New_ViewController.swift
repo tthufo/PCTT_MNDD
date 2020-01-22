@@ -31,13 +31,13 @@ class PC_FeedBack_New_ViewController: UIViewController, UITextViewDelegate {
         override func viewDidLoad() {
             super.viewDidLoad()
             
-            if Information.check != "0" {
-                logoLeft.image = UIImage(named: "logo_tc")
-            }
+        if Information.check != "0" {
+            logoLeft.image = UIImage(named: "logo_tc")
+        }
           
-          if Information.check == "0" {
-              headerImg.image = UIImage(named: "bg_text_dms")
-          }
+        if Information.check == "0" {
+            headerImg.image = UIImage(named: "bg_text_dms")
+        }
 
         textView.inputAccessoryView = self.toolBar()
 

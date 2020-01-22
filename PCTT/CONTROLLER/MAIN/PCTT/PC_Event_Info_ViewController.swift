@@ -79,12 +79,12 @@ class PC_Event_Info_ViewController: UIViewController {
         self.navigationController?.mmPlayerTransition.push.pass(setting: { (_) in
             
         })
-        offsetObservation = playerCollect.observe(\.contentOffset, options: [.new]) { [weak self] (_, value) in
+        offsetObservation = tableView.observe(\.contentOffset, options: [.new]) { [weak self] (_, value) in
             guard let self = self, self.presentedViewController == nil else {return}
             NSObject.cancelPreviousPerformRequests(withTarget: self)
             self.perform(#selector(self.startLoading), with: nil, afterDelay: 0.2)
         }
-        playerCollect.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right:0)
+//        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right:0)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             self?.updateByContentOffset()
             self?.startLoading()
@@ -181,14 +181,13 @@ extension PC_Event_Info_ViewController: UITableViewDataSource, UITableViewDelega
         return (eventInfo["EventSharingAttachments"] as! NSArray).count + 1
     }
 
-    
         fileprivate func updateByContentOffset() {
     //        if mmPlayerLayer.isShrink {
     //            return
     //        }
-            
-            if let path = findCurrentPath(),
-                self.presentedViewController == nil {
+            if let path = findCurrentPath()
+//                ,self.presentedViewController == nil
+            {
                 self.updateCell(at: path)
                 //Demo SubTitle
     //            if path.row == 0, self.mmPlayerLayer.subtitleSetting.subtitleType == nil {
@@ -236,29 +235,36 @@ extension PC_Event_Info_ViewController: UITableViewDataSource, UITableViewDelega
             
             let indexing = IndexPath(row: indexPath.row + 1, section: 0)
             
-            print(indexPath.row)
+            print(tableView.cellForRow(at: indexing))
             
             if let cell = tableView.cellForRow(at: indexing) as? PlayerCell1, let playURL = cell.data?.play_Url {
                         // this thumb use when transition start and your video dosent start
             //            mmPlayerLayer.thumbImageView.image = cell.imgView.image
                         // set video where to play
                 print(cell.data?.play_Url)
-                        mmPlayerLayer.playView = cell.imgView
-                        mmPlayerLayer.set(url: playURL)
-                    }
+                mmPlayerLayer.playView = cell.imgView
+                mmPlayerLayer.set(url: playURL)
+            }
         }
         
         @objc fileprivate func startLoading() {
             self.updateByContentOffset()
-            if self.presentedViewController != nil {
-                return
-            }
+//            if self.presentedViewController != nil {
+//                return
+//            }
             // start loading video
             mmPlayerLayer.resume()
         }
         
         private func findCurrentPath() -> IndexPath? {
             let p = CGPoint(x: tableView.frame.width/2, y: tableView.contentOffset.y + tableView.frame.width/2)
+            
+            
+            let bottomPoint = CGPoint(x: tableView.frame.midX, y: tableView.frame.maxY)
+
+            
+//            print(bottomPoint)
+
             return tableView.indexPathForRow(at: p)
         }
         
@@ -278,21 +284,17 @@ extension PC_Event_Info_ViewController: UITableViewDataSource, UITableViewDelega
 
         if indexPath.row != 0 {
         let obj = ((eventInfo["EventSharingAttachments"] as! NSArray)[indexPath.row - 1] as! NSDictionary)
-        
-            
         if obj.getValueFromKey("file_type") == "Video" {
              let videoCell = tableView.dequeueReusableCell(withIdentifier:  "PlayerCell1", for: indexPath) as! PlayerCell1
-            
-            print("--->", obj)
 
             let url = NSURL(string: (eventInfo["fileAttachmentPath"] as! NSArray)[indexPath.row - 1] as! String);
-            
+
             videoCell.data = DataObj(image: #imageLiteral(resourceName: "seven"),
                                      play_Url: url as URL?,
             title: "",
             content: "")
-
-            return videoCell
+            
+            return videoCell as! PlayerCell1
         }
     }
         
@@ -307,13 +309,22 @@ extension PC_Event_Info_ViewController: UITableViewDataSource, UITableViewDelega
         } else {
             if ((eventInfo["EventSharingAttachments"] as! NSArray)[indexPath.row - 1] as! NSDictionary).getValueFromKey("file_type") == "Image" {
                 (self.withView(cellCell, tag: 11) as! UIImageView).imageUrl(url: (eventInfo["fileAttachmentPath"] as! NSArray)[indexPath.row - 1] as! String)
-                print("--->", (eventInfo["fileAttachmentPath"] as! NSArray)[indexPath.row - 1] as! String)
+//                print("--->", (eventInfo["fileAttachmentPath"] as! NSArray)[indexPath.row - 1] as! String)
             } else {
 //                let url = NSURL(string: (eventInfo["fileAttachmentPath"] as! NSArray)[indexPath.row - 1] as! String);
-//                let avPlayer = AVPlayer(url: url! as URL);
-//                (cellCell as! VideoTableViewCell).playerView?.playerLayer.player = avPlayer;
-//
-//                (cellCell as! PlayerCell1).data = DemoSource.shared.demoData[0]
+////                let avPlayer = AVPlayer(url: url! as URL);
+//                print(cellCell)
+////                (cellCell as! VideoTableViewCell).playerView?.playerLayer.player = avPlayer;
+////                (cellCell as! VideoTableViewCell).data = DataObj(image: #imageLiteral(resourceName: "seven"),
+////                                         play_Url: url as URL?,
+////                title: "",
+////                content: "")
+//                (cellCell as! PlayerCell1).data = DataObj(image: #imageLiteral(resourceName: "seven"),
+//                                         play_Url: url as URL?,
+//                                        title: "",
+//                                        content: "")
+//                print("--->", (eventInfo["fileAttachmentPath"] as! NSArray)[indexPath.row - 1] as! String)
+//                self.updateCell(at: indexPath)
             }
         }
 
