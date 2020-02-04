@@ -114,8 +114,7 @@ class PC_Info_ViewController: UIViewController {
                return
            }
         
-        self.showToast("Cài đặt thành công", andPos: 0)
-           
+           self.showToast("Cài đặt thành công", andPos: 0)
        })
     }
 }

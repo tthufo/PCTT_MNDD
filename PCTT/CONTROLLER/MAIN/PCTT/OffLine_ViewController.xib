@@ -80,8 +80,8 @@
                                 <action selector="didPressBack" destination="-1" eventType="touchUpInside" id="ZgU-Zc-GcR"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phản hồi đã lưu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdE-p8-X7f">
-                            <rect key="frame" x="138.5" y="11" width="137.5" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin đã lưu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdE-p8-X7f">
+                            <rect key="frame" x="134.5" y="11" width="145" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="Dx3-Nv-Sfm"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="87.5" id="edM-3g-dD6"/>

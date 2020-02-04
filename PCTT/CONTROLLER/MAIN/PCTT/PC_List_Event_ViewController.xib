@@ -90,8 +90,8 @@
                                 <action selector="didPressBack" destination="-1" eventType="touchUpInside" id="qwd-S8-cYR"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hình ảnh T.Tai" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7CR-zL-QIP">
-                            <rect key="frame" x="145" y="11" width="124.5" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cung cấp thông tin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7CR-zL-QIP">
+                            <rect key="frame" x="122" y="11" width="170" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="WrF-8O-A8h"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="87.5" id="iP9-nI-tEN"/>
@@ -236,8 +236,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" alpha="0.0" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Thêm phản hồi " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qK2-yV-SzW">
-                    <rect key="frame" x="221.5" y="627" width="110" height="33"/>
+                <label opaque="NO" clipsSubviews="YES" alpha="0.0" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Thêm thông tin " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qK2-yV-SzW">
+                    <rect key="frame" x="219" y="627" width="112.5" height="33"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="33" id="twK-f1-dJm"/>
@@ -296,8 +296,8 @@
                         <action selector="didPressOption:" destination="-1" eventType="touchUpInside" id="lQf-E5-PKF"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Phản hồi đã lưu " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ig-Rr-f7j">
-                    <rect key="frame" x="218" y="728" width="114" height="33"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin đã lưu " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ig-Rr-f7j">
+                    <rect key="frame" x="216" y="728" width="116" height="33"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="56" id="GLG-Rb-Ruo"/>

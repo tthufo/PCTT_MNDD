@@ -16,7 +16,7 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
     
     var dataList: NSMutableArray = [["title": "D.sách trạm", "img": "ic_list_station", "category": "1"],
                                     ["title": "Bản đồ", "img": "ic_bandonen-1", "category": "2"],
-                                    ["title": "Phản hồi", "img": "ic_feedback_home", "category": "3"],
+                                    ["title": "Cung cấp thông tin", "img": "ic_feedback_home", "category": "3"],
                                     ["title": "Cảnh báo", "img": "ic_notification_home", "category": "4"],
                                     ["title": "T.tin t.khoản", "img": "ic_user_info_home", "category": "5"],
                                     ["title": "Thiết lập", "img": "ic_setting_home", "category": "6"],

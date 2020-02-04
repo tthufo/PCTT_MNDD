@@ -73,8 +73,8 @@
                                 <constraint firstAttribute="width" constant="260" id="hXV-O2-vQw"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đ.Điểm Y.Thích" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAR-pC-fnW">
-                            <rect key="frame" x="92.5" y="11" width="135.5" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thông tin bản đồ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAR-pC-fnW">
+                            <rect key="frame" x="85" y="11" width="150.5" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="87.5" id="GRn-m2-vWh"/>
                                 <constraint firstAttribute="height" constant="21" id="f42-k2-Ndc"/>
