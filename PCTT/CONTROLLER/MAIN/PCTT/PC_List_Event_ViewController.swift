@@ -160,10 +160,12 @@ class PC_List_Event_ViewController: UIViewController {
           
           self.dataList.removeAllObjects()
         
+          self.dataList.addObjects(from: Information.offLine as! [Any])
+
           self.dataList.addObjects(from: response?.dictionize()["data"] as! [Any])
           
           self.tableView.reloadData()
-        
+                
         if self.dataList.count == 0 {
             self.showToast("Không có dữ liệu. Mời bạn thử lại sau", andPos: 0)
         }
@@ -190,7 +192,37 @@ class PC_List_Event_ViewController: UIViewController {
           
             self.tableView.reloadData()
 
-          self.showToast("Xoá thành công", andPos: 0)
+            self.showToast("Xoá thành công", andPos: 0)
+        })
+    }
+    
+    func didPressSubmit(data: NSDictionary) {
+        self.showSVHUD("", andOption: 0)
+     LTRequest.sharedInstance()?.didRequestMultiPart(["CMD_CODE":"event/",
+                                                    "header":["Authorization":Information.token == nil ? "" : Information.token!],
+                                                    "data": data["data"] as Any,
+                                                    "field": data["field"] as Any,
+                                                    "overrideAlert":"1",
+                                                    "overrideLoading":"1",
+                                                    "postFix":"event/",
+                                                    "host":self], withCache: { (cacheString) in
+        }, andCompletion: { (response, errorCode, error, isValid, object) in
+            let result = response?.dictionize() ?? [:]
+            self.hideSVHUD()
+
+            if result.getValueFromKey("status") != "OK" {
+                self.showToast(response?.dictionize().getValueFromKey("data") == "" ? "Lỗi xảy ra, mời bạn thử lại" : response?.dictionize().getValueFromKey("data"), andPos: 0)
+                return
+            }
+
+            self.showToast("Cập nhật thông tin thành công", andPos: 0)
+
+            let id = data.getValueFromKey("id")
+//            self.dataList.removeAllObjects()
+            Information.removeOffline(order: id!)
+            self.requestEvent()
+//            self.dataList.addObjects(from: Information.offLine as! [Any])
+//            self.tableView.reloadData()
         })
     }
     
@@ -219,11 +251,23 @@ extension PC_List_Event_ViewController: UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let data = dataList![indexPath.row] as! NSDictionary
+
+        let isOffline = data.response(forKey: "data")
+        
         if (editingStyle == UITableViewCell.EditingStyle.delete) {
-            let data = dataList![indexPath.row] as! NSDictionary
-            self.requestDeleteEvent(id: data.getValueFromKey("id"))
-            self.dataList.removeObject(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            if isOffline {
+                let id = (dataList![indexPath.row] as! NSDictionary)["id"]
+                Information.removeOffline(order: id as! String)
+                self.dataList.removeObject(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                self.tableView.reloadData()
+            } else {
+                self.requestDeleteEvent(id: data.getValueFromKey("id"))
+                self.dataList.removeObject(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
         }
     }
     
@@ -233,18 +277,21 @@ extension PC_List_Event_ViewController: UITableViewDataSource, UITableViewDelega
         
         let data = dataList![indexPath.row] as! NSDictionary
 
+        let isOffline = data.response(forKey: "data")
         
         let image = self.withView(cell, tag: 11) as! UIImageView
-
-        image.image = UIImage(named: "event")
         
+        image.image = UIImage(named: "check_blue")
+        
+        image.isHidden = isOffline ? true : false
+
         let title = self.withView(cell, tag: 1) as! UILabel
         
-        title.text = data["event_name"] as? String
+        title.text = isOffline ? (data["data"] as! NSDictionary).getValueFromKey("event_name") : data["event_name"] as? String
         
         let des = self.withView(cell, tag: 2) as! UILabel
         
-        des.text = data["event_description"] as? String
+        des.text = isOffline ? (data["data"] as! NSDictionary).getValueFromKey("event_description") : data["event_description"] as? String
         
         return cell
     }
@@ -254,10 +301,20 @@ extension PC_List_Event_ViewController: UITableViewDataSource, UITableViewDelega
         
         let data = dataList![indexPath.row] as! NSDictionary
 
-        let eventInfo = PC_Event_Info_ViewController.init()
-        
-        eventInfo.eventInfo = data
-        
-        self.navigationController?.pushViewController(eventInfo, animated: true)
+        let isOffline = data.response(forKey: "data")
+
+        if isOffline {
+            DropAlert.shareInstance()?.alert(withInfor: ["title":"Đồng bộ dữ liệu", "message": "Bạn có muốn đồng bộ sự kiện " + ((data["data"] as! NSDictionary)["event_name"] as! String) , "buttons": ["Cập nhật"], "cancel":"Để sau"], andCompletion: { (index, obj) in
+                if index == 0 {
+                    self.didPressSubmit(data: data)
+                }
+            })
+        } else {
+            let eventInfo = PC_Event_Info_ViewController.init()
+            
+            eventInfo.eventInfo = data
+            
+            self.navigationController?.pushViewController(eventInfo, animated: true)
+        }
     }
 }

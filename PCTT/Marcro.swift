@@ -88,7 +88,7 @@ func tabbar() -> TG_Root_ViewController {
 
 extension String {
     func replace(target: String, withString: String) -> String {
-        return self.replace(target:target, withString:withString)
+        return self.replacingOccurrences(of: target, with: withString)
     }
 }
 

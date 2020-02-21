@@ -126,8 +126,8 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
         Information.addOffline(request: ["id": autoId, "field": array, "data":[
             "event_name": textField.text as Any,
             "event_description": textView.text as Any,
-            "lat": latField.text,
-            "lon": lngField.text]])
+            "lat": latField.text?.replace(target: "Kinh độ: ", withString: ""),
+            "lon": lngField.text?.replace(target: "Vĩ độ: ", withString: "")]])
         
         let auto:Int? = Int(autoId ?? "0")
 
@@ -158,8 +158,8 @@ class PC_Upload_ViewController: UIViewController, UITextFieldDelegate, UITextVie
                                                     "data":[
                                                     "event_name": textField.text as Any,
                                                     "event_description": textView.text as Any,
-                                                    "lat": latField.text,
-                                                    "lon": lngField.text],
+                                                    "lat": latField.text?.replace(target: "Kinh độ: ", withString: ""),
+                                                    "lon": lngField.text?.replace(target: "Vĩ độ: ", withString: "")],
                                                     "field": dataList.count != 0 ? array : [],
                                                     "overrideAlert":"1",
                                                     "overrideLoading":"1",
