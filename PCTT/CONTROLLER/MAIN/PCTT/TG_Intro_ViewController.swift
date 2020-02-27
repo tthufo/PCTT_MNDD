@@ -181,8 +181,9 @@ extension TG_Intro_ViewController: UITableViewDataSource, UITableViewDelegate {
         let head = Bundle.main.loadNibNamed("PC_Header_Tab", owner: nil, options: nil)![0] as! UIView
                 
         let sec = (dataList[section] as! NSMutableDictionary);
-        
-        (self.withView(head, tag: 11) as! UILabel).text = sec.getValueFromKey("title")
+                
+        (self.withView(head, tag: 11) as! UILabel).attributedText = (sec.getValueFromKey("title")!).convertHtmlToAttributedStringWithCSS(font: UIFont(name: "Arial", size: 15), csscolor: "black", lineheight: 5, csstextalign: "left")
+
         
         (self.withView(head, tag: 12) as! UIButton).action(forTouch: [:]) { (obj) in
             sec["open"] = sec.getValueFromKey("open") == "0" ? "1" : "0"
@@ -221,7 +222,7 @@ extension TG_Intro_ViewController: UITableViewDataSource, UITableViewDelegate {
         let data = ((dataList![indexPath.section] as! NSDictionary)["data"] as! NSArray)[indexPath.row] as! NSDictionary
         
         let cell = tableView.dequeueReusableCell(withIdentifier: data.getValueFromKey("xuthe") == "0" ? "Province_Cell" : "Province1", for: indexPath)
-         
+                 
          let name = self.withView(cell, tag: 11) as! UILabel
                         
          name.text = data.getValueFromKey("vi_tri")
@@ -312,7 +313,7 @@ extension TG_Intro_ViewController: UITableViewDataSource, UITableViewDelegate {
         
         let web = PC_Inner_Map_ViewController.init()
 
-        web.directUrl = "http://eladmin.gisgo.vn/?cmd=station&id_kttv=%@&id_vitrimucnuoc=%@&x=@&y=%@&lat=%@&lng=%@".format(parameters: data.getValueFromKey("tram_kttv_id"), data.getValueFromKey("id"), data.getValueFromKey("kinh_do"), data.getValueFromKey("vi_do"), lat, lng ) as NSString
+        web.directUrl = "http://eladmin.gisgo.vn/?cmd=station&id_kttv=%@&id_vitrimucnuoc=%@&x=@&y=%@&lat=%@&lng=%@&token=%@".format(parameters: data.getValueFromKey("tram_kttv_id"), data.getValueFromKey("id"), data.getValueFromKey("kinh_do"), data.getValueFromKey("vi_do"), lat, lng, FirePush.shareInstance()?.deviceToken() ?? "") as NSString
         
         self.navigationController?.pushViewController(web, animated: true)
     }
@@ -320,3 +321,36 @@ extension TG_Intro_ViewController: UITableViewDataSource, UITableViewDelegate {
 
 
 //http://eladmin.gisgo.vn/?cmd=station&id_kttv=246&id_vitrimucnuoc=0&x=105.42376053813&y=21.28904891265&lat=21.0077147&lng=105.832827
+
+
+extension String {
+    private var convertHtmlToNSAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else {
+            return nil
+        }
+        do {
+            return try NSAttributedString(data: data,options: [.documentType: NSAttributedString.DocumentType.html,.characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
+        }
+        catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
+    public func convertHtmlToAttributedStringWithCSS(font: UIFont? , csscolor: String , lineheight: Int, csstextalign: String) -> NSAttributedString? {
+        guard let font = font else {
+            return convertHtmlToNSAttributedString
+        }
+        let modifiedString = "<style>body{font-family: '\(font.fontName)'; font-size:\(font.pointSize)px; color: \(csscolor); line-height: \(lineheight)px; text-align: \(csstextalign); }</style>\(self)";
+        guard let data = modifiedString.data(using: .utf8) else {
+            return nil
+        }
+        do {
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
+        }
+        catch {
+            print(error)
+            return nil
+        }
+    }
+}

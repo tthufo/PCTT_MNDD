@@ -32,31 +32,31 @@ class PC_Inner_Info_ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var emailBG: UIView!
 
-      @IBOutlet var rePassBG: UIView!
+    @IBOutlet var rePassBG: UIView!
 
-      @IBOutlet var emailError: UILabel!
+    @IBOutlet var emailError: UILabel!
 
-      @IBOutlet var rePassError: UILabel!
+    @IBOutlet var rePassError: UILabel!
     
     @IBOutlet var submit: UIButton!
 
     
     var kb: KeyBoard!
     
-      @IBOutlet var headerImg: UIImageView!
+    @IBOutlet var headerImg: UIImageView!
 
-        @IBOutlet var logoLeft: UIImageView!
+    @IBOutlet var logoLeft: UIImageView!
         
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            
-            if Information.check != "0" {
-                logoLeft.image = UIImage(named: "logo_tc")
-            }
-          
-          if Information.check == "0" {
-              headerImg.image = UIImage(named: "bg_text_dms")
-          }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if Information.check != "0" {
+            logoLeft.image = UIImage(named: "logo_tc")
+        }
+      
+      if Information.check == "0" {
+          headerImg.image = UIImage(named: "bg_text_dms")
+      }
 
         
         kb = KeyBoard.shareInstance()

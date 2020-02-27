@@ -39,8 +39,6 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
         if Information.check == "0" {
             headerImg.image = UIImage(named: "bg_text_dms")
         }
-        
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,7 +120,7 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
             self.navigationController?.pushViewController(question, animated: true)
         } else if indexPath.item == 1 {
             let web = PC_Inner_Map_ViewController.init()
-            web.directUrl = "http://eladmin.gisgo.vn/?cmd=map&lat=%@&lng=%@".format(parameters: lat, lng ) as NSString
+            web.directUrl = "http://eladmin.gisgo.vn/?cmd=map&lat=%@&lng=%@&token=%@".format(parameters: lat, lng, FirePush.shareInstance()?.deviceToken() ?? "") as NSString
             self.navigationController?.pushViewController(web, animated: true)
         } else if indexPath.item == 2 {
             let event = PC_List_Event_ViewController.init()
