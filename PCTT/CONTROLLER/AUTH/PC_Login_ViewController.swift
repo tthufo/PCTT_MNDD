@@ -216,6 +216,9 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
                                 self.navigationController?.pushViewController(PC_Map_ViewController.init(), animated: false)
 //                            }
                         } else {
+                        
+                        Information.check = (dict! as NSDictionary).getValueFromKey("show") == "0" ? "0" : "1"
+
                             UIView.animate(withDuration: 0.5, animations: {
                                 var frame = self.logo.frame
         
@@ -225,6 +228,11 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
         
                                 self.logo.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         
+                                if Information.check == "1" {
+                                   self.logo.image = UIImage(named: "logo_tc")
+                                }
+                             
+                                self.logo.alpha = 1
                             }) { (done) in
                                 if logged {
                                     self.uName.text = Information.log!["name"] as? String

@@ -165,6 +165,21 @@ extension UIImageView {
         }
     }
     
+    func imageUrlHolder (url: String) {
+           self.sd_setImage(with: NSURL.init(string: (url as NSString).encodeUrl())! as URL, placeholderImage: UIImage.init(named: "ic_avatar")) { (image, error, cacheType, url) in
+               if error != nil {
+                   return
+               }
+               
+               if ((image != nil) && cacheType == .none)
+               {
+                   UIView.transition(with: self, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                       self.image = image
+                   }, completion: nil)
+               }
+           }
+       }
+    
     func imageUrlNoCache (url: String) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             SDWebImageManager.shared().loadImage(with: NSURL.init(string: (url as NSString).encodeUrl())! as URL, options: .continueInBackground, progress: { (progress, current, url) in

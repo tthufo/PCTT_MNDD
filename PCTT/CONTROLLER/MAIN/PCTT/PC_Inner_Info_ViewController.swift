@@ -79,7 +79,7 @@ class PC_Inner_Info_ViewController: UIViewController, UITextFieldDelegate {
             avatarTemp = Information.avatar
             avatar.image = avatarTemp
         } else {
-            avatar.imageUrl(url: (Information.userInfo?.getValueFromKey("Avatar"))!)
+            avatar.imageUrlHolder(url: (Information.userInfo?.getValueFromKey("Avatar"))!)
         }
                 
         phone.addTarget(self, action: #selector(textRePassIsChanging), for: .editingChanged)
@@ -119,9 +119,9 @@ class PC_Inner_Info_ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func didPressImage() {
         EM_MenuView.init(settingMenu: [:]).show(completion: { (indexing, obj, menu) in
             switch indexing {
-            case 1:
-                self.didPressPreview(image: self.avatarTemp != nil ? self.avatarTemp as Any: Information.userInfo?.getValueFromKey("Avatar") as Any)
-                break
+//            case 1:
+//                self.didPressPreview(image: self.avatarTemp != nil ? self.avatarTemp as Any: Information.userInfo?.getValueFromKey("Avatar") as Any)
+//                break
             case 2:
                 Permission.shareInstance()?.askCamera { (camType) in
                     switch (camType) {
