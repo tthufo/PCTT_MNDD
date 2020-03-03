@@ -14,11 +14,17 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
     
     @IBOutlet var headerImg: UIImageView!
     
-    var dataList: NSMutableArray = [["title": "D.sách trạm", "img": "ic_list_station", "category": "1"],
+    var dataList: NSMutableArray = Information.check == "1" ?  [["title": "D.sách trạm", "img": "ic_list_station", "category": "1"],
                                     ["title": "Bản đồ", "img": "ic_bandonen-1", "category": "2"],
                                     ["title": "Cung cấp thông tin", "img": "ic_feedback_home", "category": "3"],
                                     ["title": "Cảnh báo", "img": "ic_notification_home", "category": "4"],
                                     ["title": "T.tin t.khoản", "img": "ic_user_info_home", "category": "5"],
+                                    ["title": "Thiết lập", "img": "ic_setting_home", "category": "6"],
+    ] : [["title": "D.sách trạm", "img": "ic_list_station", "category": "1"],
+                                    ["title": "Bản đồ", "img": "ic_bandonen-1", "category": "2"],
+                                    ["title": "Cung cấp thông tin", "img": "ic_feedback_home", "category": "3"],
+                                    ["title": "Cảnh báo", "img": "ic_notification_home", "category": "4"],
+//                                    ["title": "T.tin t.khoản", "img": "ic_user_info_home", "category": "5"],
                                     ["title": "Thiết lập", "img": "ic_setting_home", "category": "6"],
     ]
     
@@ -130,7 +136,7 @@ class PC_Map_ViewController: UIViewController, UICollectionViewDataSource, UICol
             question.isIntro = false
             self.navigationController?.pushViewController(question, animated: true)
         } else if indexPath.item == 4 {
-            let info = PC_Inner_Info_ViewController.init()
+            let info = Information.check == "1" ? PC_Inner_Info_ViewController.init() : PC_Info_ViewController.init()
             self.navigationController?.pushViewController(info, animated: true)
         } else if indexPath.item == 5 {
             let info = PC_Info_ViewController.init()

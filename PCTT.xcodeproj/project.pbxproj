@@ -96,6 +96,7 @@
 		FC8F57F923B7255E0059254E /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8F57F723B7255E0059254E /* VideoTableViewCell.swift */; };
 		FC8F57FA23B7255E0059254E /* VideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8F57F823B7255E0059254E /* VideoTableViewCell.xib */; };
 		FCA5F32B2371DAB700274600 /* PC_Info_Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCA5F32A2371DAB700274600 /* PC_Info_Cell.xib */; };
+		FCA929B0240E4FF90098BC45 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA929AF240E4FF90098BC45 /* WebKit.framework */; };
 		FCB19455231598DA007120AF /* ChatAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB19451231598DA007120AF /* ChatAccessory.swift */; };
 		FCB19456231598DA007120AF /* ChatAccessory.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCB19452231598DA007120AF /* ChatAccessory.xib */; };
 		FCB19457231598DA007120AF /* ChatTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB19453231598DA007120AF /* ChatTable.swift */; };
@@ -235,6 +236,7 @@
 		FC8F57F723B7255E0059254E /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		FC8F57F823B7255E0059254E /* VideoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoTableViewCell.xib; sourceTree = "<group>"; };
 		FCA5F32A2371DAB700274600 /* PC_Info_Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Info_Cell.xib; sourceTree = "<group>"; };
+		FCA929AF240E4FF90098BC45 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		FCB19451231598DA007120AF /* ChatAccessory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAccessory.swift; sourceTree = "<group>"; };
 		FCB19452231598DA007120AF /* ChatAccessory.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatAccessory.xib; sourceTree = "<group>"; };
 		FCB19453231598DA007120AF /* ChatTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTable.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCA929B0240E4FF90098BC45 /* WebKit.framework in Frameworks */,
 				0CD26F75E4DE0792341DCD57 /* Pods_PCTT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +292,7 @@
 		E78C415BAAF8D208F5B2D7EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FCA929AF240E4FF90098BC45 /* WebKit.framework */,
 				9A03BA6C8FBF6A0859CCBEE7 /* Pods_PCTT.framework */,
 			);
 			name = Frameworks;

@@ -185,20 +185,20 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
                         
 //                        self.loginCover.alpha = (dict! as NSDictionary).getValueFromKey("show") == "1" ? 1 : 0
                         
-                        let information = ["company_id": 1, "company_name": "Agrimedia", "count_notification": 0,
-                                           "count_province": 35, "created_at": "2018-10-17T18:34:12.000000Z", "email":"", "name":"AGRIMEDIA", "phone":"0395269036", "token":"7/UUvi8B1wggRDU4NzVGMkNCNjQ1N0MxRjUxOEM3ODAzRURFMDZFNjdz5m2+gorK/ZnphNBl49bUfp9ml9KojHRJPHf4/qN7eWinBqw+J2ktZae5JIhFaa8BMHnsDwPRRmNEy5KeJ+6FU9d24nve+6z8SCNGP733PRiBuJs/NJC++xKP132v9C/dRF4MIHg+17O3qzpmsKLSyjZ+xWwKWAv/6JS2adwSVg==", "user_id":"28"] as [String : Any]
+                        let information = [ "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InR0aGh1dWZmIiwibmJmIjoxNTgzMjI3ODc3LCJleHAiOjE1ODM4MzI2NzcsImlhdCI6MTU4MzIyNzg3N30.qeCVZsvL2Uikzf6KO1wbpmcfFIBwewqeSolg_Gex3-o"] as [String : Any]
                         
-//                        if (dict! as NSDictionary).getValueFromKey("show") == "0" {
+                    if (dict! as NSDictionary).getValueFromKey("show") == "0" {
                             
-//                            self.add(["name":"chungdt" as Any, "pass":"123456aA" as Any], andKey: "log")
-//
-//                            self.add((information as! NSDictionary).reFormat() as? [AnyHashable : Any], andKey: "info")
-//
-//                            Information.saveInfo()
-//
-//                            self.addValue((information as! NSDictionary).getValueFromKey("token"), andKey: "token")
-//
-//                            Information.saveToken()
+                        self.add(["name":"tthhuuff" as Any, "pass":"123456" as Any], andKey: "log")
+
+                        self.add((information as! NSDictionary).reFormat() as? [AnyHashable : Any], andKey: "info")
+
+                        Information.saveInfo()
+
+                        self.addValue((information as! NSDictionary).getValueFromKey("token"), andKey: "token")
+
+                        Information.saveToken()
+                        
                             
                             Information.check = (dict! as NSDictionary).getValueFromKey("show") == "0" ? "0" : "1"
 
@@ -213,9 +213,9 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
 //                            if Information.userInfo?.getValueFromKey("count_province") == "1" {
 //                                self.navigationController?.pushViewController(PC_Station_ViewController.init(), animated: false)
 //                            } else {
-//                                self.navigationController?.pushViewController(PC_Main_ViewController.init(), animated: false)
+                                self.navigationController?.pushViewController(PC_Map_ViewController.init(), animated: false)
 //                            }
-//                        } else {
+                        } else {
                             UIView.animate(withDuration: 0.5, animations: {
                                 var frame = self.logo.frame
         
@@ -235,7 +235,7 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
                                 }
                                 self.setUpLogin()
                             }
-//                        }
+                        }
                     })
                 }
             })
@@ -308,6 +308,8 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
             self.add((response?.dictionize()["data"] as! NSDictionary).reFormat() as? [AnyHashable : Any], andKey: "info")
 
             Information.saveInfo()
+            
+            print(Information.userInfo)
             
             self.addValue((response?.dictionize()["data"] as! NSDictionary).getValueFromKey("Token"), andKey: "token")
 

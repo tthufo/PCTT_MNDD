@@ -268,11 +268,12 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
                                                     "method":"GET",
                                                     "overrideAlert":"1",
                                                     "overrideLoading":"1",
+                                                    "host": self
                                                     ], withCache: { (cacheString) in
         }, andCompletion: { (response, errorCode, error, isValid, object) in
             let result = response?.dictionize() ?? [:]
             self.refreshControl.endRefreshing()
-            
+                        
             if (error != nil) || result.getValueFromKey("status") != "OK" {
                self.showToast(response?.dictionize().getValueFromKey("data") == "" ? "Lỗi xảy ra, mời bạn thử lại" : response?.dictionize().getValueFromKey("data"), andPos: 0)
                return
@@ -280,6 +281,14 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
             
             if response?.dictionize()["data"] is String {
                 self.showToast(response?.dictionize().getValueFromKey("data") == "" ? "Lỗi xảy ra, mời bạn thử lại" : response?.dictionize().getValueFromKey("data"), andPos: 0)
+                self.dataList.removeAllObjects()
+                self.tempList.removeAllObjects()
+                self.tableView.reloadData()
+                return
+            }
+            
+            if response?.dictionize()["data"] is Array<Any> && (response?.dictionize()["data"] as! NSArray).count == 0 {
+                self.showToast("Không có dữ liệu. hãy thử lại sau", andPos: 0)
                 self.dataList.removeAllObjects()
                 self.tempList.removeAllObjects()
                 self.tableView.reloadData()

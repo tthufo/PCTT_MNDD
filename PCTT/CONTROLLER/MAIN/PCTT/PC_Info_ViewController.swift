@@ -42,12 +42,16 @@ class PC_Info_ViewController: UIViewController {
                                                ["title":"Đăng xuất", "image":"logout"]
                                               ])
     
-    dataList = NSMutableArray.init(array: [
+        dataList = NSMutableArray.init(array: Information.check == "1" ? [
                                         //        ["title":"Thông tin tài khoản", "image":"user_info"],
                                                    ["title":"Đổi mật khẩu", "image":"change_pass"],
                                                    ["title":"Cho phép nhận thông báo", "image":"notification", "content":"sw"],
                                                    ["title":"Đăng xuất", "image":"logout"]
-                                                  ])
+            ] :
+            [
+                                               ["title":"Cho phép nhận thông báo", "image":"notification", "content":"sw"],
+            ]
+        )
         
         tableView.withCell("PC_Info_Cell")
         
@@ -176,9 +180,17 @@ extension PC_Info_ViewController: UITableViewDataSource, UITableViewDelegate {
 //            if indexPath.row == 0 {
 //                self.navigationController?.pushViewController(PC_Inner_Info_ViewController.init(), animated: true)
 //            }
-//
+        
             if indexPath.row == 0 {
-                self.navigationController?.pushViewController(PC_ChangePass_ViewController.init(), animated: true)
+                if Information.check == "1" {
+                    self.navigationController?.pushViewController(PC_ChangePass_ViewController.init(), animated: true)
+                } else {
+                    self.didRequestNotification()
+                    let cell = tableView.cellForRow(at: indexPath)
+                    self.addValue(self.getValue("push") == "1" ? "0" : "1", andKey: "push")
+                    let sw = self.withView(cell, tag: 3) as! UISwitch
+                    sw.isOn = self.getValue("push") == "1"
+                }
             }
             
             if indexPath.row == 1 {
