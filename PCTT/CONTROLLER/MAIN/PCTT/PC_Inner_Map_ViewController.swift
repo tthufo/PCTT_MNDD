@@ -47,6 +47,16 @@ class PC_Inner_Map_ViewController: UIViewController, WKUIDelegate, WKNavigationD
         timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { timer in
             self.updating()
         }
+        
+        let backButton = UIButton.init(type: .custom)
+           backButton.setImage(UIImage.init(named: "icon_back"), for: .normal)
+           backButton.frame = CGRect.init(x: 5, y: 10, width: 44, height: 44)
+//           if directUrl == "" {
+               webView.addSubview(backButton)
+//           }
+           backButton.action(forTouch: [:]) { (objc) in
+               self.navigationController?.popViewController(animated: true)
+           }
     }
     
     func updating() {

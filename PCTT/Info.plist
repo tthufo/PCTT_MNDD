@@ -33,17 +33,17 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>MNDD cần truy cập Camera chụp ảnh của bạn cho việc cập nhật thông tin người dùng.</string>
+	<string>Mực Nước Đê Điều cần truy cập Camera chụp ảnh của bạn cho việc cập nhật thông tin người dùng.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>MNDD cần truy cập vị trí của bạn cho việc định vị vùng thời tiết nhanh chóng nhất</string>
+	<string>Mực Nước Đê Điều cần truy cập vị trí của bạn cho việc định vị vùng thời tiết nhanh chóng nhất</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>MNDD cần truy cập vị trí của bạn cho việc định vị vùng thời tiết nhanh chóng nhất</string>
+	<string>Mực Nước Đê Điều cần truy cập vị trí của bạn cho việc định vị vùng thời tiết nhanh chóng nhất</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>MNDD cần truy cập vị trí của bạn cho việc định vị vùng thời tiết nhanh chóng nhất</string>
+	<string>Mực Nước Đê Điều cần truy cập vị trí của bạn cho việc định vị vùng thời tiết nhanh chóng nhất</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>MNDD cần sử dụng Micro của bạn cho việc thu âm.</string>
+	<string>Mực Nước Đê Điều cần sử dụng Micro của bạn cho việc thu âm.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>MNDD cần truy cập Bộ sưu tập ảnh của bạn cho việc cập nhật thông tin người dùng.</string>
+	<string>Mực Nước Đê Điều cần truy cập Bộ sưu tập ảnh của bạn cho việc cập nhật thông tin người dùng.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
