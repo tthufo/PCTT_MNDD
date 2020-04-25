@@ -27,6 +27,14 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var cover: UIView!
     
+    @IBOutlet var bd1: UIView!
+
+    @IBOutlet var bd2: UIView!
+
+    @IBOutlet var bd3: UIView!
+
+    @IBOutlet var bd4: UIView!
+
     @IBOutlet var time: MarqueeLabel!
     
     @IBOutlet var titleLabel: MarqueeLabel!
@@ -56,6 +64,8 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
     var sortValue: String = "1"
     
     var filterValue: String = "1"
+    
+    var level: String = ""
     
     @IBOutlet var sortWidth: NSLayoutConstraint!
     
@@ -135,7 +145,26 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
             self.didPressFilter()
         }
         
+        didRequestTotal()
+        
         didRequestStation()
+        
+        bd1.action(forTouch: [:]) { (objc) in
+            self.level = "3"
+            self.didRequestStation()
+        }
+        bd2.action(forTouch: [:]) { (objc) in
+            self.level = "2"
+            self.didRequestStation()
+        }
+        bd3.action(forTouch: [:]) { (objc) in
+            self.level = "1"
+            self.didRequestStation()
+        }
+        bd4.action(forTouch: [:]) { (objc) in
+            self.level = ""
+            self.didRequestStation()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -178,6 +207,7 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
         EM_MenuView.init(filter: ["data": (self.filterValue == "2" ? sortList1 : sortList) as Any]).show { (indexing, obj, menu) in
                   let ids = (obj as! NSDictionary)["data"] as! NSDictionary
                   if indexing == 100 {
+                    self.level = ""
                     self.sortValue = ids.getValueFromKey("value")
                     self.didRequestStation()
                   menu?.close()
@@ -197,6 +227,7 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
                 self.filterValue = filter as! String
                 self.sortWidth.constant = self.filterValue == "3" || self.filterValue == "4" ? 0 : 44
                 self.sortValue = "1"
+                self.level = ""
                 for dict in self.sortList {
                     (dict as! NSMutableDictionary)["subscribed"] = self.sortList.index(of: dict) == 0 ? 1 : 0
                 }
@@ -225,6 +256,36 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
 //         }
     }
 
+    func didRequestTotal() {
+        LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink": "".urlGet(postFix: "v2/station/waterlevel/total_by_warning"),
+                                                           "header":["Authorization":Information.token == nil ? "" : Information.token!],
+                                                           "method":"GET",
+                                                           "overrideAlert":"1",
+                                                           "overrideLoading":"1",
+                                                           "host": self
+                                                           ], withCache: { (cacheString) in
+               }, andCompletion: { (response, errorCode, error, isValid, object) in
+                   let result = response?.dictionize() ?? [:]
+                               
+                   if (error != nil) || result.getValueFromKey("status") != "OK" {
+                      self.showToast(response?.dictionize().getValueFromKey("data") == "" ? "Lỗi xảy ra, mời bạn thử lại" : response?.dictionize().getValueFromKey("data"), andPos: 0)
+                      return
+                  }
+                   
+                   if response?.dictionize()["data"] is String {
+                       self.showToast(response?.dictionize().getValueFromKey("data") == "" ? "Lỗi xảy ra, mời bạn thử lại" : response?.dictionize().getValueFromKey("data"), andPos: 0)
+                       return
+                   }
+                                
+                let views = [self.bd4, self.bd3, self.bd2, self.bd1]
+                
+                for dict in result["data"] as! NSArray {
+                    (self.withView(views[Int((dict as! NSDictionary).getValueFromKey("cap_baodong"))!], tag: 10) as! UILabel).text = (dict as! NSDictionary).getValueFromKey("total")
+                }
+                   
+           })
+    }
+    
     func didRequestStation() {
         
         var lat = "0"
@@ -239,13 +300,13 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
             lng = location.getValueFromKey("lng")
         }
         
-        var postFix = "v2/station/waterlevel?keyword=&lon=&lat=&basinCode=&riverCode=0&provinceCode="
+        var postFix = "v2/station/waterlevel?keyword=&lon=&lat=&basinCode=&riverCode=0&provinceCode=&levels=" + level
 
         let postFix1 = "province"
         
         let postFix2 = "basin"
         
-        let postFix3 = "v2/station/waterlevel?keyword=&lon=%@&lat=%@&basinCode=&riverCode=0&provinceCode=&orderBy=".format(parameters: lng, lat)
+        let postFix3 = "v2/station/waterlevel?keyword=&lon=%@&lat=%@&basinCode=&riverCode=0&provinceCode=&orderBy=&levels=%@".format(parameters: lng, lat, level)
         
         if filterValue == "1" {
             postFix = postFix + "&orderBy=%@".format(parameters: self.sortValue)
@@ -355,6 +416,7 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func refreshWeatherData(_ sender: Any) {
         search.text = ""
+        self.didRequestTotal()
         self.didRequestStation()
     }
     

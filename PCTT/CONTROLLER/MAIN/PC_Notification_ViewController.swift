@@ -77,7 +77,6 @@ class PC_Notification_ViewController: UIViewController , UITextFieldDelegate {
             bg.imageUrlNoCache(url: Information.bg ?? "")
         }
         
-        
         if Reachability.isConnectedToNetwork(){
             self.didRequestNotification(isShow: true)
         }else{
