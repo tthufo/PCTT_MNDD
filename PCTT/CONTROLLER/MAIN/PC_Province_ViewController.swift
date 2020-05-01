@@ -73,6 +73,8 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var logoLeft: UIImageView!
    
+    var condtion = [["state":false, "value":"3"], ["state":false, "value":"2"], ["state":false, "value":"1"], ["state":false, "value":"0"]]
+    
     override func viewDidLoad() {
        super.viewDidLoad()
        
@@ -108,7 +110,6 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
         ]
         
         sortList1.addObjects(from: list2.withMutable())
-        
         
         
         let list1: NSArray = [["description":"Theo trạm", "subscribed": 1, "value": "1"],
@@ -150,21 +151,30 @@ class PC_Province_ViewController: UIViewController, UITextFieldDelegate {
         didRequestStation()
         
         bd1.action(forTouch: [:]) { (objc) in
-            self.level = "3"
-            self.didRequestStation()
+            self.condition(index: 0)
         }
         bd2.action(forTouch: [:]) { (objc) in
-            self.level = "2"
-            self.didRequestStation()
+            self.condition(index: 1)
         }
         bd3.action(forTouch: [:]) { (objc) in
-            self.level = "1"
-            self.didRequestStation()
+            self.condition(index: 2)
         }
         bd4.action(forTouch: [:]) { (objc) in
-            self.level = ""
-            self.didRequestStation()
+            self.condition(index: 3)
         }
+    }
+    
+    func condition(index: Int) {
+        let view = [bd1, bd2, bd3, bd4][index]
+        (self.withView(view, tag: 99) as! UIImageView).image = UIImage.init(named: (self.condtion[index]["state"] as! Bool) == true ? "check_in" : "check_ac")
+        self.condtion[index]["state"] = (self.condtion[index]["state"] as! Bool) == true ? false : true
+        let result: [String] = self.condtion.filter({ (condition) -> Bool in
+            return (condition["state"] as! Bool) == true
+        }) .map { (objc) in
+            return objc["value"] as! String
+        }
+        self.level = result.joined(separator: ",")
+        self.didRequestStation()
     }
     
     override func viewDidLayoutSubviews() {

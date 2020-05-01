@@ -147,7 +147,7 @@ class PC_Login_ViewController: UIViewController, UITextFieldDelegate {
 //                        }
 //                        self.setUpLogin()
 //                    }
-                    LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink":"https://dl.dropboxusercontent.com/s/8o3v919g4sfgwo7/PCTT_WebView_MNDD.plist", "overrideAlert":"1"], withCache: { (cache) in
+                    LTRequest.sharedInstance()?.didRequestInfo(["absoluteLink":"https://dl.dropboxusercontent.com/s/z4cfhb9ku9uxfgk/PCTT_WebView_MNDD_VER_1.plist", "overrideAlert":"1"], withCache: { (cache) in
                         
                     }, andCompletion: { (response, errorCode, error, isValid, object) in
                         
