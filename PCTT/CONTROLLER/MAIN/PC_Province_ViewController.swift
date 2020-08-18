@@ -538,7 +538,7 @@ extension PC_Province_ViewController: UITableViewDataSource, UITableViewDelegate
 
             let web = PC_Inner_Map_ViewController.init()
 
-            web.directUrl = "http://eladmin.gisgo.vn/?cmd=station&id_kttv=%@&id_vitrimucnuoc=%@&x=@&y=%@&lat=%@&lng=%@&token=%@".format(parameters: data.getValueFromKey("tram_kttv_id"), data.getValueFromKey("id"), data.getValueFromKey("kinh_do"), data.getValueFromKey("vi_do"), lat, lng, FirePush.shareInstance()?.deviceToken() ?? "") as NSString
+            web.directUrl = "http://eladmin.gisgo.vn/?cmd=station&id_kttv=%@&id_vitrimucnuoc=%@&x=%@&y=%@&lat=%@&lng=%@&token=%@".format(parameters: data.getValueFromKey("tram_kttv_id"), data.getValueFromKey("id"), data.getValueFromKey("kinh_do"), data.getValueFromKey("vi_do"), lat, lng, FirePush.shareInstance()?.deviceToken() ?? "") as NSString
                    
             self.navigationController?.pushViewController(web, animated: true)
         

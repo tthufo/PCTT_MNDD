@@ -211,7 +211,7 @@
 		FC3EB5FA23B7DA6000E0147F /* Province1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Province1.xib; sourceTree = "<group>"; };
 		FC59DA47237004FA00F8FA35 /* PC_Register_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PC_Register_ViewController.swift; sourceTree = "<group>"; };
 		FC59DA48237004FA00F8FA35 /* PC_Register_ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PC_Register_ViewController.xib; sourceTree = "<group>"; };
-		FC5D982022F54134006FA3F1 /* Mực Nước Đê Điều.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mực Nước Đê Điều.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC5D982022F54134006FA3F1 /* MNDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNDD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5D982322F54134006FA3F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC5D982522F54134006FA3F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FC5D982822F54134006FA3F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -413,7 +413,7 @@
 		FC5D982122F54134006FA3F1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FC5D982022F54134006FA3F1 /* Mực Nước Đê Điều.app */,
+				FC5D982022F54134006FA3F1 /* MNDD.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -515,7 +515,7 @@
 			);
 			name = PCTT;
 			productName = PCTT;
-			productReference = FC5D982022F54134006FA3F1 /* Mực Nước Đê Điều.app */;
+			productReference = FC5D982022F54134006FA3F1 /* MNDD.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -892,9 +892,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PCTT/PCTT.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Dinh Nguyen (9NC2Q4ER8P)";
+				CODE_SIGN_IDENTITY = "Apple Development: Thanh Hai Tran (ZWKS8AV396)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GAJPP6PZBM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -906,8 +906,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = vn.mndd.app;
-				PRODUCT_NAME = "Mực Nước Đê Điều";
+				PRODUCT_NAME = MNDD;
 				PROVISIONING_PROFILE_SPECIFIER = MNDD_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "PCTT/PCTT-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -924,9 +925,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PCTT/PCTT.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Distribution: VIETGIS - GIS SOLUTION AND TECHNOLOGY COMPANY LIMITED (GAJPP6PZBM)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: VIETGIS - GIS SOLUTION AND TECHNOLOGY COMPANY LIMITED (GAJPP6PZBM)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GAJPP6PZBM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -938,8 +939,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = vn.mndd.app;
-				PRODUCT_NAME = "Mực Nước Đê Điều";
+				PRODUCT_NAME = MNDD;
 				PROVISIONING_PROFILE_SPECIFIER = MNDD_dis;
 				SWIFT_OBJC_BRIDGING_HEADER = "PCTT/PCTT-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
