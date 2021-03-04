@@ -99,7 +99,13 @@ class PC_Inner_Info_ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
        super.viewWillDisappear(animated)
-       kb.keyboardOff()
+        kb.keyboardOff()
+        
+        Information.modInfo(name: "PhoneNumber", value: phone.text ?? "")
+        Information.modInfo(name: "Email", value: email.text ?? "")
+
+        Information.modInfo(name: "FullName", value: name.text ?? "")
+        Information.modInfo(name: "Department", value: unit.text ?? "")
     }
    
     override func viewWillAppear(_ animated: Bool) {

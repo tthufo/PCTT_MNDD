@@ -114,6 +114,14 @@ class Information: NSObject {
         return offLine!
     }
     
+    static func modInfo(name: String, value: String) {
+        userInfo = self.getObject("info")! as NSDictionary
+        let temp = userInfo?.reFormat()
+        temp![name] = value
+        self.add((temp as! [AnyHashable : Any]), andKey: "info")
+        userInfo = self.getObject("info")! as NSDictionary
+    }
+    
     static func removeInfo() {
         
         self.removeValue("token")
